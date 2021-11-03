@@ -4,7 +4,7 @@ USE UniversityRegistrationSystem;
 
 CREATE TABLE UniversityMember(
 	memberID INTEGER,
-    memberType CHAR(20),
+	memberType CHAR(20),
     firstName CHAR(20),
     lastName CHAR(20),
     SIN INTEGER,
