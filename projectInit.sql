@@ -8,40 +8,40 @@ CREATE TABLE UniversityMember(
 	firstName CHAR(20),
 	lastName CHAR(20),
 	SIN INTEGER,
-    dateOfBirth DATE,
-    homeAddress CHAR(50),
-    statusType CHAR(20),
-    PRIMARY KEY(memberID)
+	dateOfBirth DATE,
+	homeAddress CHAR(50),
+	statusType CHAR(20),
+	PRIMARY KEY(memberID)
 );
 
 CREATE TABLE Course(
 	courseName CHAR(40),
-    courseCode CHAR(10),
-    subject CHAR(20),
-    description CHAR(200),
-    PRIMARY KEY(courseName, courseCode)
+	courseCode CHAR(10),
+	subject CHAR(20),
+	description CHAR(200),
+	PRIMARY KEY(courseName, courseCode)
 );
 
 CREATE TABLE Section(
-    courseName CHAR(40),
-    courseCode CHAR(10),
-    courseSection CHAR(20),
-    memberID INTEGER,
-    time TIME,	#need to figure out how to add day to this, maybe change to string?
-    PRIMARY KEY (courseName, courseCode, courseSection,  memberID),
-    FOREIGN KEY (courseName, courseCode) REFERENCES Course(courseName, courseCode) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (memberID) REFERENCES UniversityMember(memberID) ON DELETE NO ACTION ON UPDATE CASCADE
+	courseName CHAR(40),
+	courseCode CHAR(10),
+	courseSection CHAR(20),
+	memberID INTEGER,
+	time TIME,	#need to figure out how to add day to this, maybe change to string?
+	PRIMARY KEY (courseName, courseCode, courseSection,  memberID),
+	FOREIGN KEY (courseName, courseCode) REFERENCES Course(courseName, courseCode) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (memberID) REFERENCES UniversityMember(memberID) ON DELETE NO ACTION ON UPDATE CASCADE
 );
 
 CREATE TABLE CourseGrades(
-    courseName CHAR(40),
-    courseCode CHAR(10),
-    courseSection CHAR(20),
-    memberID INTEGER,
-    grade INTEGER,
-    PRIMARY KEY (courseName, courseCode, courseSection,  memberID),
-    FOREIGN KEY (courseName, courseCode, courseSection) REFERENCES Section(courseName, courseCode, courseSection) ON DELETE NO ACTION ON UPDATE NO ACTION,
-    FOREIGN KEY (memberID) REFERENCES UniversityMember(memberID) ON DELETE NO ACTION ON UPDATE NO ACTION
+	courseName CHAR(40),
+	courseCode CHAR(10),
+	courseSection CHAR(20),
+	memberID INTEGER,
+	grade INTEGER,
+	PRIMARY KEY (courseName, courseCode, courseSection,  memberID),
+	FOREIGN KEY (courseName, courseCode, courseSection) REFERENCES Section(courseName, courseCode, courseSection) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	FOREIGN KEY (memberID) REFERENCES UniversityMember(memberID) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 INSERT INTO UniversityMember VALUES (1358946, 'Student', 'John', 'Smith', 123456789, '1990-10-22', '123 Main Street, Township, ON, P7Y 4L9, Canada', 'Part-Time');
