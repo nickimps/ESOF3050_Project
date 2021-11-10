@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddCourseController">
+   <top>
+      <Label text="Add Course" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </top>
+   <padding>
+      <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+   </padding>
+   <bottom>
+      <Button mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="40.0" prefWidth="100.0" text="Add" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <VBox maxWidth="-Infinity" prefHeight="314.0" prefWidth="557.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="100.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefWidth="150.0" text="Subject" textAlignment="RIGHT">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="subjectTextField" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="100.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefWidth="150.0" text="4-Digit Number" textAlignment="RIGHT">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="courseCodeTextField" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="100.0" prefWidth="242.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="150.0" text="Title" textAlignment="RIGHT">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="titleTextField" prefHeight="25.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="100.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefWidth="150.0" text="Section Number" textAlignment="RIGHT">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="sectionTextField" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="100.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefWidth="150.0" text="Instructor" textAlignment="RIGHT">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <ChoiceBox fx:id="InstructorChoiceBox" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="100.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefWidth="150.0" text="Description" textAlignment="RIGHT">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="descriptionTextField" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="100.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="150.0" text="Lecture Time" textAlignment="RIGHT">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="lectureTimeTextField" prefWidth="200.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
