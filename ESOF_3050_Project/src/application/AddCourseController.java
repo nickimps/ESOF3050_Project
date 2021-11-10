@@ -56,7 +56,7 @@ public class AddCourseController {
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-
+    	resetFields();
     }
     
     void resetFields() {
