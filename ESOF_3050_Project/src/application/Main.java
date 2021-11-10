@@ -5,7 +5,6 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
@@ -14,10 +13,15 @@ public class Main extends Application {
 	// Primary Stage
     Stage stage;
     // Two scenes
-    Scene sceneLogin, sceneAddCourse;
+    Scene sceneLogin;
+    Scene sceneAddCourse;
+    Scene sceneAddEmployee;
+    Scene sceneDropCourses;
     // The panes are associated with the respective .fxml files
     private Pane paneLogin;
     private Pane paneAddCourse;
+    private Pane paneAddEmployee;
+    private Pane paneDropCourses;
 	
 	@Override
 	public void start(Stage mainStage) throws Exception {
@@ -45,15 +49,31 @@ public class Main extends Application {
 			paneAddCourse = fxmlloader.load();
 			AddCourseController addCourseController = fxmlloader.getController();
 			
+			fxmlloader = new FXMLLoader();
+			fxmlloader.setLocation(Main.class.getResource("addEmployee.fxml"));
+			paneAddEmployee = fxmlloader.load();
+			AddEmployeeController addEmployeeController = fxmlloader.getController();
+			
+			fxmlloader = new FXMLLoader();
+			fxmlloader.setLocation(Main.class.getResource("dropCourses.fxml"));
+			paneDropCourses = fxmlloader.load();
+			DropCoursesController dropCoursesController = fxmlloader.getController();
+			
 			//Set Scenes to the loaded FXML's
 			Scene sceneLogin = new Scene(paneLogin);
 			Scene sceneAddCourse = new Scene(paneAddCourse);
+			Scene sceneAddEmployee = new Scene(paneAddEmployee);
+			Scene sceneDropCourses = new Scene(paneDropCourses);
 			
 			//Pass Reference to their controller classes
 			loginController.setMainScene(this);
-			loginController.setLoginPressScene(sceneAddCourse);
+			loginController.setLoginPressScene(null);			//Set to proper scene
 			addCourseController.setMainScene(this);
-			addCourseController.setAddPressedScene(sceneLogin);
+			addCourseController.setAddPressedScene(null);		//Set to proper scene
+			addEmployeeController.setMainScene(this);
+			addEmployeeController.setAddPressedScene(null); 	//Set to proper scene
+			dropCoursesController.setMainScene(this);
+			dropCoursesController.setAddPressedScene(null); 	//Set to proper scene
 			
 			stage.setScene(sceneLogin);
 			stage.setTitle("Univeristy Registration System");
