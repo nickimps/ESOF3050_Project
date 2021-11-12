@@ -34,6 +34,7 @@ public class LoginController {
 
     @FXML
     void loginButtonPressed(ActionEvent event) {
+    	/* Will do a check on the login credentials and send to appropriate screen  */
     	main.setScreen(sceneAddCourse);
     	resetFields();
     }

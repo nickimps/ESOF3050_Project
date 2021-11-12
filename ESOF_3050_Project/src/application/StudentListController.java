@@ -1,7 +1,7 @@
 package application;
 
 /**
- * Sample Skeleton for 'dropCourses.fxml' Controller Class
+ * Sample Skeleton for 'studentList.fxml' Controller Class
  */
 
 import java.net.URL;
@@ -11,7 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 
-public class DropCoursesController {
+public class StudentListController {
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -19,12 +19,9 @@ public class DropCoursesController {
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
 
-    @FXML // fx:id="leftSideScrollPane"
-    private ScrollPane leftSideScrollPane; // Value injected by FXMLLoader
+    @FXML // fx:id="listScrollPane"
+    private ScrollPane listScrollPane; // Value injected by FXMLLoader
 
-    @FXML // fx:id="rightSideScrollPane"
-    private ScrollPane rightSideScrollPane; // Value injected by FXMLLoader
-    
     private Main main;
     private Scene sceneLogin;
     
@@ -37,18 +34,14 @@ public class DropCoursesController {
     }
 
     @FXML
-    void dropButtonPressed(ActionEvent event) {
+    void backButtonPressed(ActionEvent event) {
     	main.setScreen(sceneLogin);
-    	resetFields();
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-        resetFields();
-    }
-    
-    void resetFields() {
-    	/* look at shapecontroller.java to see how to insert blank vboxs */
+    	
     }
 }
+
 
