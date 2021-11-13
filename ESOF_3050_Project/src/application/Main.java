@@ -129,9 +129,9 @@ public class Main extends Application {
 			AdminWelcomeScreenController adminWelcomeScreenController = fxmlloader.getController();
 			
 			//Set Scenes to the loaded FXML's
-			Scene sceneLogin = new Scene(paneLogin);
-			Scene sceneAddCourse = new Scene(paneAddCourse);
-			Scene sceneAddEmployee = new Scene(paneAddEmployee);
+			Scene sceneLogin = new Scene(paneLogin);					//done
+			Scene sceneAddCourse = new Scene(paneAddCourse);			//done
+			Scene sceneAddEmployee = new Scene(paneAddEmployee);		//done
 			Scene sceneDropCourses = new Scene(paneDropCourses);
 			Scene sceneEmployeeList = new Scene(paneEmployeeList);
 			Scene sceneViewCourses = new Scene(paneViewCourses);
@@ -147,9 +147,12 @@ public class Main extends Application {
 			
 			//Pass Reference to their controller classes
 			loginController.setMainScene(this);
-			loginController.setLoginPressScene(null);			//Set to proper scene
+			loginController.setLoginPressScene(null);			
+			
+			/* need to check type of user here */
+			
 			addCourseController.setMainScene(this);
-			addCourseController.setAddPressedScene(null);		//Set to proper scene
+			addCourseController.setAddPressedScene(sceneAdminWelcomeScreen);
 			addEmployeeController.setMainScene(this);
 			addEmployeeController.setAddPressedScene(null); 	//Set to proper scene
 			dropCoursesController.setMainScene(this);
@@ -177,7 +180,7 @@ public class Main extends Application {
 			adminWelcomeScreenController.setMainScene(this);
 			adminWelcomeScreenController.setAddPressedScene(null); 		//Set to proper scene
 			
-			stage.setScene(sceneLogin);
+			stage.setScene(sceneAddEmployee);
 			stage.setTitle("Univeristy Registration System");
 			stage.show();
 			

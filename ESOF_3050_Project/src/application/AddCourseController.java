@@ -38,19 +38,32 @@ public class AddCourseController {
     private TextField lectureTimeTextField; // Value injected by FXMLLoader
     
     private Main main;
-    private Scene sceneLogin;
+    private Scene sceneAdminWelcomeScreen;
     
     public void setMainScene(Main main) {
     	this.main = main;
     }
     
-    public void setAddPressedScene(Scene sceneLogin) {
-    	this.sceneLogin = sceneLogin;
+    public void setAddPressedScene(Scene sceneAdminWelcomeScreen) {
+    	this.sceneAdminWelcomeScreen = sceneAdminWelcomeScreen;
     }
-
+    
+    public void setBackPressedScene(Scene sceneAdminWelcomeScreen) {
+    	this.sceneAdminWelcomeScreen = sceneAdminWelcomeScreen;
+    }
+    
     @FXML
     void addButtonPressed(ActionEvent event) {
-    	main.setScreen(sceneLogin);
+    	
+    	/* capture values and store in database here */
+    	
+    	main.setScreen(sceneAdminWelcomeScreen);
+    	resetFields();
+    }
+    
+    @FXML
+    void backButtonPressed(ActionEvent event) {
+    	main.setScreen(sceneAdminWelcomeScreen);
     	resetFields();
     }
 
