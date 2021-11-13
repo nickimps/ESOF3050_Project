@@ -44,10 +44,6 @@ public class AddEmployeeController {
     	this.main = main;
     }
     
-    public void setAddPressedScene(Scene sceneAdminWelcomeScreen) {
-    	this.sceneAdminWelcomeScreen = sceneAdminWelcomeScreen;
-    }
-    
     public void setBackPressedScene(Scene sceneAdminWelcomeScreen) {
     	this.sceneAdminWelcomeScreen = sceneAdminWelcomeScreen;
     }

@@ -1,9 +1,5 @@
 package application;
 
-/**
- * Sample Skeleton for 'removeCourse.fxml' Controller Class
- */
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -23,24 +19,26 @@ public class RemoveCourseController {
     private ScrollPane listScrollPane; // Value injected by FXMLLoader
 
     private Main main;
-    private Scene sceneLogin;
+    private Scene sceneAdminWelcomeScreen;
     
     public void setMainScene(Main main) {
     	this.main = main;
     }
     
-    public void setAddPressedScene(Scene sceneLogin) {
-    	this.sceneLogin = sceneLogin;
+    public void setBackPressedScene(Scene sceneAdminWelcomeScreen) {
+    	this.sceneAdminWelcomeScreen = sceneAdminWelcomeScreen;
     }
 
     @FXML
     void backButtonPressed(ActionEvent event) {
-    	main.setScreen(sceneLogin);
+    	main.setScreen(sceneAdminWelcomeScreen);
     }
 
     @FXML
     void removeButtonPressed(ActionEvent event) {
-
+    	
+    	/* update the database to remove the employee from it */
+    	
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

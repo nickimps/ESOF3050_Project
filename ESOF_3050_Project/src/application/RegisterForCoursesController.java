@@ -1,9 +1,5 @@
 package application;
 
-/**
- * Sample Skeleton for 'registerCourse.fxml' Controller Class
- */
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -36,30 +32,33 @@ public class RegisterForCoursesController {
     private TextField sectionTextField; // Value injected by FXMLLoader
 
     private Main main;
-    private Scene sceneLogin;
+    private Scene sceneStudentWelcomeScreen;
     
     public void setMainScene(Main main) {
     	this.main = main;
     }
     
-    public void setAddPressedScene(Scene sceneLogin) {
-    	this.sceneLogin = sceneLogin;
+    public void setBackPressedScene(Scene sceneStudentWelcomeScreen) {
+    	this.sceneStudentWelcomeScreen = sceneStudentWelcomeScreen;
     }
 
     @FXML
     void backButtonPressed(ActionEvent event) {
-    	main.setScreen(sceneLogin);
+    	main.setScreen(sceneStudentWelcomeScreen);
     	resetFields();
     }
 
     @FXML
     void enrollButtonPressed(ActionEvent event) {
-
+    	
+    	/* Update database here and send a confirmation message */
     }
 
     @FXML
     void searchButtonPressed(ActionEvent event) {
-
+    	
+    	/* Display results, query from database */
+    	
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

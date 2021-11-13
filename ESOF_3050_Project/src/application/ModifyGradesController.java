@@ -1,9 +1,5 @@
 package application;
 
-/**
- * Sample Skeleton for 'modifyGrades.fxml' Controller Class
- */
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -30,25 +26,27 @@ public class ModifyGradesController {
     private TextField newGradeTextField; // Value injected by FXMLLoader
     
     private Main main;
-    private Scene sceneLogin;
+    private Scene sceneInstructorWelcomeScreen;
     
     public void setMainScene(Main main) {
     	this.main = main;
     }
     
-    public void setAddPressedScene(Scene sceneLogin) {
-    	this.sceneLogin = sceneLogin;
+    public void setBackPressedScene(Scene sceneInstructorWelcomeScreen) {
+    	this.sceneInstructorWelcomeScreen = sceneInstructorWelcomeScreen;
     }
 
     @FXML
     void backButtonPressed(ActionEvent event) {
-    	main.setScreen(sceneLogin);
+    	main.setScreen(sceneInstructorWelcomeScreen);
     	resetFields();
     }
 
     @FXML
     void changeButtonPressed(ActionEvent event) {
-
+    	
+    	/* update database and show confirmation message */
+    	
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

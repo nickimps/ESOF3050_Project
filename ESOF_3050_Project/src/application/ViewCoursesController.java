@@ -23,19 +23,28 @@ public class ViewCoursesController {
     private ScrollPane listScrollPane; // Value injected by FXMLLoader
     
     private Main main;
-    private Scene sceneLogin;
+    private Scene sceneAdminWelcomeScreen;
+    private Scene sceneInstructorWelcomeScreen;
     
     public void setMainScene(Main main) {
     	this.main = main;
     }
     
-    public void setAddPressedScene(Scene sceneLogin) {
-    	this.sceneLogin = sceneLogin;
+    public void setBackPressedScene(Scene sceneAdminWelcomeScreen, Scene sceneInstructorWelcomeScreen) {
+    	this.sceneAdminWelcomeScreen = sceneAdminWelcomeScreen;
+    	this.sceneInstructorWelcomeScreen = sceneInstructorWelcomeScreen;
     }
-
+    
     @FXML
     void backButtonPressed(ActionEvent event) {
-    	main.setScreen(sceneLogin);
+    	
+    	/* need to remember which screen to go back to, admin or instr */
+    	
+    	//if admin
+    	main.setScreen(sceneAdminWelcomeScreen);
+    	
+    	//else if instr
+    	main.setScreen(sceneInstructorWelcomeScreen);
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

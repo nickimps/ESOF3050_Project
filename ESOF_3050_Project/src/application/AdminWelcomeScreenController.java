@@ -1,9 +1,5 @@
 package application;
 
-/**
- * Sample Skeleton for 'optionScreenAdmin.fxml' Controller Class
- */
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -20,23 +16,58 @@ public class AdminWelcomeScreenController {
     
     private Main main;
     private Scene sceneLogin;
+    private Scene sceneAddCourse;
+    private Scene sceneAddEmployee;
+    private Scene sceneRemoveEmployee;
+    private Scene sceneRemoveCourse;
+    private Scene sceneEmployeeList;
+    private Scene sceneStudentList;
+    private Scene sceneViewCourses;
     
     public void setMainScene(Main main) {
     	this.main = main;
     }
     
-    public void setAddPressedScene(Scene sceneLogin) {
+    public void setAddCoursePressedScene(Scene sceneAddCourse) {
+    	this.sceneAddCourse = sceneAddCourse;
+    }
+    
+    public void setRemoveCoursePressedScene(Scene sceneRemoveCourse) {
+    	this.sceneRemoveCourse = sceneRemoveCourse;
+    }
+    
+    public void setAddEmployeePressedScene(Scene sceneAddEmployee) {
+    	this.sceneAddEmployee = sceneAddEmployee;
+    }
+    
+    public void setRemoveEmployeePressedScene(Scene sceneRemoveEmployee) {
+    	this.sceneRemoveEmployee = sceneRemoveEmployee;
+    }
+    
+    public void setEmployeeListPressedScene(Scene sceneEmployeeList) {
+    	this.sceneEmployeeList = sceneEmployeeList;
+    }
+    
+    public void setStudentListPressedScene(Scene sceneStudentList) {
+    	this.sceneStudentList = sceneStudentList;
+    }
+    
+    public void setViewActiveCoursesPressedScene(Scene sceneViewCourses) {
+    	this.sceneViewCourses = sceneViewCourses;
+    }
+    
+    public void setLogoutPressedScene(Scene sceneLogin) {
     	this.sceneLogin = sceneLogin;
     }
 
     @FXML
     void addCourseButtonPressed(ActionEvent event) {
-
+    	main.setScreen(sceneAddCourse);
     }
 
     @FXML
     void addEmployeeButtonPressed(ActionEvent event) {
-
+    	main.setScreen(sceneAddEmployee);
     }
 
     @FXML
@@ -46,27 +77,27 @@ public class AdminWelcomeScreenController {
 
     @FXML
     void removeCourseButtonPressed(ActionEvent event) {
-
+    	main.setScreen(sceneRemoveCourse);
     }
 
     @FXML
     void removeEmployeeButtonPressed(ActionEvent event) {
-
+    	main.setScreen(sceneRemoveEmployee);
     }
 
     @FXML
     void viewActiveCoursesButtonPressed(ActionEvent event) {
-
+    	main.setScreen(sceneViewCourses);
     }
 
     @FXML
     void viewEmployeeListButtonPressed(ActionEvent event) {
-
+    	main.setScreen(sceneEmployeeList);
     }
 
     @FXML
     void viewStudentListButtonPressed(ActionEvent event) {
-
+    	main.setScreen(sceneStudentList);
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

@@ -129,9 +129,9 @@ public class Main extends Application {
 			AdminWelcomeScreenController adminWelcomeScreenController = fxmlloader.getController();
 			
 			//Set Scenes to the loaded FXML's
-			Scene sceneLogin = new Scene(paneLogin);					//done
-			Scene sceneAddCourse = new Scene(paneAddCourse);			//done
-			Scene sceneAddEmployee = new Scene(paneAddEmployee);		//done
+			Scene sceneLogin = new Scene(paneLogin);
+			Scene sceneAddCourse = new Scene(paneAddCourse);
+			Scene sceneAddEmployee = new Scene(paneAddEmployee);
 			Scene sceneDropCourses = new Scene(paneDropCourses);
 			Scene sceneEmployeeList = new Scene(paneEmployeeList);
 			Scene sceneViewCourses = new Scene(paneViewCourses);
@@ -147,40 +147,69 @@ public class Main extends Application {
 			
 			//Pass Reference to their controller classes
 			loginController.setMainScene(this);
-			loginController.setLoginPressScene(null);			
 			
 			/* need to check type of user here */
+			loginController.setLoginPressScene(sceneStudentWelcomeScreen, sceneAdminWelcomeScreen, sceneInstructorWelcomeScreen);
 			
 			addCourseController.setMainScene(this);
-			addCourseController.setAddPressedScene(sceneAdminWelcomeScreen);
-			addEmployeeController.setMainScene(this);
-			addEmployeeController.setAddPressedScene(null); 	//Set to proper scene
-			dropCoursesController.setMainScene(this);
-			dropCoursesController.setAddPressedScene(null); 	//Set to proper scene
-			employeeListController.setMainScene(this);
-			employeeListController.setAddPressedScene(null); 	//Set to proper scene
-			viewCoursesController.setMainScene(this);
-			viewCoursesController.setAddPressedScene(null); 	//Set to proper scene
-			modifyGradesController.setMainScene(this);
-			modifyGradesController.setAddPressedScene(null); 	//Set to proper scene
-			registerForCoursesController.setMainScene(this);
-			registerForCoursesController.setAddPressedScene(null); //Set to proper scene
-			studentListController.setMainScene(this);
-			studentListController.setAddPressedScene(null); 	//Set to proper scene
-			searchCoursesController.setMainScene(this);
-			searchCoursesController.setAddPressedScene(null); 	//Set to proper scene
-			removeEmployeeController.setMainScene(this);
-			removeEmployeeController.setAddPressedScene(null); 	//Set to proper scene
-			removeCourseController.setMainScene(this);
-			removeCourseController.setAddPressedScene(null); 	//Set to proper scene
-			studentWelcomeScreenController.setMainScene(this);
-			studentWelcomeScreenController.setAddPressedScene(null); 	//Set to proper scene
-			instructorWelcomeScreenController.setMainScene(this);
-			instructorWelcomeScreenController.setAddPressedScene(null); //Set to proper scene
-			adminWelcomeScreenController.setMainScene(this);
-			adminWelcomeScreenController.setAddPressedScene(null); 		//Set to proper scene
+			addCourseController.setBackPressedScene(sceneAdminWelcomeScreen);
 			
-			stage.setScene(sceneAddEmployee);
+			addEmployeeController.setMainScene(this);
+			addEmployeeController.setBackPressedScene(sceneAdminWelcomeScreen);
+			
+			dropCoursesController.setMainScene(this);
+			dropCoursesController.setBackPressedScene(sceneAdminWelcomeScreen);
+			
+			employeeListController.setMainScene(this);
+			employeeListController.setBackPressedScene(sceneAdminWelcomeScreen, sceneInstructorWelcomeScreen);
+			
+			viewCoursesController.setMainScene(this);
+			viewCoursesController.setBackPressedScene(sceneAdminWelcomeScreen, sceneInstructorWelcomeScreen);
+			
+			modifyGradesController.setMainScene(this);
+			modifyGradesController.setBackPressedScene(sceneInstructorWelcomeScreen);
+			
+			registerForCoursesController.setMainScene(this);
+			registerForCoursesController.setBackPressedScene(sceneStudentWelcomeScreen);
+			
+			studentListController.setMainScene(this);
+			studentListController.setBackPressedScene(sceneAdminWelcomeScreen, sceneInstructorWelcomeScreen);
+			
+			searchCoursesController.setMainScene(this);
+			searchCoursesController.setBackPressedScene(sceneStudentWelcomeScreen);
+			
+			removeEmployeeController.setMainScene(this);
+			removeEmployeeController.setBackPressedScene(sceneAdminWelcomeScreen);
+			
+			removeCourseController.setMainScene(this);
+			removeCourseController.setBackPressedScene(sceneAdminWelcomeScreen);
+			
+			studentWelcomeScreenController.setMainScene(this);
+			studentWelcomeScreenController.setLogoutPressedScene(sceneLogin);
+			studentWelcomeScreenController.setDropCoursesPressedScene(sceneDropCourses);
+			studentWelcomeScreenController.setRegisterCoursesPressedScene(sceneRegisterCourse);
+			studentWelcomeScreenController.setSearchCoursesPressedScene(sceneSearchCourses);
+			studentWelcomeScreenController.setViewCoursesPressedScene(sceneViewCourses);
+			studentWelcomeScreenController.setViewGradesPressedScene(sceneViewCourses);
+			
+			instructorWelcomeScreenController.setMainScene(this);
+			instructorWelcomeScreenController.setEmployeeListPressedScene(sceneEmployeeList);
+			instructorWelcomeScreenController.setLogoutPressedScene(sceneLogin);
+			instructorWelcomeScreenController.setModifyGradesPressedScene(sceneModifyGrades);
+			instructorWelcomeScreenController.setStudentListPressedScene(sceneStudentList);
+			instructorWelcomeScreenController.setViewActiveCoursesPressedScene(sceneViewCourses);
+			
+			adminWelcomeScreenController.setMainScene(this);
+			adminWelcomeScreenController.setAddCoursePressedScene(sceneAddCourse);
+			adminWelcomeScreenController.setAddEmployeePressedScene(sceneAddEmployee);
+			adminWelcomeScreenController.setEmployeeListPressedScene(sceneEmployeeList);
+			adminWelcomeScreenController.setLogoutPressedScene(sceneLogin);
+			adminWelcomeScreenController.setRemoveCoursePressedScene(sceneRemoveCourse);
+			adminWelcomeScreenController.setRemoveEmployeePressedScene(sceneRemoveEmployee);
+			adminWelcomeScreenController.setStudentListPressedScene(sceneStudentList);
+			adminWelcomeScreenController.setViewActiveCoursesPressedScene(sceneViewCourses);
+			
+			stage.setScene(sceneLogin);
 			stage.setTitle("Univeristy Registration System");
 			stage.show();
 			

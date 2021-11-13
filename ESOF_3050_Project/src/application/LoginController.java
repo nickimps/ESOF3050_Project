@@ -22,20 +22,26 @@ public class LoginController {
     private TextField lastNameTextField; // Value injected by FXMLLoader
     
     private Main main;
-    private Scene sceneAddCourse;
+    private Scene sceneStudentWelcomeScreen;
+    private Scene sceneAdminWelcomeScreen;
+    private Scene sceneInstructorWelcomeScreen;
     
     public void setMainScene(Main main) {
     	this.main = main;
     }
     
-    public void setLoginPressScene(Scene sceneAddCourse) {
-    	this.sceneAddCourse = sceneAddCourse;
+    public void setLoginPressScene(Scene sceneStudentWelcomeScreen, Scene sceneAdminWelcomeScreen, Scene sceneInstructorWelcomeScreen) {
+    	this.sceneStudentWelcomeScreen = sceneStudentWelcomeScreen;
+    	this.sceneAdminWelcomeScreen = sceneAdminWelcomeScreen;
+    	this.sceneInstructorWelcomeScreen = sceneInstructorWelcomeScreen;
     }
 
     @FXML
     void loginButtonPressed(ActionEvent event) {
+    	
     	/* Will do a check on the login credentials and send to appropriate screen  */
-    	main.setScreen(sceneAddCourse);
+    	
+    	main.setScreen(sceneStudentWelcomeScreen);
     	resetFields();
     }
 
