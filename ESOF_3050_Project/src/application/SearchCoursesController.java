@@ -4,15 +4,17 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 public class SearchCoursesController {
 
@@ -22,10 +24,10 @@ public class SearchCoursesController {
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
 
-    @FXML // fx:id="subjectTextField"
+    @FXML // fx:id="courseCodeTextField"
     private TextField courseCodeTextField; // Value injected by FXMLLoader
 
-    @FXML // fx:id="courseNumberTextField"
+    @FXML // fx:id="courseNameTextField"
     private TextField courseNameTextField; // Value injected by FXMLLoader
 
     @FXML // fx:id="sectionTextField"
@@ -33,6 +35,9 @@ public class SearchCoursesController {
 
     @FXML // fx:id="listScrollPane"
     private ScrollPane listScrollPane; // Value injected by FXMLLoader
+    
+    // VBox to be used to display information in the scroll pane
+ 	private VBox vBox = new VBox();
 
     private Main main;
     private Scene sceneStudentWelcomeScreen;
@@ -67,40 +72,35 @@ public class SearchCoursesController {
 			    ResultSet rs = null;
 			    //Execute query and get number of columns
 			    if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty())
-					rs = stmt.executeQuery("SELECT * FROM Course ORDER BY courseName");
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode ORDER BY Course.courseName");
 			    else if (!courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty())
-					rs = stmt.executeQuery("SELECT * FROM Course WHERE courseName = '"+ courseNameTextField.getText() + "' ORDER BY courseCode");
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode WHERE Course.courseName = '"+ courseNameTextField.getText().toUpperCase() + "' ORDER BY Course.courseCode");
 				else if (courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty())
-					rs = stmt.executeQuery("SELECT * FROM Course WHERE courseCode = '"+ courseCodeTextField.getText() + "' ORDER BY courseName");
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode WHERE Course.courseCode = '"+ courseCodeTextField.getText() + "' ORDER BY Course.courseName");
 				else if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty())
-					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode WHERE Section.courseSection = '" + courseCodeTextField.getText() + "' ORDER BY Course.courseName");
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode WHERE Section.courseSection = '" + sectionTextField.getText() + "' ORDER BY Course.courseName");
 				else if (!courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty())
-					rs = stmt.executeQuery("SELECT * FROM Course WHERE courseCode = '" + courseCodeTextField.getText() + "' AND courseName = '" + courseNameTextField.getText() + "' ORDER BY courseCode");
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode WHERE Course.courseCode = '" + courseCodeTextField.getText() + "' AND Course.courseName = '" + courseNameTextField.getText().toUpperCase() + "' ORDER BY Course.courseCode");
 				else if (!courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty())
-					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode WHERE Section.courseSection = '" + courseCodeTextField.getText() + "' AND Course.courseName = '" + courseNameTextField.getText() + "' ORDER BY Course.courseCode");
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode WHERE Section.courseSection = '" + sectionTextField.getText() + "' AND Course.courseName = '" + courseNameTextField.getText().toUpperCase() + "' ORDER BY Course.courseCode");
 				else if (courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty())
-					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode WHERE Section.courseSection = '" + courseCodeTextField.getText() + "' AND Course.courseCode = '" + courseCodeTextField.getText() + "' ORDER BY Course.courseCode");
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode WHERE Section.courseSection = '" + sectionTextField.getText() + "' AND Course.courseCode = '" + courseCodeTextField.getText() + "' ORDER BY Course.courseCode");
 				else if (!courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty())
-					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode WHERE Section.courseSection = '" + courseCodeTextField.getText() + "' AND Course.courseName = '" + courseNameTextField.getText() + "' AND Course.courseCode = '" + courseCodeTextField.getText() + "' ORDER BY Course.courseName");
-				
-				
-			    ResultSetMetaData rsmd = rs.getMetaData();
-			    int columnsNumber = rsmd.getColumnCount();
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode WHERE Section.courseSection = '" + sectionTextField.getText() + "' AND Course.courseName = '" + courseNameTextField.getText().toUpperCase() + "' AND Course.courseCode = '" + courseCodeTextField.getText() + "' ORDER BY Course.courseName");
+
+			    vBox.getChildren().clear();
+			    vBox.setPadding(new Insets(8, 8, 8, 8));
+			    vBox.setSpacing(8.0);
 			    
-			    //print column names
-			    for(int i = 1; i <= columnsNumber; i++)
-		            System.out.print(rsmd.getColumnName(i) + "\t");
-			    System.out.println();
-			    
-			    if (rs.next() == false) 
-		    		System.out.println("no results");
-			    else {
+			    if (rs.next() == false) {
+				    vBox.getChildren().add(new Label(String.format("No Results.")));
+			    } else {
 				    do {
-				    	for(int i = 1; i <= columnsNumber; i++)
-				            System.out.print(rs.getString(i) + "\t");
-				        System.out.println();
+				    	vBox.getChildren().add(new Label(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(7) + "\n" + rs.getString(3) + "\n" + rs.getString(9) + "\n" + rs.getString(4))));
 				    } while (rs.next());
 			    }
+			    
+			    listScrollPane.setContent(vBox);
 			} catch (SQLException e){
 			    e.printStackTrace();
 			}

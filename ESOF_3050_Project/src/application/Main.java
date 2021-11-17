@@ -10,6 +10,9 @@ import javafx.scene.layout.Pane;
 
 public class Main extends Application {
 	
+	String memberID;
+	RegisterForCoursesController registerForCoursesController;
+	
 	// Primary Stage
     Stage stage;
     // Two scenes
@@ -91,7 +94,7 @@ public class Main extends Application {
 			fxmlloader = new FXMLLoader();
 			fxmlloader.setLocation(Main.class.getResource("registerCourse.fxml"));
 			paneRegisterCourse = fxmlloader.load();
-			RegisterForCoursesController registerForCoursesController = fxmlloader.getController();
+			registerForCoursesController = fxmlloader.getController();
 			
 			fxmlloader = new FXMLLoader();
 			fxmlloader.setLocation(Main.class.getResource("studentList.fxml"));
@@ -146,7 +149,7 @@ public class Main extends Application {
 			Scene sceneAdminWelcomeScreen = new Scene(paneAdminWelcomeScreen);
 			
 			//Pass Reference to their controller classes
-			loginController.setMainScene(this);
+			loginController.setMainScene(this, memberID);
 			
 			/* need to check type of user here */
 			loginController.setLoginPressScene(sceneStudentWelcomeScreen, sceneAdminWelcomeScreen, sceneInstructorWelcomeScreen);
@@ -221,6 +224,10 @@ public class Main extends Application {
 	
 	public void setScreen(Scene sc) {
 		stage.setScene(sc);
+	}
+	
+	public void setMemberID(String memberID) {
+		registerForCoursesController.setMemberID(memberID);
 	}
 	
 	public static void main(String[] args) {

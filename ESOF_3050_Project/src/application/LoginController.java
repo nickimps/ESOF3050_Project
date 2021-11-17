@@ -27,12 +27,14 @@ public class LoginController {
     private TextField passwordTextField; // Value injected by FXMLLoader
     
     private Main main;
+    private String memberID;
     private Scene sceneStudentWelcomeScreen;
     private Scene sceneAdminWelcomeScreen;
     private Scene sceneInstructorWelcomeScreen;
     
-    public void setMainScene(Main main) {
+    public void setMainScene(Main main, String memberID) {
     	this.main = main;
+    	this.memberID = memberID;
     }
     
     public void setLoginPressScene(Scene sceneStudentWelcomeScreen, Scene sceneAdminWelcomeScreen, Scene sceneInstructorWelcomeScreen) {
@@ -59,7 +61,7 @@ public class LoginController {
 				Statement stmt = conn.createStatement();
 			    
 			    //Execute query and get number of columns
-				ResultSet rs = stmt.executeQuery("SELECT * FROM Login WHERE username = '" + userNameTextField.getText() + "' AND password = '" + passwordTextField.getText() + "'");
+				ResultSet rs = stmt.executeQuery("SELECT * FROM Login WHERE memberID = " + Integer.parseInt(userNameTextField.getText()) + " AND password = '" + passwordTextField.getText() + "'");
 			    
 			    if (rs.next() == false)
 			    	System.out.println("User doesn't exist.");	//no user, should print alert on gui
@@ -74,6 +76,8 @@ public class LoginController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		main.setMemberID(userNameTextField.getText());
 		
 		//Go to appropriate screen
 		if (type.equals("student"))
