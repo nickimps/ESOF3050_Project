@@ -1,6 +1,11 @@
 package application;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +24,7 @@ public class LoginController {
     private TextField userNameTextField; // Value injected by FXMLLoader
 
     @FXML // fx:id="lastNameTextField"
-    private TextField lastNameTextField; // Value injected by FXMLLoader
+    private TextField passwordTextField; // Value injected by FXMLLoader
     
     private Main main;
     private Scene sceneStudentWelcomeScreen;
@@ -39,10 +44,46 @@ public class LoginController {
     @FXML
     void loginButtonPressed(ActionEvent event) {
     	
-    	/* Will do a check on the login credentials and send to appropriate screen  */
+    	String type = "";
     	
-    	main.setScreen(sceneStudentWelcomeScreen);
-    	resetFields();
+    	try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+		try {
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/UniversityRegistrationSystem?" + "user=root");
+			
+			try {
+				Statement stmt = conn.createStatement();
+			    
+			    //Execute query and get number of columns
+				ResultSet rs = stmt.executeQuery("SELECT * FROM Login WHERE username = '" + userNameTextField.getText() + "' AND password = '" + passwordTextField.getText() + "'");
+			    
+			    if (rs.next() == false)
+			    	System.out.println("User doesn't exist.");	//no user, should print alert on gui
+			    else {
+				    type = rs.getString(3);
+			    }
+			} catch (SQLException e) {
+			    e.printStackTrace();
+			}
+
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//Go to appropriate screen
+		if (type.equals("student"))
+	    	main.setScreen(sceneStudentWelcomeScreen);
+	    else if (type.equals("instructor"))
+	    	main.setScreen(sceneInstructorWelcomeScreen);
+	    else if (type.equals("administrator"))
+	    	main.setScreen(sceneAdminWelcomeScreen);
+		
+		resetFields();
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -52,7 +93,7 @@ public class LoginController {
     
     void resetFields() {
     	userNameTextField.setText("");
-    	lastNameTextField.setText("");
+    	passwordTextField.setText("");
     }
 }
 

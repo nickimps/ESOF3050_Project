@@ -16,11 +16,11 @@
    <left>
       <VBox prefHeight="383.0" prefWidth="164.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Subject" />
-            <TextField fx:id="subjectTextField" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefWidth="110.0" />
+            <Label text="Course 4-Digit Name" />
+            <TextField fx:id="courseNameTextField" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefWidth="110.0" />
             <Separator prefWidth="200.0" />
-            <Label text="Course Number" />
-            <TextField fx:id="courseNumberTextField" maxWidth="1.7976931348623157E308" prefWidth="110.0" />
+            <Label text="Course Code" />
+            <TextField fx:id="courseCodeTextField" maxWidth="1.7976931348623157E308" prefWidth="110.0" />
             <Separator prefWidth="200.0" />
             <Label text="Section" />
             <TextField fx:id="sectionTextField" prefWidth="50.0" />
