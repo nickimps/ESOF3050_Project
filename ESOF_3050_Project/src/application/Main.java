@@ -207,6 +207,8 @@ public class Main extends Application {
 			instructorWelcomeScreenController.setStudentListPressedScene(sceneStudentList);
 			instructorWelcomeScreenController.setViewActiveCoursesPressedScene(sceneViewCourses);
 			instructorWelcomeScreenController.setViewCoursesController(viewCoursesController);
+			instructorWelcomeScreenController.setEmployeeListController(employeeListController);
+			instructorWelcomeScreenController.setStudentListController(studentListController);
 			
 			adminWelcomeScreenController.setMainScene(this);
 			adminWelcomeScreenController.setAddCoursePressedScene(sceneAddCourse);
@@ -217,7 +219,9 @@ public class Main extends Application {
 			adminWelcomeScreenController.setRemoveEmployeePressedScene(sceneRemoveEmployee);
 			adminWelcomeScreenController.setStudentListPressedScene(sceneStudentList);
 			adminWelcomeScreenController.setViewActiveCoursesPressedScene(sceneViewCourses);
-			adminWelcomeScreenController.setViewCoursesController(viewCoursesController);			
+			adminWelcomeScreenController.setViewCoursesController(viewCoursesController);	
+			adminWelcomeScreenController.setEmployeeListController(employeeListController);
+			adminWelcomeScreenController.setStudentListController(studentListController);
 			
 			stage.setScene(sceneLogin);
 			stage.setTitle("Univeristy Registration System");
@@ -238,7 +242,6 @@ public class Main extends Application {
 		studentWelcomeScreenController.setMemberID(memberID);
 		instructorWelcomeScreenController.setMemberID(memberID);
 		adminWelcomeScreenController.setMemberID(memberID);
-		
 	}
 	
 	public static void main(String[] args) {

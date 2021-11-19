@@ -27,14 +27,12 @@ public class LoginController {
     private TextField passwordTextField; // Value injected by FXMLLoader
     
     private Main main;
-    private String memberID;
     private Scene sceneStudentWelcomeScreen;
     private Scene sceneAdminWelcomeScreen;
     private Scene sceneInstructorWelcomeScreen;
     
     public void setMainScene(Main main, String memberID) {
     	this.main = main;
-    	this.memberID = memberID;
     }
     
     public void setLoginPressScene(Scene sceneStudentWelcomeScreen, Scene sceneAdminWelcomeScreen, Scene sceneInstructorWelcomeScreen) {

@@ -25,6 +25,8 @@ public class AdminWelcomeScreenController {
     private Scene sceneViewCourses;
     
     private ViewCoursesController vc;
+    private EmployeeListController el;
+    private StudentListController sl;
     
     private String memberID;
     
@@ -71,6 +73,14 @@ public class AdminWelcomeScreenController {
     public void setViewCoursesController(ViewCoursesController vc) {
     	this.vc = vc;
     }
+    
+    public void setEmployeeListController(EmployeeListController el) {
+    	this.el = el;
+    }
+    
+    public void setStudentListController(StudentListController sl) {
+    	this.sl = sl;
+    }
 
     @FXML
     void addCourseButtonPressed(ActionEvent event) {
@@ -106,11 +116,13 @@ public class AdminWelcomeScreenController {
     @FXML
     void viewEmployeeListButtonPressed(ActionEvent event) {
     	main.setScreen(sceneEmployeeList);
+    	el.showList(memberID);
     }
 
     @FXML
     void viewStudentListButtonPressed(ActionEvent event) {
     	main.setScreen(sceneStudentList);
+    	sl.showList(memberID);
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
