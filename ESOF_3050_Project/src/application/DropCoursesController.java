@@ -22,20 +22,19 @@ public class DropCoursesController {
     private ScrollPane rightSideScrollPane; // Value injected by FXMLLoader
     
     private Main main;
-    private Scene sceneAdminWelcomeScreen;
+    private Scene sceneStudentWelcomeScreen;
     
     public void setMainScene(Main main) {
     	this.main = main;
     }
     
-    public void setBackPressedScene(Scene sceneAdminWelcomeScreen) {
-    	this.sceneAdminWelcomeScreen = sceneAdminWelcomeScreen;
+    public void setBackPressedScene(Scene sceneStudentWelcomeScreen) {
+    	this.sceneStudentWelcomeScreen = sceneStudentWelcomeScreen;
     }
     
     @FXML
     void backButtonPressed(ActionEvent event) {
-    	main.setScreen(sceneAdminWelcomeScreen);
-    	resetFields();
+    	main.setScreen(sceneStudentWelcomeScreen);
     }
 
     @FXML
@@ -47,12 +46,6 @@ public class DropCoursesController {
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-        resetFields();
-    }
-    
-    void resetFields() {
-    	
-    	/* look at shapecontroller.java to see how to insert blank vboxs */
     	
     }
 }

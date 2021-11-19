@@ -18,7 +18,7 @@
       </ScrollPane>
    </center>
    <top>
-      <Label text="Courses" BorderPane.alignment="CENTER">
+      <Label fx:id="titleLabel" text="Courses" BorderPane.alignment="CENTER">
          <padding>
             <Insets bottom="5.0" />
          </padding>

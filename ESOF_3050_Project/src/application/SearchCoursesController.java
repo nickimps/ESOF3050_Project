@@ -10,8 +10,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -70,6 +72,7 @@ public class SearchCoursesController {
 			try {
 				Statement stmt = conn.createStatement();
 			    ResultSet rs = null;
+			    
 			    //Execute query and get number of columns
 			    if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode ORDER BY Course.courseName");
@@ -93,10 +96,17 @@ public class SearchCoursesController {
 			    vBox.setSpacing(8.0);
 			    
 			    if (rs.next() == false) {
-				    vBox.getChildren().add(new Label(String.format("No Results.")));
+				    vBox.getChildren().add(new Label(String.format("No Classes Found.")));
 			    } else {
 				    do {
-				    	vBox.getChildren().add(new Label(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(7) + "\n" + rs.getString(3) + "\n" + rs.getString(9) + "\n" + rs.getString(4))));
+				    	Label lb = new Label(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(7) + "\n" + rs.getString(3) + "\n" + rs.getString(9) + "\n" + rs.getString(4)));
+				    	lb.setPrefWidth(380);
+				    	lb.setWrapText(true);
+				    	vBox.getChildren().add(lb);
+				    	
+				    	Separator sp = new Separator();
+				    	sp.setOrientation(Orientation.HORIZONTAL);
+				    	vBox.getChildren().add(sp);
 				    } while (rs.next());
 			    }
 			    
@@ -117,6 +127,7 @@ public class SearchCoursesController {
     }
     
     void resetFields() {
+    	vBox.getChildren().clear();
     	courseCodeTextField.setText("");
     	courseNameTextField.setText("");
     	sectionTextField.setText("");

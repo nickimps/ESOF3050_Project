@@ -21,6 +21,10 @@ public class InstructorWelcomeScreenController {
     private Scene sceneEmployeeList;
     private Scene sceneStudentList;
     
+    private ViewCoursesController vc;
+    
+    private String memberID;
+    
     public void setMainScene(Main main) {
     	this.main = main;
     }
@@ -45,6 +49,14 @@ public class InstructorWelcomeScreenController {
     	this.sceneLogin = sceneLogin;
     }
     
+    public void setMemberID(String memberID) {
+    	this.memberID = memberID;
+    }
+    
+    public void setViewCoursesController(ViewCoursesController vc) {
+    	this.vc = vc;
+    }
+    
     @FXML
     void logoutButtonPressed(ActionEvent event) {
     	main.setScreen(sceneLogin);
@@ -58,6 +70,7 @@ public class InstructorWelcomeScreenController {
     @FXML
     void viewActiveCoursesButtonPressed(ActionEvent event) {
     	main.setScreen(sceneViewCourses);
+    	vc.sceneSwitched(memberID, false);
     }
 
     @FXML

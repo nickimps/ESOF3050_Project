@@ -12,6 +12,10 @@ public class Main extends Application {
 	
 	String memberID;
 	RegisterForCoursesController registerForCoursesController;
+	ViewCoursesController viewCoursesController;
+	StudentWelcomeScreenController studentWelcomeScreenController;
+	InstructorWelcomeScreenController instructorWelcomeScreenController;
+	AdminWelcomeScreenController adminWelcomeScreenController;
 	
 	// Primary Stage
     Stage stage;
@@ -84,7 +88,7 @@ public class Main extends Application {
 			fxmlloader = new FXMLLoader();
 			fxmlloader.setLocation(Main.class.getResource("enrolledCoursesViewGradesViewActiveCourses.fxml"));
 			paneViewCourses = fxmlloader.load();
-			ViewCoursesController viewCoursesController = fxmlloader.getController();
+			viewCoursesController = fxmlloader.getController();
 			
 			fxmlloader = new FXMLLoader();
 			fxmlloader.setLocation(Main.class.getResource("modifyGrades.fxml"));
@@ -119,17 +123,17 @@ public class Main extends Application {
 			fxmlloader = new FXMLLoader();
 			fxmlloader.setLocation(Main.class.getResource("optionScreenStud.fxml"));
 			paneStudentWelcomeScreen = fxmlloader.load();
-			StudentWelcomeScreenController studentWelcomeScreenController = fxmlloader.getController();
+			studentWelcomeScreenController = fxmlloader.getController();
 			
 			fxmlloader = new FXMLLoader();
 			fxmlloader.setLocation(Main.class.getResource("optionScreenInstr.fxml"));
 			paneInstructorWelcomeScreen = fxmlloader.load();
-			InstructorWelcomeScreenController instructorWelcomeScreenController = fxmlloader.getController();
+			instructorWelcomeScreenController = fxmlloader.getController();
 			
 			fxmlloader = new FXMLLoader();
 			fxmlloader.setLocation(Main.class.getResource("optionScreenAdmin.fxml"));
 			paneAdminWelcomeScreen = fxmlloader.load();
-			AdminWelcomeScreenController adminWelcomeScreenController = fxmlloader.getController();
+			adminWelcomeScreenController = fxmlloader.getController();
 			
 			//Set Scenes to the loaded FXML's
 			Scene sceneLogin = new Scene(paneLogin);
@@ -161,13 +165,13 @@ public class Main extends Application {
 			addEmployeeController.setBackPressedScene(sceneAdminWelcomeScreen);
 			
 			dropCoursesController.setMainScene(this);
-			dropCoursesController.setBackPressedScene(sceneAdminWelcomeScreen);
+			dropCoursesController.setBackPressedScene(sceneStudentWelcomeScreen);
 			
 			employeeListController.setMainScene(this);
 			employeeListController.setBackPressedScene(sceneAdminWelcomeScreen, sceneInstructorWelcomeScreen);
 			
 			viewCoursesController.setMainScene(this);
-			viewCoursesController.setBackPressedScene(sceneAdminWelcomeScreen, sceneInstructorWelcomeScreen);
+			viewCoursesController.setBackPressedScene(sceneAdminWelcomeScreen, sceneInstructorWelcomeScreen, sceneStudentWelcomeScreen);
 			
 			modifyGradesController.setMainScene(this);
 			modifyGradesController.setBackPressedScene(sceneInstructorWelcomeScreen);
@@ -194,6 +198,7 @@ public class Main extends Application {
 			studentWelcomeScreenController.setSearchCoursesPressedScene(sceneSearchCourses);
 			studentWelcomeScreenController.setViewCoursesPressedScene(sceneViewCourses);
 			studentWelcomeScreenController.setViewGradesPressedScene(sceneViewCourses);
+			studentWelcomeScreenController.setViewCoursesController(viewCoursesController);
 			
 			instructorWelcomeScreenController.setMainScene(this);
 			instructorWelcomeScreenController.setEmployeeListPressedScene(sceneEmployeeList);
@@ -201,6 +206,7 @@ public class Main extends Application {
 			instructorWelcomeScreenController.setModifyGradesPressedScene(sceneModifyGrades);
 			instructorWelcomeScreenController.setStudentListPressedScene(sceneStudentList);
 			instructorWelcomeScreenController.setViewActiveCoursesPressedScene(sceneViewCourses);
+			instructorWelcomeScreenController.setViewCoursesController(viewCoursesController);
 			
 			adminWelcomeScreenController.setMainScene(this);
 			adminWelcomeScreenController.setAddCoursePressedScene(sceneAddCourse);
@@ -211,6 +217,7 @@ public class Main extends Application {
 			adminWelcomeScreenController.setRemoveEmployeePressedScene(sceneRemoveEmployee);
 			adminWelcomeScreenController.setStudentListPressedScene(sceneStudentList);
 			adminWelcomeScreenController.setViewActiveCoursesPressedScene(sceneViewCourses);
+			adminWelcomeScreenController.setViewCoursesController(viewCoursesController);			
 			
 			stage.setScene(sceneLogin);
 			stage.setTitle("Univeristy Registration System");
@@ -228,6 +235,10 @@ public class Main extends Application {
 	
 	public void setMemberID(String memberID) {
 		registerForCoursesController.setMemberID(memberID);
+		studentWelcomeScreenController.setMemberID(memberID);
+		instructorWelcomeScreenController.setMemberID(memberID);
+		adminWelcomeScreenController.setMemberID(memberID);
+		
 	}
 	
 	public static void main(String[] args) {

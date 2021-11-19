@@ -21,6 +21,10 @@ public class StudentWelcomeScreenController {
     private Scene sceneViewCourses;
     private Scene sceneDropCourses;
     
+    private ViewCoursesController vc;
+    
+    private String memberID;
+    
     public void setMainScene(Main main) {
     	this.main = main;
     }
@@ -48,6 +52,14 @@ public class StudentWelcomeScreenController {
     public void setLogoutPressedScene(Scene sceneLogin) {
     	this.sceneLogin = sceneLogin;
     }
+    
+    public void setMemberID(String memberID) {
+    	this.memberID = memberID;
+    }
+    
+    public void setViewCoursesController(ViewCoursesController vc) {
+    	this.vc = vc;
+    }
 
     @FXML
     void dropCoursesButtonPressed(ActionEvent event) {
@@ -72,11 +84,13 @@ public class StudentWelcomeScreenController {
     @FXML
     void viewEnrolledCoursesButtonPressed(ActionEvent event) {
     	main.setScreen(sceneViewCourses);
+    	vc.sceneSwitched(memberID, false);
     }
 
     @FXML
     void viewGradesButtonPressed(ActionEvent event) {
     	main.setScreen(sceneViewCourses);
+    	vc.sceneSwitched(memberID, true);
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

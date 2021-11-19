@@ -14,10 +14,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
@@ -144,6 +146,9 @@ public class RegisterForCoursesController {
 			    // also, doesnt uncheck boxes when clicking search again
 			    
 			    
+			    //doesnt work fully
+			    
+			    
 			    //Execute query and get number of columns
 			    if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode ORDER BY Course.courseName");
@@ -162,19 +167,20 @@ public class RegisterForCoursesController {
 				else if (!courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode WHERE Section.courseSection = '" + sectionTextField.getText() + "' AND Course.courseName = '" + courseNameTextField.getText().toUpperCase() + "' AND Course.courseCode = '" + courseCodeTextField.getText() + "' ORDER BY Course.courseName");
 			    
-			    vBox.getChildren().clear();
-			    vBox.setPadding(new Insets(8, 8, 8, 8));
-			    vBox.setSpacing(8.0);
 			    
-			    vBoxEnroll.getChildren().clear();
-			    vBoxEnroll.setPadding(new Insets(8, 8, 8, 8));
-			    vBoxEnroll.setSpacing(8.0);
+			    vBox.getChildren().clear();
+			    //cbs.clear();
 			    
 			    if (rs.next() == false) {
-				    vBox.getChildren().add(new Label(String.format("No Results.")));
+				    vBox.getChildren().add(new Label(String.format("No Classes Found.")));
 			    } else {
 				    do {
-				    	cbs.add(new CheckBox(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(7) + "\n" + rs.getString(3) + "\n" + rs.getString(9))));
+				    	CheckBox cb = new CheckBox(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(7) + "\n" + rs.getString(3) + "\n" + rs.getString(9)));
+				    	//cb.setSelected(false);
+				    	if (!cbs.contains(cb))
+				    		cbs.add(cb);
+				    	
+				    	
 				    } while (rs.next());
 			    }
 			    
@@ -182,7 +188,7 @@ public class RegisterForCoursesController {
 			    	vBox.getChildren().add(cbs.get(i));
 			    	cbs.get(i).selectedProperty().addListener((ObservableValue<? extends Boolean> ov, Boolean old_val, Boolean new_val) -> {
 			    		vBoxEnroll.getChildren().clear();
-			    		enrollList.clear();
+			    		//enrollList.clear();
 			    		for(int j = 0; j < cbs.size(); j++) {
 			    			if (cbs.get(j).isSelected()) {
 			    				String[] splitArray = cbs.get(j).getText().split("\n");
@@ -191,6 +197,10 @@ public class RegisterForCoursesController {
 			    			}
 			    		}
 			    	});
+			    	
+			    	Separator sp = new Separator();
+			    	sp.setOrientation(Orientation.HORIZONTAL);
+			    	vBox.getChildren().add(sp);
 			    }
 			    
 			    leftScrollPane.setContent(vBoxEnroll);
@@ -208,9 +218,19 @@ public class RegisterForCoursesController {
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
     	resetFields();
+    	
+    	vBox.getChildren().clear();
+	    vBox.setPadding(new Insets(8, 8, 8, 8));
+	    vBox.setSpacing(8.0);
+	    
+	    vBoxEnroll.getChildren().clear();
+	    vBoxEnroll.setPadding(new Insets(8, 8, 8, 8));
+	    vBoxEnroll.setSpacing(8.0);
     }
     
     void resetFields() {
+    	vBox.getChildren().clear();
+    	vBoxEnroll.getChildren().clear();
     	courseCodeTextField.setText("");
     	courseNameTextField.setText("");
     	sectionTextField.setText("");
