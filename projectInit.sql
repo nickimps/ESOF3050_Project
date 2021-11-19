@@ -27,7 +27,7 @@ CREATE TABLE Section(
     courseCode CHAR(10),
     courseSection CHAR(20),
     memberID INTEGER,
-    time TIME,	#need to figure out how to add day to this, maybe change to string?
+    time TIME,	#need to figure out how to add day to this, maybe change to string? maybe add room too?
     PRIMARY KEY (courseName, courseCode, courseSection,  memberID),
     FOREIGN KEY (courseName, courseCode) REFERENCES Course(courseName, courseCode) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (memberID) REFERENCES UniversityMember(memberID) ON DELETE NO ACTION ON UPDATE CASCADE
@@ -66,7 +66,7 @@ INSERT INTO UniversityMember VALUES (4582654, 'Student', 'Jessica', 'Fernley', 4
 INSERT INTO UniversityMember VALUES (0646314, 'Instructor', 'Ken', 'Ironside', 147258369, '1984-08-31', '123 Third Street, Township, ON, P7Y 4L9, Canada', 'Part-Time');
 INSERT INTO UniversityMember VALUES (9000546, 'Administrator', 'Bailey', 'Hull', 369147258, '1968-04-15', '123 Fourth Street, Township, ON, P7Y 4L9, Canada', 'Part-Time');
 
-INSERT INTO Course VALUES ('ESOF', '3050', 'Software Engineering', 'This is the description of the course...');
+INSERT INTO Course VALUES ('ESOF', '3050', 'Software Engineering', 'This is the description of the courseThis is the description of the courseThis is the description of the course...');
 INSERT INTO Course VALUES ('ESOF', '3655', 'Principles of Operating Systems', 'This is the description of the course...');
 INSERT INTO Course VALUES ('MATH', '3071', 'Discrete Mathematics', 'This is the description of the course...');
 
@@ -85,9 +85,32 @@ INSERT INTO CourseGrades VALUES ('ESOF', '3050', 'FB', 4582654, 82);
 INSERT INTO CourseGrades VALUES ('MATH', '3071', 'FA', 1231231, 96);
 
 INSERT INTO Login VALUES (1231231, 'password', 'student');
+INSERT INTO Login VALUES (1, '1', 'instructor');
 INSERT INTO Login VALUES (0646314, 'password', 'instructor');
 INSERT INTO Login VALUES (9000546, 'password', 'administrator');
 
 commit;
 
-SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode WHERE Section.courseSection = "FB" ORDER BY Course.courseName;
+SELECT * FROM CourseGrades WHERE memberID = 1231231 ORDER BY courseName, courseCode, courseSection;
+
+SELECT * FROM UniversityMember WHERE memberType = 'instructor';
+
+SELECT CourseList.courseName, CourseList.courseCode, courseSection, subject FROM CourseList
+INNER JOIN Course ON Course.courseName = CourseList.courseName
+AND Course.courseCode = CourseList.courseCode
+WHERE CourseList.memberID = 1231231
+ORDER BY CourseList.courseName;
+
+SELECT Section.courseName, Section.courseCode, Section.courseSection, subject, Section.time
+FROM Section
+INNER JOIN Course ON Course.courseName = Section.courseName
+AND Course.courseCode = Section.courseCode
+WHERE Section.memberID = 0646314
+ORDER BY Section.courseName, Section.courseCode, Section.courseSection;
+
+SELECT Section.courseName, Section.courseCode, Section.courseSection, subject, Section.time, firstName, lastName FROM Section
+INNER JOIN Course ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode
+INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID
+ORDER BY Section.courseName, Section.courseCode, Section.courseSection;
+
+#SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode WHERE Section.courseSection = "FB" ORDER BY Course.courseName;
