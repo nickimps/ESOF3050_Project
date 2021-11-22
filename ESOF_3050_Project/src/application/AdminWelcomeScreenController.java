@@ -27,6 +27,7 @@ public class AdminWelcomeScreenController {
     private ViewCoursesController vc;
     private EmployeeListController el;
     private StudentListController sl;
+    private AddCourseController ac;
     
     private String memberID;
     
@@ -80,6 +81,14 @@ public class AdminWelcomeScreenController {
     
     public void setStudentListController(StudentListController sl) {
     	this.sl = sl;
+    }
+    
+    public void setAddCourseController(AddCourseController ac) {
+    	this.ac = ac;
+    }
+    
+    public void loadInstructorsPre() {
+    	ac.loadInstructors(null);
     }
 
     @FXML
