@@ -117,3 +117,7 @@ INSERT INTO Section VALUES ('SOCI', '5111', 'FA', 7544327, '07:15:00');
 INSERT INTO Section VALUES ('COMP', '9800', 'FA', 0646314, '12:30:00');
 INSERT INTO Section VALUES ('COMP', '9800', 'FB', 2192100, '17:30:00');
 
+#CourseList
+
+#CourseGrade
+
