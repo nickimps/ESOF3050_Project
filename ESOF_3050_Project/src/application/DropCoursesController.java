@@ -38,7 +38,7 @@ public class DropCoursesController {
     }
 
     @FXML
-    void dropButtonPressed(ActionEvent event) {
+    void dropButtonPressed(ActionEvent event) { //drop conditions
     	
     	/* send confirmation message and update database */
     	

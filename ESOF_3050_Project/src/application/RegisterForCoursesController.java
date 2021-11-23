@@ -179,8 +179,6 @@ public class RegisterForCoursesController {
 				    	//cb.setSelected(false);
 				    	if (!cbs.contains(cb))
 				    		cbs.add(cb);
-				    	
-				    	
 				    } while (rs.next());
 			    }
 			    

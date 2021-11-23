@@ -37,6 +37,7 @@
                   <Button mnemonicParsing="false" onAction="#removeButtonPressed" prefHeight="30.0" prefWidth="120.0" text="Remove" />
                </children>
             </HBox>
+            <Label fx:id="messageLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Successfully Removed!" textAlignment="CENTER" visible="false" />
          </children>
          <padding>
             <Insets top="5.0" />

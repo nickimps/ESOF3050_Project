@@ -223,6 +223,8 @@ public class Main extends Application {
 			adminWelcomeScreenController.setEmployeeListController(employeeListController);
 			adminWelcomeScreenController.setStudentListController(studentListController);
 			adminWelcomeScreenController.setAddCourseController(addCourseController);
+			adminWelcomeScreenController.setRemoveCourseController(removeCourseController);
+			adminWelcomeScreenController.setRemoveEmployeeController(removeEmployeeController);
 			
 			stage.setScene(sceneLogin);
 			stage.setTitle("Univeristy Registration System");

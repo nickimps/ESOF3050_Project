@@ -28,6 +28,8 @@ public class AdminWelcomeScreenController {
     private EmployeeListController el;
     private StudentListController sl;
     private AddCourseController ac;
+    private RemoveEmployeeController re;
+    private RemoveCourseController rc;
     
     private String memberID;
     
@@ -87,6 +89,14 @@ public class AdminWelcomeScreenController {
     	this.ac = ac;
     }
     
+    public void setRemoveEmployeeController(RemoveEmployeeController re) {
+    	this.re = re;
+    }
+    
+    public void setRemoveCourseController(RemoveCourseController rc) {
+    	this.rc = rc;
+    }
+    
     public void loadInstructorsPre() {
     	ac.loadInstructors(null);
     }
@@ -109,11 +119,13 @@ public class AdminWelcomeScreenController {
     @FXML
     void removeCourseButtonPressed(ActionEvent event) {
     	main.setScreen(sceneRemoveCourse);
+    	rc.showList();
     }
 
     @FXML
     void removeEmployeeButtonPressed(ActionEvent event) {
     	main.setScreen(sceneRemoveEmployee);
+    	re.showList();
     }
 
     @FXML
