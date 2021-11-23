@@ -16,6 +16,7 @@ public class Main extends Application {
 	StudentWelcomeScreenController studentWelcomeScreenController;
 	InstructorWelcomeScreenController instructorWelcomeScreenController;
 	AdminWelcomeScreenController adminWelcomeScreenController;
+	DropCoursesController dropCoursesController;
 	
 	// Primary Stage
     Stage stage;
@@ -78,7 +79,7 @@ public class Main extends Application {
 			fxmlloader = new FXMLLoader();
 			fxmlloader.setLocation(Main.class.getResource("dropCourses.fxml"));
 			paneDropCourses = fxmlloader.load();
-			DropCoursesController dropCoursesController = fxmlloader.getController();
+			dropCoursesController = fxmlloader.getController();
 			
 			fxmlloader = new FXMLLoader();
 			fxmlloader.setLocation(Main.class.getResource("employeeList.fxml"));
@@ -199,6 +200,7 @@ public class Main extends Application {
 			studentWelcomeScreenController.setViewCoursesPressedScene(sceneViewCourses);
 			studentWelcomeScreenController.setViewGradesPressedScene(sceneViewCourses);
 			studentWelcomeScreenController.setViewCoursesController(viewCoursesController);
+			studentWelcomeScreenController.setDropCoursesController(dropCoursesController);
 			
 			instructorWelcomeScreenController.setMainScene(this);
 			instructorWelcomeScreenController.setEmployeeListPressedScene(sceneEmployeeList);
@@ -245,6 +247,7 @@ public class Main extends Application {
 		studentWelcomeScreenController.setMemberID(memberID);
 		instructorWelcomeScreenController.setMemberID(memberID);
 		adminWelcomeScreenController.setMemberID(memberID);
+		dropCoursesController.setMemberID(memberID);
 	}
 	
 	public static void main(String[] args) {

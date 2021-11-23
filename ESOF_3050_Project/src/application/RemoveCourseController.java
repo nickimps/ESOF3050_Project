@@ -155,7 +155,6 @@ public class RemoveCourseController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-    	
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

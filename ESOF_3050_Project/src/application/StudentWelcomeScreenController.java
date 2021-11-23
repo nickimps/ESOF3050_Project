@@ -22,6 +22,7 @@ public class StudentWelcomeScreenController {
     private Scene sceneDropCourses;
     
     private ViewCoursesController vc;
+    private DropCoursesController dc;
     
     private String memberID;
     
@@ -60,10 +61,15 @@ public class StudentWelcomeScreenController {
     public void setViewCoursesController(ViewCoursesController vc) {
     	this.vc = vc;
     }
+    
+    public void setDropCoursesController(DropCoursesController dc) {
+    	this.dc = dc;
+    }
 
     @FXML
     void dropCoursesButtonPressed(ActionEvent event) {
     	main.setScreen(sceneDropCourses);
+    	dc.showList();
     }
 
     @FXML
