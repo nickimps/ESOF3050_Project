@@ -122,3 +122,77 @@ INSERT INTO Section VALUES ('COMP', '9800', 'FB', 2192100, '17:30:00');
 #CourseGrade
 
 #Login
+INSERT INTO Login VALUES (1231231, 'password', 'student');
+INSERT INTO Login VALUES (4215976, 'password', 'student');
+INSERT INTO Login VALUES (5188121, 'password', 'student');
+INSERT INTO Login VALUES (9015219, 'password', 'student');
+INSERT INTO Login VALUES (7537134, 'password', 'student');
+INSERT INTO Login VALUES (0125392, 'password', 'student');
+INSERT INTO Login VALUES (5329210, 'password', 'student');
+INSERT INTO Login VALUES (1205189, 'password', 'student');
+INSERT INTO Login VALUES (2125890, 'password', 'student');
+INSERT INTO Login VALUES (5181205, 'password', 'student');
+INSERT INTO Login VALUES (2195182, 'password', 'student');
+INSERT INTO Login VALUES (9518953, 'password', 'student');
+INSERT INTO Login VALUES (7531923, 'password', 'student');
+
+INSERT INTO Login VALUES (0124829, 'password', 'student');
+INSERT INTO Login VALUES (1583815, 'password', 'student');
+INSERT INTO Login VALUES (8215721, 'password', 'student');
+INSERT INTO Login VALUES (5292719, 'password', 'student');
+INSERT INTO Login VALUES (1929148, 'password', 'student');
+INSERT INTO Login VALUES (7214933, 'password', 'student');
+INSERT INTO Login VALUES (6216862, 'password', 'student');
+INSERT INTO Login VALUES (5320911, 'password', 'student');
+INSERT INTO Login VALUES (3190185, 'password', 'student');
+INSERT INTO Login VALUES (2109012, 'password', 'student');
+INSERT INTO Login VALUES (4210305, 'password', 'student');
+INSERT INTO Login VALUES (2190182, 'password', 'student');
+INSERT INTO Login VALUES (5031219, 'password', 'student');
+INSERT INTO Login VALUES (6102213, 'password', 'student');
+INSERT INTO Login VALUES (1294194, 'password', 'student');
+INSERT INTO Login VALUES (5901821, 'password', 'student');
+INSERT INTO Login VALUES (0912942, 'password', 'student');
+INSERT INTO Login VALUES (5429195, 'password', 'student');
+INSERT INTO Login VALUES (6942091, 'password', 'student');
+INSERT INTO Login VALUES (5313903, 'password', 'student');
+INSERT INTO Login VALUES (2140915, 'password', 'student');
+INSERT INTO Login VALUES (7214905, 'password', 'student');
+INSERT INTO Login VALUES (2510933, 'password', 'student');
+INSERT INTO Login VALUES (6231593, 'password', 'student');
+INSERT INTO Login VALUES (2189218, 'password', 'student');
+INSERT INTO Login VALUES (7419953, 'password', 'student');
+INSERT INTO Login VALUES (0921355, 'password', 'student');
+INSERT INTO Login VALUES (0125825, 'password', 'student');
+INSERT INTO Login VALUES (8593295, 'password', 'student');
+INSERT INTO Login VALUES (3219998, 'password', 'student');
+INSERT INTO Login VALUES (5153912, 'password', 'student');
+INSERT INTO Login VALUES (1005190, 'password', 'student');
+INSERT INTO Login VALUES (8892149, 'password', 'student');
+INSERT INTO Login VALUES (6661293, 'password', 'student');
+INSERT INTO Login VALUES (1024920, 'password', 'student');
+INSERT INTO Login VALUES (9218529, 'password', 'student');
+INSERT INTO Login VALUES (6314892, 'password', 'student');
+INSERT INTO Login VALUES (1521249, 'password', 'student');
+INSERT INTO Login VALUES (1214201, 'password', 'student');
+
+INSERT INTO Login VALUES (0646314, 'password', 'instructor');
+INSERT INTO Login VALUES (2419215, 'password', 'instructor');
+INSERT INTO Login VALUES (6319921, 'password', 'instructor');
+
+INSERT INTO Login VALUES (0021521, 'password', 'instructor');
+INSERT INTO Login VALUES (2419522, 'password', 'instructor');
+INSERT INTO Login VALUES (7214777, 'password', 'instructor');
+INSERT INTO Login VALUES (3450968, 'password', 'instructor');
+INSERT INTO Login VALUES (7892152, 'password', 'instructor');
+INSERT INTO Login VALUES (2192100, 'password', 'instructor');
+INSERT INTO Login VALUES (4210012, 'password', 'instructor');
+INSERT INTO Login VALUES (7821942, 'password', 'instructor');
+INSERT INTO Login VALUES (5678762, 'password', 'instructor');
+INSERT INTO Login VALUES (7544327, 'password', 'instructor');
+
+INSERT INTO Login VALUES (9000546, 'password', 'administrator');
+INSERT INTO Login VALUES (5129851, 'password', 'administrator');
+INSERT INTO Login VALUES (2199921, 'password', 'administrator');
+INSERT INTO Login VALUES (8582188, 'password', 'administrator');
+INSERT INTO Login VALUES (7772147, 'password', 'administrator');
