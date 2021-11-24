@@ -2,6 +2,12 @@ DROP DATABASE UniversityRegistrationSystem;
 CREATE DATABASE UniversityRegistrationSystem;
 USE UniversityRegistrationSystem;
 
+/*
+University Member Table
+ - the memberType is either Instructor, Administrator, Undergraduate, or Graduate
+	- that is how we distinguish between all the types of people
+ - statusType is the part-time or full-time status
+*/
 CREATE TABLE UniversityMember(
 	memberID INTEGER ,
     memberType CHAR(20),
@@ -18,7 +24,7 @@ CREATE TABLE Course(
 	courseName CHAR(40),
     courseCode CHAR(10),
     subject CHAR(50),
-    description CHAR(200),
+    description CHAR(255),
     PRIMARY KEY(courseName, courseCode)
 );
 
@@ -710,10 +716,16 @@ INSERT INTO Login VALUES (7772147, 'password', 'administrator');
 
 commit;
 
+/*
 SELECT * FROM CourseGrades ORDER BY courseName, courseCode, courseSection;
 SELECT * FROM CourseList ORDER BY courseName, courseCode, courseSection;
 
 SELECT * FROM UniversityMember WHERE memberType != 'student';
+
+SELECT * FROM Course 
+INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode 
+INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID 
+ORDER BY Course.courseName;
 
 #SET FOREIGN_KEY_CHECKS=0;
 #DELETE FROM Section WHERE courseName = 'COMP' AND courseCode = '9800' and courseSection = 'FA';
@@ -721,7 +733,9 @@ SELECT * FROM UniversityMember WHERE memberType != 'student';
 
 #
 
-SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode
+SELECT * FROM Course
+INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode
+INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID
 WHERE NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = 1231231)
 ORDER BY Course.courseName;
 

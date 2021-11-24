@@ -98,12 +98,13 @@ public class AdminWelcomeScreenController {
     }
     
     public void loadInstructorsPre() {
-    	ac.loadInstructors(null);
+    	ac.load();
     }
 
     @FXML
     void addCourseButtonPressed(ActionEvent event) {
     	main.setScreen(sceneAddCourse);
+    	ac.load();
     }
 
     @FXML

@@ -115,8 +115,7 @@ public class AddCourseController {
     	resetFields();
     }
     
-    @FXML
-    void loadInstructors(MouseEvent event) {
+    public void load() {
     	messageLabel.setVisible(false);
     	instructors.clear();
     	
@@ -158,6 +157,11 @@ public class AddCourseController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+    }
+    
+    @FXML
+    void loadInstructors(MouseEvent event) {
+    	load();
     }
 
     @FXML
