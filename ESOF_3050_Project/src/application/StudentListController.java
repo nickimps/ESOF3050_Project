@@ -69,13 +69,13 @@ public class StudentListController {
 			    
 			    getType.close();			    
 			    
-			    ResultSet rs = stmt.executeQuery("SELECT * FROM UniversityMember WHERE memberType = 'student' ORDER BY lastName");
+			    ResultSet rs = stmt.executeQuery("SELECT * FROM UniversityMember WHERE memberType != 'instructor' AND memberType != 'administrator' ORDER BY memberType, lastName");
 		    	
 		    	if (rs.next() == false) {
 				    vBox.getChildren().add(new Label(String.format("No Employees Found.")));
 			    } else {
 				    do {
-				    	Label lb = new Label(String.format(rs.getString(4) + ", " + rs.getString(3) + "\n\tID: " + rs.getString(1) + "\n\tSIN: " + rs.getString(5) + "\n\tDate of Birth: " + rs.getString(6) + "\n\tAddress: " + rs.getString(7) + "\n\tStatus: " + rs.getString(8)));
+				    	Label lb = new Label(String.format(rs.getString(4) + ", " + rs.getString(3) + "\n\t" + rs.getString(2) + "\n\tID: " + rs.getString(1) + "\n\tSIN: " + rs.getString(5) + "\n\tDate of Birth: " + rs.getString(6) + "\n\tAddress: " + rs.getString(7) + "\n\tStatus: " + rs.getString(8)));
 				    	vBox.getChildren().add(lb);
 				    } while (rs.next());
 			    }

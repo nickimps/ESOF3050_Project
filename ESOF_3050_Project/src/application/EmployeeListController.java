@@ -69,7 +69,7 @@ public class EmployeeListController {
 			    
 			    getType.close();			    
 			    
-			    ResultSet rs = stmt.executeQuery("SELECT * FROM UniversityMember WHERE memberType != 'student' ORDER BY lastName");
+			    ResultSet rs = stmt.executeQuery("SELECT * FROM UniversityMember WHERE memberType = 'instructor' OR memberType = 'administrator' ORDER BY lastName");
 		    	
 		    	if (rs.next() == false) {
 				    vBox.getChildren().add(new Label(String.format("No Employees Found.")));

@@ -19,7 +19,7 @@
       </Label>
    </top>
    <center>
-      <ScrollPane fx:id="middleScrollPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background: white; -fx-background-color: grey;" BorderPane.alignment="CENTER" />
+      <ScrollPane fx:id="middleScrollPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background: white; -fx-background-color: grey;" BorderPane.alignment="CENTER" />
    </center>
    <right>
       <ScrollPane fx:id="leftScrollPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background: lightgrey; -fx-background-color: grey;" BorderPane.alignment="CENTER" />
@@ -27,11 +27,11 @@
    <left>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Course 4-Digit Name" />
-            <TextField fx:id="courseNameTextField" />
+            <Label text="Subject" />
+            <TextField fx:id="subjectTextField" />
             <Separator prefWidth="200.0" />
-            <Label text="Course Code" />
-            <TextField fx:id="courseCodeTextField" />
+            <Label text="Course Number" />
+            <TextField fx:id="courseNumTextField" />
             <Separator prefWidth="200.0" />
             <Label text="Section" />
             <TextField fx:id="sectionTextField" />
@@ -41,7 +41,7 @@
             <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#enrollButtonPressed" text="Enroll" />
             <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backButtonPressed" text="Back">
                <VBox.margin>
-                  <Insets top="76.0" />
+                  <Insets top="60.0" />
                </VBox.margin>
             </Button>
          </children>
@@ -53,4 +53,11 @@
    <padding>
       <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
    </padding>
+   <bottom>
+      <VBox prefHeight="10.0" prefWidth="584.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="messageLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Successfully Removed!" textAlignment="CENTER" />
+         </children>
+      </VBox>
+   </bottom>
 </BorderPane>

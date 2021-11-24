@@ -72,10 +72,13 @@ public class DropCoursesController {
 			    vBox.setPadding(new Insets(8, 8, 8, 8));
 			    vBox.setSpacing(8.0);		    
 			    
-			    ResultSet rs = stmt.executeQuery("SELECT Section.courseName, Section.courseCode, Section.courseSection, subject, Section.time, firstName, lastName FROM Section "	//needs to be from courselist for this students enrolled courses
-			    		+ "INNER JOIN Course ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode "
+			    /* HAVE TO ADD THE CONSTRAINT TO ONLY SHOW COURSES THAT THE STUDENT IS ENROLLED IN */
+			    ResultSet rs = stmt.executeQuery("SELECT CourseList.courseName, CourseList.courseCode, CourseList.courseSection, subject, time, firstName, lastName FROM CourseList "
+						+ "INNER JOIN Course ON Course.courseName = CourseList.courseName AND Course.courseCode = CourseList.courseCode " 
+			    		+ "INNER JOIN Section ON Section.courseName = CourseList.courseName AND Section.courseCode = Course.courseCode AND Section.courseSection = CourseList.courseSection "
 			    		+ "INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID "
-			    		+ "ORDER BY Section.courseName, Section.courseCode, Section.courseSection");
+		    			+ "WHERE CourseList.memberID = " + Integer.parseInt(memberID) 
+		    			+ " ORDER BY Course.courseName, Course.courseCode, courseSection");
 		    	
 			    if (rs.next() == false) {
 				    vBox.getChildren().add(new Label(String.format("No Classes Found.")));
@@ -114,52 +117,58 @@ public class DropCoursesController {
 
     @FXML
     void dropButtonPressed(ActionEvent event) {
-    	try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    	
-		try {
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/UniversityRegistrationSystem?" + "user=root");
-			
+    	if (cbs.size() > 0) {
+	    	try {
+	            Class.forName("com.mysql.cj.jdbc.Driver");
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    	
 			try {
-				Statement stmt = conn.createStatement();
+				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/UniversityRegistrationSystem?" + "user=root");
 				
-				String courseName = "";
-				String courseCode = "";
-				String courseSection = "";
-				for (int i = 0; i < cbs.size(); i++) {
-					if (cbs.get(i).isSelected()) {
-						String[] splitArray = cbs.get(i).getText().split("-");
-						courseName = splitArray[0];
-						courseCode = splitArray[1];
-						String[] newSplitArray = splitArray[2].split(" : ");
-						courseSection = newSplitArray[0];
-
-						stmt.execute("SET FOREIGN_KEY_CHECKS = 0");
-						stmt.executeUpdate("DELETE FROM Section WHERE courseName = '" + courseName + "' AND courseCode = '" + courseCode + "' AND courseSection = '" + courseSection + "'"); //delete from courseList
-						stmt.execute("SET FOREIGN_KEY_CHECKS = 1");
+				try {
+					Statement stmt = conn.createStatement();
+					
+					String courseName = "";
+					String courseCode = "";
+					String courseSection = "";
+					for (int i = 0; i < cbs.size(); i++) {
+						if (cbs.get(i).isSelected()) {
+							String[] splitArray = cbs.get(i).getText().split("-");
+							courseName = splitArray[0];
+							courseCode = splitArray[1];
+							String[] newSplitArray = splitArray[2].split(" : ");
+							courseSection = newSplitArray[0];
+	
+							stmt.execute("SET FOREIGN_KEY_CHECKS = 0");
+							stmt.executeUpdate("DELETE FROM CourseList WHERE memberID = " + Integer.parseInt(memberID) + " AND courseName = '" + courseName + "' AND courseCode = '" + courseCode + "' AND courseSection = '" + courseSection + "'");
+							stmt.execute("SET FOREIGN_KEY_CHECKS = 1");
+						}
 					}
+					
+					cbs.clear();
+				    
+					messageLabel.setText("Successfully Removed!");
+				    messageLabel.setVisible(true);
+					
+					showList();
+				    
+				} catch (SQLException e) {
+					messageLabel.setText("Error!");
+				    messageLabel.setVisible(true);
+				    e.printStackTrace();
 				}
-				
-				cbs.clear();
-			    
-				messageLabel.setText("Successfully Removed!");
-			    messageLabel.setVisible(true);
-				
-				showList();
-			    
+	
+				conn.close();
 			} catch (SQLException e) {
-				messageLabel.setText("Error!");
-			    messageLabel.setVisible(true);
-			    e.printStackTrace();
+				e.printStackTrace();
 			}
-
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}    	
+    	}
+    	else {
+    		messageLabel.setText("Error: must choose at least one course");
+		    messageLabel.setVisible(true);
+    	}
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

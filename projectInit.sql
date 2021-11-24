@@ -58,69 +58,65 @@ CREATE TABLE Login(
 	memberID INTEGER,
     password CHAR(50),
     memberType CHAR(20),
-    PRIMARY KEY (memberID, password)
+    PRIMARY KEY (memberID, password),
+    FOREIGN KEY (memberID) REFERENCES UniversityMember(memberID) ON DELETE CASCADE
 );
 
 
-INSERT INTO Login VALUES (3, '3', 'instructor');
-INSERT INTO Login VALUES (2, '2', 'student');
-INSERT INTO Login VALUES (1, '1', 'administrator');
-
-
-##JIMMYS STUFF
+#### Entries ####
 #Students
-INSERT INTO UniversityMember VALUES (1231231, 'Student', 'John', 'Smith', 123456789, '1990-10-22', '123 Main Street, Thunder Bay, ON, P7Y 4L9, Canada', 'Part-Time');
-INSERT INTO UniversityMember VALUES (4215976, 'Student', 'Justin', 'Gates', 212512322, '1986-02-02', '421 Dundas Ave, Thunder Bay, ON, P4C 1T8, Canada', 'Part-Time');
-INSERT INTO UniversityMember VALUES (5188121, 'Student', 'Albert', 'Marteus', 782164524, '1992-12-08', '915 Bay Street, Thunder Bay, ON, P1K 7Z9, Canada', 'Part-Time');
-INSERT INTO UniversityMember VALUES (9015219, 'Student', 'Marcus', 'Potts', 976735653, '1990-04-05', '1303 Walnut Drive, Thunder Bay, ON, P8J 2L1, Canada', 'Part-Time');
-INSERT INTO UniversityMember VALUES (7537134, 'Student', 'Dimitri', 'Schtern', 145318586, '1989-01-20', '891 Winnipeg Ave, Thunder Bay, ON, P2P 5W1, Canada', 'Part-Time');
-INSERT INTO UniversityMember VALUES (0125392, 'Student', 'Austin', 'Maxine', 879021175, '1985-05-09', '1052 Parkdale Ave, Thunder Bay, ON, P5A 9M8, Canada', 'Part-Time');
-INSERT INTO UniversityMember VALUES (5329210, 'Student', 'Alexandra', 'West', 597901180, '1984-11-13', '777 Algoma Street, Thunder Bay, ON, P7C 1G9, Canada', 'Part-Time');
-INSERT INTO UniversityMember VALUES (1205189, 'Student', 'Landon', 'McDonald', 616839872, '1995-10-29', '623 Brodie Street, Thunder Bay, ON, P6M 2M1, Canada', 'Part-Time');
-INSERT INTO UniversityMember VALUES (2125890, 'Student', 'Peter', 'Chen', 324327530, '1989-02-26', '1234 Third Street, Thunder Bay, ON, P3K 8J6, Canada', 'Part-Time');
-INSERT INTO UniversityMember VALUES (5181205, 'Student', 'James', 'Wong', 186014558, '1982-12-26', '139 Franklin Ave, Thunder Bay, ON, P2K 7O2, Canada', 'Part-Time');
-INSERT INTO UniversityMember VALUES (2195182, 'Student', 'Nicole', 'Lowry', 324327530, '2000-05-04', '619 Victoria Street, Thunder Bay, ON, P9S 2W1, Canada', 'Part-Time');
-INSERT INTO UniversityMember VALUES (9518953, 'Student', 'Deandra', 'White', 772976152, '1988-02-20', '1214 Erendale Street, Thunder Bay, ON, P0P 3M3, Canada', 'Part-Time');
-INSERT INTO UniversityMember VALUES (7531923, 'Student', 'Zach', 'Scott', 592972413, '2002-07-23', '812 Loyola Place, Thunder Bay, ON, P4J 1R0, Canada', 'Part-Time');
-INSERT INTO UniversityMember VALUES (0124829, 'Student', 'Jessica', 'Fernley', 323359646, '1996-06-15', '421 Acorn Avenue, Thunder Bay, ON, P7T 1T9, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (1583815, 'Student', 'Trenton', 'Hobbs', 127577684, '1984-08-29', '1109 Cottonwood Crescent, Thunder Bay, ON, P1R 0G9, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (8215721, 'Student', 'Nicole', 'Young', 178020326, '1985-01-14', '921 Glasgow Street, Thunder Bay, ON, P8I 7X2, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (5292719, 'Student', 'Samantha', 'Martin Jr.', 533913098, '2002-12-10', '512 Jade Court, Thunder Bay, ON, P5B 9I0, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (1929148, 'Student', 'Tien', 'Wade', 205318702, '2000-11-17', '218 Lancaster Street, Thunder Bay, ON, PL0 4N4, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (7214933, 'Student', 'Tyler', 'Shin', 456789123, '1982-09-27', '721 King Street, Thunder Bay, ON, P4L 9P2, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (6216862, 'Student', 'Pablo', 'North', 192079634, '1989-06-21', '1512 Norah Crescent, Thunder Bay, ON, P9Z 3Z9, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (5320911, 'Student', 'Hannah', 'Baldwin', 047288825, '1999-11-18', '351 Oliver Road, Thunder Bay, ON, P7X 3E1, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (3190185, 'Student', 'Tony', 'Rich', 435839484, '1987-06-27', '521 Rona Street, Thunder Bay, ON, P5J 3M5, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (2109012, 'Student', 'Gia', 'Stevens', 186710588, '1992-03-14', '707 Silas Road, Thunder Bay, ON, P5J 9J0, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (4210305, 'Student', 'Pablo', 'North', 425643419, '1990-10-08', '512 Tokio Street, Thunder Bay, ON, P3E 6H3, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (2190182, 'Student', 'Reese', 'Kemp', 598704490, '1995-02-16', '807 Trillium Place, Thunder Bay, ON, P3E 5Y3, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (5031219, 'Student', 'Harper', 'Wyatt', 706460918, '1994-08-11', '972 Wilson Street, Thunder Bay, ON, P3E 2W1, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (6102213, 'Student', 'Asia', 'Brown', 833988144, '1988-03-01', '121 Yale Street, Thunder Bay, ON, P8I 5R2, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (1294194, 'Student', 'Zoey', 'Waller', 853225450, '1991-08-23', '345 Wren Court, Thunder Bay, ON, P8I 0L6, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (5901821, 'Student', 'Bruce', 'Harper', 308074144, '1987-09-24', '911 Hodder Ave, Thunder Bay, ON, P8I 1T2, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (0912942, 'Student', 'Jasmine Fritz', 'North', 083235525, '2002-02-23', '218 Syndicate Avenue, Thunder Bay, ON, P0T 9G2, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (5429195, 'Student', 'Nicole', 'Diaz', 864095537, '1982-07-01', '6218 Riverdale Street, Thunder Bay, ON, P0T 1D6, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (6942091, 'Student', 'Walker', 'Obrien', 983358142, '1983-02-24', '1123 Picard Ave, Thunder Bay, ON, P0T 1D1, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (5313903, 'Student', 'Marco', 'Polo', 228660223, '1998-07-26', '619 Neebing Ave, Thunder Bay, ON, P3I 8I9, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (2140915, 'Student', 'Nixon', 'Cross', 698227090, '1990-04-11', '314 Mary Street, Thunder Bay, ON, P5Y 5L2, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (7214905, 'Student', 'Andrew', 'Williamson', 695863577, '1982-11-17', '4212 Arthur Street, Thunder Bay, ON, P8W 0P2, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (2510933, 'Student', 'Tanya', 'Hill', 419536451, '2000-04-10', '512 Fanshaw Street, Thunder Bay, ON, P9R 5W2, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (6231593, 'Student', 'Mary', 'Louise', 367274028, '2002-10-08', '2145 Chippewa Drive, Thunder Bay, ON, P1E 9R2, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (2189218, 'Student', 'Gabriel', 'Iglesias', 456789123, '1989-01-05', '210 Coyote Street, Thunder Bay, ON, P1E 7I5, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (7419953, 'Student', 'Grace', 'Perez', 437963457, '1992-06-09', '521 Clearwater Way, Thunder Bay, ON, P2R 4I2, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (0921355, 'Student', 'Hunter', 'Chung', 769152728, '1996-10-31', '518 HW-61, Thunder Bay, ON, P7O 3T5, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (0125825, 'Student', 'Tony', 'Zeng', 277918893, '1996-04-16', '330 Brock Street, Thunder Bay, ON, P5T 3R4, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (8593295, 'Student', 'Ernest', 'Bond', 241595421, '1985-05-03', '599 Black Bay Road, Thunder Bay, ON, P9U 5U7, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (3219998, 'Student', 'Aaron', 'Rogers', 906744957, '1994-02-23', '214 Ambrose Street, Thunder Bay, ON, P1Y 5K9, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (5153912, 'Student', 'Brandon', 'Bembry', 794231517, '1993-10-21', '951 15th Sideroad, Thunder Bay, ON, P1Y 4L0, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (1005190, 'Student', 'Pascal', 'Ingram', 945399607, '1998-11-16', '1521 High Street, Thunder Bay, ON, P1Y 1U7, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (8892149, 'Student', 'Kyle', 'Butler', 586518060, '1998-03-30', '721 Central Ave, Thunder Bay, ON, P4B 5J1, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (6661293, 'Student', 'Stephen', 'Thompson', 870679523, '1990-08-20', '777 Balmoral Street, Thunder Bay, ON, P4B 4L9, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (1024920, 'Student', 'Klay', 'Curry', 562539179, '1987-08-26', '821 James Street, Thunder Bay, ON, P4B 8L1, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (9218529, 'Student', 'Draymond', 'Brown', 728929658, '1990-02-22', '8519 Nick Street, Thunder Bay, ON, P7C 9U7, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (6314892, 'Student', 'Kevin', 'Warner', 152747405, '2000-03-14', '592 Alberta Street, Thunder Bay, ON, P7C 2R4, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (1521249, 'Student', 'Devin', 'Crowder', 426797769, '2000-09-30', '531 Wiley Street, Thunder Bay, ON, P7C 5O9, Canada', 'Full-Time');
-INSERT INTO UniversityMember VALUES (1214201, 'Student', 'Logan', 'Bumstead', 795663544, '1999-10-07', '300 McKellar Street, Thunder Bay, ON, P6Y 9L9, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (1231231, 'Undergraduate', 'John', 'Smith', 123456789, '1990-10-22', '123 Main Street, Thunder Bay, ON, P7Y 4L9, Canada', 'Part-Time');
+INSERT INTO UniversityMember VALUES (4215976, 'Undergraduate', 'Justin', 'Gates', 212512322, '1986-02-02', '421 Dundas Ave, Thunder Bay, ON, P4C 1T8, Canada', 'Part-Time');
+INSERT INTO UniversityMember VALUES (5188121, 'Undergraduate', 'Albert', 'Marteus', 782164524, '1992-12-08', '915 Bay Street, Thunder Bay, ON, P1K 7Z9, Canada', 'Part-Time');
+INSERT INTO UniversityMember VALUES (9015219, 'Undergraduate', 'Marcus', 'Potts', 976735653, '1990-04-05', '1303 Walnut Drive, Thunder Bay, ON, P8J 2L1, Canada', 'Part-Time');
+INSERT INTO UniversityMember VALUES (7537134, 'Undergraduate', 'Dimitri', 'Schtern', 145318586, '1989-01-20', '891 Winnipeg Ave, Thunder Bay, ON, P2P 5W1, Canada', 'Part-Time');
+INSERT INTO UniversityMember VALUES (0125392, 'Undergraduate', 'Austin', 'Maxine', 879021175, '1985-05-09', '1052 Parkdale Ave, Thunder Bay, ON, P5A 9M8, Canada', 'Part-Time');
+INSERT INTO UniversityMember VALUES (5329210, 'Undergraduate', 'Alexandra', 'West', 597901180, '1984-11-13', '777 Algoma Street, Thunder Bay, ON, P7C 1G9, Canada', 'Part-Time');
+INSERT INTO UniversityMember VALUES (1205189, 'Undergraduate', 'Landon', 'McDonald', 616839872, '1995-10-29', '623 Brodie Street, Thunder Bay, ON, P6M 2M1, Canada', 'Part-Time');
+INSERT INTO UniversityMember VALUES (2125890, 'Undergraduate', 'Peter', 'Chen', 324327530, '1989-02-26', '1234 Third Street, Thunder Bay, ON, P3K 8J6, Canada', 'Part-Time');
+INSERT INTO UniversityMember VALUES (5181205, 'Graduate', 'James', 'Wong', 186014558, '1982-12-26', '139 Franklin Ave, Thunder Bay, ON, P2K 7O2, Canada', 'Part-Time');
+INSERT INTO UniversityMember VALUES (2195182, 'Graduate', 'Nicole', 'Lowry', 324327530, '2000-05-04', '619 Victoria Street, Thunder Bay, ON, P9S 2W1, Canada', 'Part-Time');
+INSERT INTO UniversityMember VALUES (9518953, 'Graduate', 'Deandra', 'White', 772976152, '1988-02-20', '1214 Erendale Street, Thunder Bay, ON, P0P 3M3, Canada', 'Part-Time');
+INSERT INTO UniversityMember VALUES (7531923, 'Graduate', 'Zach', 'Scott', 592972413, '2002-07-23', '812 Loyola Place, Thunder Bay, ON, P4J 1R0, Canada', 'Part-Time');
+INSERT INTO UniversityMember VALUES (0124829, 'Undergraduate', 'Jessica', 'Fernley', 323359646, '1996-06-15', '421 Acorn Avenue, Thunder Bay, ON, P7T 1T9, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (1583815, 'Undergraduate', 'Trenton', 'Hobbs', 127577684, '1984-08-29', '1109 Cottonwood Crescent, Thunder Bay, ON, P1R 0G9, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (8215721, 'Undergraduate', 'Nicole', 'Young', 178020326, '1985-01-14', '921 Glasgow Street, Thunder Bay, ON, P8I 7X2, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (5292719, 'Undergraduate', 'Samantha', 'Martin Jr.', 533913098, '2002-12-10', '512 Jade Court, Thunder Bay, ON, P5B 9I0, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (1929148, 'Undergraduate', 'Tien', 'Wade', 205318702, '2000-11-17', '218 Lancaster Street, Thunder Bay, ON, PL0 4N4, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (7214933, 'Undergraduate', 'Tyler', 'Shin', 456789123, '1982-09-27', '721 King Street, Thunder Bay, ON, P4L 9P2, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (6216862, 'Undergraduate', 'Pablo', 'North', 192079634, '1989-06-21', '1512 Norah Crescent, Thunder Bay, ON, P9Z 3Z9, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (5320911, 'Undergraduate', 'Hannah', 'Baldwin', 047288825, '1999-11-18', '351 Oliver Road, Thunder Bay, ON, P7X 3E1, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (3190185, 'Undergraduate', 'Tony', 'Rich', 435839484, '1987-06-27', '521 Rona Street, Thunder Bay, ON, P5J 3M5, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (2109012, 'Undergraduate', 'Gia', 'Stevens', 186710588, '1992-03-14', '707 Silas Road, Thunder Bay, ON, P5J 9J0, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (4210305, 'Undergraduate', 'Pablo', 'North', 425643419, '1990-10-08', '512 Tokio Street, Thunder Bay, ON, P3E 6H3, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (2190182, 'Undergraduate', 'Reese', 'Kemp', 598704490, '1995-02-16', '807 Trillium Place, Thunder Bay, ON, P3E 5Y3, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (5031219, 'Undergraduate', 'Harper', 'Wyatt', 706460918, '1994-08-11', '972 Wilson Street, Thunder Bay, ON, P3E 2W1, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (6102213, 'Undergraduate', 'Asia', 'Brown', 833988144, '1988-03-01', '121 Yale Street, Thunder Bay, ON, P8I 5R2, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (1294194, 'Undergraduate', 'Zoey', 'Waller', 853225450, '1991-08-23', '345 Wren Court, Thunder Bay, ON, P8I 0L6, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (5901821, 'Undergraduate', 'Bruce', 'Harper', 308074144, '1987-09-24', '911 Hodder Ave, Thunder Bay, ON, P8I 1T2, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (0912942, 'Undergraduate', 'Jasmine Fritz', 'North', 083235525, '2002-02-23', '218 Syndicate Avenue, Thunder Bay, ON, P0T 9G2, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (5429195, 'Undergraduate', 'Nicole', 'Diaz', 864095537, '1982-07-01', '6218 Riverdale Street, Thunder Bay, ON, P0T 1D6, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (6942091, 'Undergraduate', 'Walker', 'Obrien', 983358142, '1983-02-24', '1123 Picard Ave, Thunder Bay, ON, P0T 1D1, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (5313903, 'Undergraduate', 'Marco', 'Polo', 228660223, '1998-07-26', '619 Neebing Ave, Thunder Bay, ON, P3I 8I9, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (2140915, 'Undergraduate', 'Nixon', 'Cross', 698227090, '1990-04-11', '314 Mary Street, Thunder Bay, ON, P5Y 5L2, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (7214905, 'Undergraduate', 'Andrew', 'Williamson', 695863577, '1982-11-17', '4212 Arthur Street, Thunder Bay, ON, P8W 0P2, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (2510933, 'Undergraduate', 'Tanya', 'Hill', 419536451, '2000-04-10', '512 Fanshaw Street, Thunder Bay, ON, P9R 5W2, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (6231593, 'Undergraduate', 'Mary', 'Louise', 367274028, '2002-10-08', '2145 Chippewa Drive, Thunder Bay, ON, P1E 9R2, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (2189218, 'Undergraduate', 'Gabriel', 'Iglesias', 456789123, '1989-01-05', '210 Coyote Street, Thunder Bay, ON, P1E 7I5, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (7419953, 'Undergraduate', 'Grace', 'Perez', 437963457, '1992-06-09', '521 Clearwater Way, Thunder Bay, ON, P2R 4I2, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (0921355, 'Undergraduate', 'Hunter', 'Chung', 769152728, '1996-10-31', '518 HW-61, Thunder Bay, ON, P7O 3T5, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (0125825, 'Undergraduate', 'Tony', 'Zeng', 277918893, '1996-04-16', '330 Brock Street, Thunder Bay, ON, P5T 3R4, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (8593295, 'Undergraduate', 'Ernest', 'Bond', 241595421, '1985-05-03', '599 Black Bay Road, Thunder Bay, ON, P9U 5U7, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (3219998, 'Graduate', 'Aaron', 'Rogers', 906744957, '1994-02-23', '214 Ambrose Street, Thunder Bay, ON, P1Y 5K9, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (5153912, 'Graduate', 'Brandon', 'Bembry', 794231517, '1993-10-21', '951 15th Sideroad, Thunder Bay, ON, P1Y 4L0, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (1005190, 'Graduate', 'Pascal', 'Ingram', 945399607, '1998-11-16', '1521 High Street, Thunder Bay, ON, P1Y 1U7, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (8892149, 'Graduate', 'Kyle', 'Butler', 586518060, '1998-03-30', '721 Central Ave, Thunder Bay, ON, P4B 5J1, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (6661293, 'Graduate', 'Stephen', 'Thompson', 870679523, '1990-08-20', '777 Balmoral Street, Thunder Bay, ON, P4B 4L9, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (1024920, 'Graduate', 'Klay', 'Curry', 562539179, '1987-08-26', '821 James Street, Thunder Bay, ON, P4B 8L1, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (9218529, 'Graduate', 'Draymond', 'Brown', 728929658, '1990-02-22', '8519 Nick Street, Thunder Bay, ON, P7C 9U7, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (6314892, 'Graduate', 'Kevin', 'Warner', 152747405, '2000-03-14', '592 Alberta Street, Thunder Bay, ON, P7C 2R4, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (1521249, 'Graduate', 'Devin', 'Crowder', 426797769, '2000-09-30', '531 Wiley Street, Thunder Bay, ON, P7C 5O9, Canada', 'Full-Time');
+INSERT INTO UniversityMember VALUES (1214201, 'Graduate', 'Logan', 'Bumstead', 795663544, '1999-10-07', '300 McKellar Street, Thunder Bay, ON, P6Y 9L9, Canada', 'Full-Time');
 
 #Instructors
 INSERT INTO UniversityMember VALUES (0646314, 'Instructor', 'Ken', 'Ironside', 147258369, '1984-08-31', '6351 Windsor Street, Thunder Bay, ON, P2U 3X7, Canada', 'Part-Time');
@@ -185,17 +181,114 @@ INSERT INTO Section VALUES ('SOCI', '5111', 'FA', 7544327, '07:15:00');
 INSERT INTO Section VALUES ('COMP', '9800', 'FA', 0646314, '12:30:00');
 INSERT INTO Section VALUES ('COMP', '9800', 'FB', 2192100, '17:30:00');
 
+#CourseList
+
+#CourseGrade
+
+#Login
+INSERT INTO Login VALUES (1231231, 'password', 'student');
+INSERT INTO Login VALUES (4215976, 'password', 'student');
+INSERT INTO Login VALUES (5188121, 'password', 'student');
+INSERT INTO Login VALUES (9015219, 'password', 'student');
+INSERT INTO Login VALUES (7537134, 'password', 'student');
+INSERT INTO Login VALUES (0125392, 'password', 'student');
+INSERT INTO Login VALUES (5329210, 'password', 'student');
+INSERT INTO Login VALUES (1205189, 'password', 'student');
+INSERT INTO Login VALUES (2125890, 'password', 'student');
+INSERT INTO Login VALUES (5181205, 'password', 'student');
+INSERT INTO Login VALUES (2195182, 'password', 'student');
+INSERT INTO Login VALUES (9518953, 'password', 'student');
+INSERT INTO Login VALUES (7531923, 'password', 'student');
+INSERT INTO Login VALUES (0124829, 'password', 'student');
+INSERT INTO Login VALUES (1583815, 'password', 'student');
+INSERT INTO Login VALUES (8215721, 'password', 'student');
+INSERT INTO Login VALUES (5292719, 'password', 'student');
+INSERT INTO Login VALUES (1929148, 'password', 'student');
+INSERT INTO Login VALUES (7214933, 'password', 'student');
+INSERT INTO Login VALUES (6216862, 'password', 'student');
+INSERT INTO Login VALUES (5320911, 'password', 'student');
+INSERT INTO Login VALUES (3190185, 'password', 'student');
+INSERT INTO Login VALUES (2109012, 'password', 'student');
+INSERT INTO Login VALUES (4210305, 'password', 'student');
+INSERT INTO Login VALUES (2190182, 'password', 'student');
+INSERT INTO Login VALUES (5031219, 'password', 'student');
+INSERT INTO Login VALUES (6102213, 'password', 'student');
+INSERT INTO Login VALUES (1294194, 'password', 'student');
+INSERT INTO Login VALUES (5901821, 'password', 'student');
+INSERT INTO Login VALUES (0912942, 'password', 'student');
+INSERT INTO Login VALUES (5429195, 'password', 'student');
+INSERT INTO Login VALUES (6942091, 'password', 'student');
+INSERT INTO Login VALUES (5313903, 'password', 'student');
+INSERT INTO Login VALUES (2140915, 'password', 'student');
+INSERT INTO Login VALUES (7214905, 'password', 'student');
+INSERT INTO Login VALUES (2510933, 'password', 'student');
+INSERT INTO Login VALUES (6231593, 'password', 'student');
+INSERT INTO Login VALUES (2189218, 'password', 'student');
+INSERT INTO Login VALUES (7419953, 'password', 'student');
+INSERT INTO Login VALUES (0921355, 'password', 'student');
+INSERT INTO Login VALUES (0125825, 'password', 'student');
+INSERT INTO Login VALUES (8593295, 'password', 'student');
+INSERT INTO Login VALUES (3219998, 'password', 'student');
+INSERT INTO Login VALUES (5153912, 'password', 'student');
+INSERT INTO Login VALUES (1005190, 'password', 'student');
+INSERT INTO Login VALUES (8892149, 'password', 'student');
+INSERT INTO Login VALUES (6661293, 'password', 'student');
+INSERT INTO Login VALUES (1024920, 'password', 'student');
+INSERT INTO Login VALUES (9218529, 'password', 'student');
+INSERT INTO Login VALUES (6314892, 'password', 'student');
+INSERT INTO Login VALUES (1521249, 'password', 'student');
+INSERT INTO Login VALUES (1214201, 'password', 'student');
+
+INSERT INTO Login VALUES (0646314, 'password', 'instructor');
+INSERT INTO Login VALUES (2419215, 'password', 'instructor');
+INSERT INTO Login VALUES (6319921, 'password', 'instructor');
+INSERT INTO Login VALUES (0021521, 'password', 'instructor');
+INSERT INTO Login VALUES (2419522, 'password', 'instructor');
+INSERT INTO Login VALUES (7214777, 'password', 'instructor');
+INSERT INTO Login VALUES (3450968, 'password', 'instructor');
+INSERT INTO Login VALUES (7892152, 'password', 'instructor');
+INSERT INTO Login VALUES (2192100, 'password', 'instructor');
+INSERT INTO Login VALUES (4210012, 'password', 'instructor');
+INSERT INTO Login VALUES (7821942, 'password', 'instructor');
+INSERT INTO Login VALUES (5678762, 'password', 'instructor');
+INSERT INTO Login VALUES (7544327, 'password', 'instructor');
+
+INSERT INTO Login VALUES (9000546, 'password', 'administrator');
+INSERT INTO Login VALUES (5129851, 'password', 'administrator');
+INSERT INTO Login VALUES (2199921, 'password', 'administrator');
+INSERT INTO Login VALUES (8582188, 'password', 'administrator');
+INSERT INTO Login VALUES (7772147, 'password', 'administrator');
+
+INSERT INTO CourseList VALUES(1231231, 'ESOF', '3050', 'FA');
+INSERT INTO CourseList VALUES(1231231, 'ESOF', '3655', 'FB');
+INSERT INTO CourseList VALUES(1231231, 'MATH', '3071', 'FA');
+INSERT INTO CourseList VALUES(1214201, 'BUSI', '4071', 'FA');
+
+
 commit;
 
 SELECT * FROM CourseGrades WHERE memberID = 1231231 ORDER BY courseName, courseCode, courseSection;
 
 SELECT * FROM UniversityMember WHERE memberType != 'student';
 
-SET FOREIGN_KEY_CHECKS=0;
-DELETE FROM Section WHERE courseName = 'COMP' AND courseCode = '9800' and courseSection = 'FA';
-SET FOREIGN_KEY_CHECKS=1;
+#SET FOREIGN_KEY_CHECKS=0;
+#DELETE FROM Section WHERE courseName = 'COMP' AND courseCode = '9800' and courseSection = 'FA';
+#SET FOREIGN_KEY_CHECKS=1;
 
-SELECT * FROM UniversityMember WHERE memberType != 'student';
+SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode
+WHERE NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = 1231231)
+ORDER BY Course.courseName;
+
+
+
+SELECT CourseList.courseName, CourseList.courseCode, CourseList.courseSection, subject, time, firstName, lastName FROM CourseList 
+INNER JOIN Course ON Course.courseName = CourseList.courseName AND Course.courseCode = CourseList.courseCode
+INNER JOIN Section ON Section.courseName = CourseList.courseName AND Section.courseCode = CourseList.courseCode AND Section.courseSection = CourseList.courseSection
+INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID 
+WHERE CourseList.memberID = 1231231 
+ORDER BY Course.courseName, Course.courseCode, courseSection;
+
+SELECT * FROM UniversityMember WHERE memberType = 'instructor' OR memberType = 'administrator';
 
 SELECT CourseList.courseName, CourseList.courseCode, courseSection, subject FROM CourseList
 INNER JOIN Course ON Course.courseName = CourseList.courseName
