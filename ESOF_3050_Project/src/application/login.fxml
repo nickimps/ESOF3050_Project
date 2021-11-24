@@ -12,15 +12,15 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="0.0" prefWidth="101.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="207.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="185.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="187.0" minHeight="10.0" prefHeight="181.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="119.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -32,10 +32,10 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </VBox>
-      <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <VBox alignment="CENTER_RIGHT" prefHeight="133.0" prefWidth="280.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Label prefWidth="60.0" text="User name:" textAlignment="RIGHT" />
-            <Label text="Password:" textAlignment="RIGHT" />
+            <Label prefWidth="60.0" style="-fx-font-style: ITALIC;" text="User name:" textAlignment="RIGHT" />
+            <Label style="-fx-font-style: ITALIC;" text="Password:" textAlignment="RIGHT" />
          </children>
          <padding>
             <Insets bottom="5.0" right="5.0" top="5.0" />
@@ -43,23 +43,28 @@
       </VBox>
       <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
          <children>
-            <Label text="URS">
+            <Label text="University">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Britannic Bold" size="44.0" />
+               </font>
+            </Label>
+            <Label text="Login">
+               <font>
+                  <Font name="Britannic Bold" size="44.0" />
                </font>
             </Label>
          </children>
       </VBox>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#loginButtonPressed" prefHeight="25.0" prefWidth="106.0" text="Login" />
+            <Button mnemonicParsing="false" onAction="#loginButtonPressed" prefHeight="25.0" prefWidth="106.0" text="Login" />
          </children>
       </VBox>
       <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
          <children>
-            <Label text=" Login">
+            <Label>
                <font>
-                  <Font size="24.0" />
+                  <Font name="Britannic Bold" size="44.0" />
                </font>
             </Label>
          </children>

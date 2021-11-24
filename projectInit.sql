@@ -11,11 +11,11 @@ University Member Table
 CREATE TABLE UniversityMember(
 	memberID INTEGER ,
     memberType CHAR(20),
-    firstName CHAR(20),
-    lastName CHAR(20),
+    firstName CHAR(40),
+    lastName CHAR(40),
     SIN INTEGER,
     dateOfBirth DATE,
-    homeAddress CHAR(50),
+    homeAddress CHAR(100),
     statusType CHAR(20),
     PRIMARY KEY(memberID)
 );

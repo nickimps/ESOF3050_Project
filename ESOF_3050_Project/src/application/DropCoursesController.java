@@ -143,6 +143,7 @@ public class DropCoursesController {
 	
 							stmt.execute("SET FOREIGN_KEY_CHECKS = 0");
 							stmt.executeUpdate("DELETE FROM CourseList WHERE memberID = " + Integer.parseInt(memberID) + " AND courseName = '" + courseName + "' AND courseCode = '" + courseCode + "' AND courseSection = '" + courseSection + "'");
+							stmt.executeUpdate("DELETE FROM CourseGrades WHERE memberID = " + Integer.parseInt(memberID) + " AND courseName = '" + courseName + "' AND courseCode = '" + courseCode + "' AND courseSection = '" + courseSection + "'");
 							stmt.execute("SET FOREIGN_KEY_CHECKS = 1");
 						}
 					}

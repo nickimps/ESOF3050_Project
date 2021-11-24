@@ -1,10 +1,16 @@
 package application;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 
 public class InstructorWelcomeScreenController {
 
@@ -25,6 +31,9 @@ public class InstructorWelcomeScreenController {
     private EmployeeListController el;
     private StudentListController sl;
     private ModifyGradesController mg;
+    
+    @FXML // fx:id="helloLabel"
+    private Label helloLabel; // Value injected by FXMLLoader
     
     private String memberID;
     
@@ -54,6 +63,31 @@ public class InstructorWelcomeScreenController {
     
     public void setMemberID(String memberID) {
     	this.memberID = memberID;
+    	
+    	try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    	
+		try {
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/UniversityRegistrationSystem?" + "user=root");
+			
+			try {
+				Statement stmt = conn.createStatement();
+				
+				ResultSet rs = stmt.executeQuery("SELECT firstName FROM UniversityMember WHERE memberID = " + Integer.parseInt(this.memberID));
+			    rs.next();
+				helloLabel.setText("Hello, " + rs.getString(1));
+			    
+			} catch (SQLException e) {
+			    e.printStackTrace();
+			}
+
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     }
     
     public void setViewCoursesController(ViewCoursesController vc) {

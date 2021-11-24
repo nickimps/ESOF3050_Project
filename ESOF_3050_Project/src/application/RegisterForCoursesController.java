@@ -102,6 +102,7 @@ public class RegisterForCoursesController {
 						Statement stmt = conn.createStatement();
 						stmt.execute("SET FOREIGN_KEY_CHECKS = 0");
 					    stmt.executeUpdate("INSERT INTO CourseList VALUES ("+ Integer.parseInt(memberID) + ", '" + courseName + "', '" + courseCode + "', '" + courseSection + "')");
+					    stmt.executeUpdate("INSERT INTO CourseGrades VALUES ('"+ courseName + "', '" + courseCode + "', '" + courseSection + "', " + Integer.parseInt(memberID) + ", 0)");
 					    stmt.execute("SET FOREIGN_KEY_CHECKS = 1");
 					}
 					
@@ -138,11 +139,6 @@ public class RegisterForCoursesController {
         }
     	
 		try {
-//			for(int i = 0; i < enrollList.size(); i++)
-//				System.out.println(enrollList.get(i));
-//			System.out.println("--");
-			
-			
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/UniversityRegistrationSystem?" + "user=root");
 
 			try {
