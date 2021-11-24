@@ -14,7 +14,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 public class ModifyGradesController {
 
@@ -47,6 +51,9 @@ public class ModifyGradesController {
    	private String courseName;
    	private String courseCode;
    	private String courseSection;
+   	
+   	private Label lastClassLabel;
+   	private Label lastStudLabel;
     
     private Main main;
     private Scene sceneInstructorWelcomeScreen;
@@ -84,6 +91,7 @@ public class ModifyGradesController {
 				    do {
 				    	Label classLabel = new Label(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(3) + " : " + rs.getString(5)));
 				    	classLabel.setOnMouseClicked(selectEvent -> handleCourseClickEvent(classLabel));
+				    	lastClassLabel = classLabel;
 				    	vBoxClasses.getChildren().add(classLabel);
 				    } while (rs.next());
 			    }
@@ -101,6 +109,11 @@ public class ModifyGradesController {
 
     private void handleCourseClickEvent(Label classLabel) {
     	messageLabel.setVisible(false);
+    	classLabel.setStyle("-fx-font-weight: bold");
+    	if (lastClassLabel != classLabel) {
+    		lastClassLabel.setStyle("<font-weight> regular");
+    		lastClassLabel = classLabel;
+    	}
     	
     	try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -133,6 +146,7 @@ public class ModifyGradesController {
 				    do {
 				    	Label studLabel = new Label(String.format(rs.getString(1) + " - " + rs.getString(8) + ", " + rs.getString(7)));
 				    	studLabel.setOnMouseClicked(selectEvent -> handleStudentClickEvent(studLabel, classLabel));
+				    	lastStudLabel = studLabel;
 				    	vBoxStudents.getChildren().add(studLabel);
 				    } while (rs.next());
 			    }
@@ -150,7 +164,12 @@ public class ModifyGradesController {
 
 	private void handleStudentClickEvent(Label studLabel, Label classLabel) {
 		messageLabel.setVisible(false);
-		
+		studLabel.setStyle("-fx-font-weight: bold");
+		if (lastStudLabel != studLabel) {
+			lastStudLabel.setStyle("<font-weight> regular");
+			lastStudLabel = studLabel;	
+		}
+    	
 		try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (Exception e) {
