@@ -211,6 +211,7 @@ public class Main extends Application {
 			instructorWelcomeScreenController.setViewCoursesController(viewCoursesController);
 			instructorWelcomeScreenController.setEmployeeListController(employeeListController);
 			instructorWelcomeScreenController.setStudentListController(studentListController);
+			instructorWelcomeScreenController.setModifyGradesController(modifyGradesController);
 			
 			adminWelcomeScreenController.setMainScene(this);
 			adminWelcomeScreenController.setAddCoursePressedScene(sceneAddCourse);

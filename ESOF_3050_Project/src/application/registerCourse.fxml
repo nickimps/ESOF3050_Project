@@ -36,10 +36,10 @@
             <Label text="Section" />
             <TextField fx:id="sectionTextField" />
             <Separator prefWidth="200.0" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchButtonPressed" text="Search" />
+            <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchButtonPressed" text="Search" />
             <Separator prefWidth="200.0" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#enrollButtonPressed" text="Enroll" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backButtonPressed" text="Back">
+            <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#enrollButtonPressed" text="Enroll" />
+            <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backButtonPressed" text="Back">
                <VBox.margin>
                   <Insets top="60.0" />
                </VBox.margin>

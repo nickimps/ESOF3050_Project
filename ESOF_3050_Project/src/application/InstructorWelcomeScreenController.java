@@ -24,6 +24,7 @@ public class InstructorWelcomeScreenController {
     private ViewCoursesController vc;
     private EmployeeListController el;
     private StudentListController sl;
+    private ModifyGradesController mg;
     
     private String memberID;
     
@@ -67,6 +68,10 @@ public class InstructorWelcomeScreenController {
     	this.sl = sl;
     }
     
+    public void setModifyGradesController(ModifyGradesController mg) {
+    	this.mg = mg;
+    }
+    
     @FXML
     void logoutButtonPressed(ActionEvent event) {
     	main.setScreen(sceneLogin);
@@ -75,6 +80,7 @@ public class InstructorWelcomeScreenController {
     @FXML
     void modifyGradesButtonPressed(ActionEvent event) {
     	main.setScreen(sceneModifyGrades);
+    	mg.showList(memberID);
     }
 
     @FXML

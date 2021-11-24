@@ -67,7 +67,7 @@ public class RemoveEmployeeController {
 			    vBox.setPadding(new Insets(8, 8, 8, 8));
 			    vBox.setSpacing(8.0);		    
 			    
-			    ResultSet rs = stmt.executeQuery("SELECT * FROM UniversityMember WHERE memberType != 'student' ORDER BY memberType, lastName");
+			    ResultSet rs = stmt.executeQuery("SELECT * FROM UniversityMember WHERE memberType = 'instructor' OR memberType = 'administrator' ORDER BY memberType, lastName");
 		    	
 			    if (rs.next() == false) {
 				    vBox.getChildren().add(new Label(String.format("No Employees Found.")));
