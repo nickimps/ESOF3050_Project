@@ -719,6 +719,8 @@ SELECT * FROM UniversityMember WHERE memberType != 'student';
 #DELETE FROM Section WHERE courseName = 'COMP' AND courseCode = '9800' and courseSection = 'FA';
 #SET FOREIGN_KEY_CHECKS=1;
 
+#
+
 SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode
 WHERE NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = 1231231)
 ORDER BY Course.courseName;

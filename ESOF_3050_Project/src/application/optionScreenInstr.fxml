@@ -21,7 +21,7 @@
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#viewActiveCoursesButtonPressed" prefHeight="100.0" prefWidth="250.0" text="View Active Courses" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#viewActiveCoursesButtonPressed" prefHeight="100.0" prefWidth="250.0" text="View Active Courses" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -29,7 +29,7 @@
       </VBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
          <children>
-            <Button mnemonicParsing="false" onAction="#modifyGradesButtonPressed" prefHeight="100.0" prefWidth="250.0" text="Modify Student Grades" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#modifyGradesButtonPressed" prefHeight="100.0" prefWidth="250.0" text="Modify Student Grades" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -37,7 +37,7 @@
       </VBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
          <children>
-            <Button mnemonicParsing="false" onAction="#viewEmployeeListButtonPressed" prefHeight="100.0" prefWidth="250.0" text="View Employee List" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#viewEmployeeListButtonPressed" prefHeight="100.0" prefWidth="250.0" text="View Employee List" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -45,7 +45,7 @@
       </VBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Button mnemonicParsing="false" onAction="#viewStudentsListButtonPressed" prefHeight="100.0" prefWidth="250.0" text="View Student List" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#viewStudentsListButtonPressed" prefHeight="100.0" prefWidth="250.0" text="View Student List" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
