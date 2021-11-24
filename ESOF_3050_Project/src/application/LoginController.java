@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginController {
@@ -23,8 +24,8 @@ public class LoginController {
     @FXML // fx:id="userNameTextField"
     private TextField userNameTextField; // Value injected by FXMLLoader
 
-    @FXML // fx:id="lastNameTextField"
-    private TextField passwordTextField; // Value injected by FXMLLoader
+    @FXML // fx:id="passwordTextField"
+    private PasswordField passwordTextField; // Value injected by FXMLLoader
     
     private Main main;
     private Scene sceneStudentWelcomeScreen;
