@@ -28,10 +28,10 @@
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Subject" />
-            <TextField fx:id="subjectTextField" />
+            <TextField fx:id="courseNameTextField" />
             <Separator prefWidth="200.0" />
             <Label text="Course Number" />
-            <TextField fx:id="courseNumTextField" />
+            <TextField fx:id="courseCodeTextField" />
             <Separator prefWidth="200.0" />
             <Label text="Section" />
             <TextField fx:id="sectionTextField" />
