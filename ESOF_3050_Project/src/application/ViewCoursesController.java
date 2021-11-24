@@ -82,8 +82,10 @@ public class ViewCoursesController {
 				    if (type.equals("student")) {
 				    	titleLabel.setText("Enrolled Courses");
 				    	
-				    	rs = stmt.executeQuery("SELECT CourseList.courseName, CourseList.courseCode, courseSection, subject FROM CourseList "
+				    	rs = stmt.executeQuery("SELECT CourseList.courseName, CourseList.courseCode, CourseList.courseSection, subject, firstName, lastName, time FROM CourseList "
 								+ "INNER JOIN Course ON Course.courseName = CourseList.courseName AND Course.courseCode = CourseList.courseCode " 
+				    			+ "INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection "
+								+ "INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID "
 				    			+ "WHERE CourseList.memberID = " + Integer.parseInt(memberID) 
 				    			+ " ORDER BY Course.courseName, Course.courseCode, courseSection");
 				    	
@@ -91,7 +93,7 @@ public class ViewCoursesController {
 						    vBox.getChildren().add(new Label(String.format("No Classes Found.")));
 					    } else {
 						    do {
-						    	Label lb = new Label(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(3) + " : " + rs.getString(4)));
+						    	Label lb = new Label(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(3) + " : " + rs.getString(4) + "\n\tLecture Time: " + rs.getString(7) + "\n\tInstructor: " + rs.getString(5) + " " + rs.getString(6)));
 						    	vBox.getChildren().add(lb);
 						    } while (rs.next());
 					    }

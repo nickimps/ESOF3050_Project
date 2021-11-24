@@ -20,14 +20,14 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#viewEmployeeListButtonPressed" prefHeight="75.0" prefWidth="250.0" text="View Employee List" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#addCourseButtonPressed" prefHeight="75.0" prefWidth="250.0" text="Add Course" />
          </children>
       </VBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#viewStudentListButtonPressed" prefHeight="75.0" prefWidth="250.0" text="View Student List" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#removeCourseButtonPressed" prefHeight="75.0" prefWidth="250.0" text="Remove Course" />
          </children>
       </VBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
@@ -40,19 +40,19 @@
             <Button alignment="CENTER" mnemonicParsing="false" onAction="#removeEmployeeButtonPressed" prefHeight="75.0" prefWidth="250.0" text="Remove Employee" />
          </children>
       </VBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#addCourseButtonPressed" prefHeight="75.0" prefWidth="250.0" text="Add Course" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#viewEmployeeListButtonPressed" prefHeight="75.0" prefWidth="250.0" text="View All Employees" />
          </children>
       </VBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#removeCourseButtonPressed" prefHeight="75.0" prefWidth="250.0" text="Remove Course" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#viewStudentListButtonPressed" prefHeight="75.0" prefWidth="250.0" text="View All Students" />
          </children>
       </VBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#viewActiveCoursesButtonPressed" prefHeight="75.0" prefWidth="250.0" text="View Active Courses" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#viewActiveCoursesButtonPressed" prefHeight="75.0" prefWidth="250.0" text="View All Courses" />
          </children>
       </VBox>
       <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
