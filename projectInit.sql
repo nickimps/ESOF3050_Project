@@ -22,7 +22,10 @@ CREATE TABLE UniversityMember(
 
 /*
 Course Table
- - Change
+ - courseName is the 4 letter name of the course (ex. ESOF)
+ - courseCode is the 4 digit code of the course (ex. 3050)
+ - subject is the name of the course
+ - description is a brief summmary of the course
 */
 CREATE TABLE Course(
 	courseName CHAR(40),
@@ -32,6 +35,15 @@ CREATE TABLE Course(
     PRIMARY KEY(courseName, courseCode)
 );
 
+/*
+Section Table
+ - Section is the sections of each course being offered (ex. ESOF-3050-FA or FB)
+ - courseName and courseCode are taken from the Course table
+ - courseSection is the section of the course (ex. FA, FB)
+ - memberID is the instructor who will be teaching that section
+ - time is the start time of the lecture
+ - capacity is the maximum number of students allowed in a course
+*/
 CREATE TABLE Section(
     courseName CHAR(40),
     courseCode CHAR(10),
@@ -44,6 +56,11 @@ CREATE TABLE Section(
     FOREIGN KEY (memberID) REFERENCES UniversityMember(memberID) ON DELETE NO ACTION ON UPDATE CASCADE
 );
 
+/*
+CourseList Table
+ - CourseList is the list of students enrolled in a course
+ - courseName, courseCode, courseSection are from the Section table
+*/
 CREATE TABLE CourseList(
 	memberID INTEGER,
     courseName CHAR(40),
@@ -54,6 +71,12 @@ CREATE TABLE CourseList(
     FOREIGN KEY (courseName, courseCode, courseSection) REFERENCES Section(courseName, courseCode, courseSection) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+/*
+CourseGrades Table
+ - The CourseGrades table is the grades of every student in a course they are enrolled in
+ - memberID, courseName, courseCode, and courseSection are from the CourseList table
+ - grade is the grade they have in the class
+*/
 CREATE TABLE CourseGrades(
     courseName CHAR(40),
     courseCode CHAR(10),
@@ -65,6 +88,13 @@ CREATE TABLE CourseGrades(
     FOREIGN KEY (courseName, courseCode, courseSection) REFERENCES CourseList(courseName, courseCode, courseSection) ON DELETE CASCADE
 );
 
+/*
+Login Table
+ - Login table is the table that is used to determine a valid login
+ - memberID is from the UniversityMember table
+ - password is the password used to sign into the URS
+ - memberType is the type of member they are, getting a different view depending on the memberType (student, instructor, administrator)
+*/
 CREATE TABLE Login(
 	memberID INTEGER,
     password CHAR(50),
