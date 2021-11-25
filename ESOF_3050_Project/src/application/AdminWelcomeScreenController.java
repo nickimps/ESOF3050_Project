@@ -37,6 +37,7 @@ public class AdminWelcomeScreenController {
     private EmployeeListController el;
     private StudentListController sl;
     private AddCourseController ac;
+    private AddEmployeeController ae;
     private RemoveEmployeeController re;
     private RemoveCourseController rc;
     
@@ -123,6 +124,10 @@ public class AdminWelcomeScreenController {
     	this.ac = ac;
     }
     
+    public void setAddEmployeeController(AddEmployeeController ae) {
+    	this.ae = ae;
+    }
+    
     public void setRemoveEmployeeController(RemoveEmployeeController re) {
     	this.re = re;
     }
@@ -144,6 +149,7 @@ public class AdminWelcomeScreenController {
     @FXML
     void addEmployeeButtonPressed(ActionEvent event) {
     	main.setScreen(sceneAddEmployee);
+    	ae.generateMemberID();
     }
 
     @FXML

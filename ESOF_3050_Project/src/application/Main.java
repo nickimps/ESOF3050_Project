@@ -226,6 +226,7 @@ public class Main extends Application {
 			adminWelcomeScreenController.setEmployeeListController(employeeListController);
 			adminWelcomeScreenController.setStudentListController(studentListController);
 			adminWelcomeScreenController.setAddCourseController(addCourseController);
+			adminWelcomeScreenController.setAddEmployeeController(addEmployeeController);
 			adminWelcomeScreenController.setRemoveCourseController(removeCourseController);
 			adminWelcomeScreenController.setRemoveEmployeeController(removeEmployeeController);
 			adminWelcomeScreenController.loadInstructorsPre();

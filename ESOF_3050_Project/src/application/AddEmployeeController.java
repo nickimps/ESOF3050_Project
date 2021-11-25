@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,8 +39,8 @@ public class AddEmployeeController {
     @FXML // fx:id="addressTextField"
     private TextField addressTextField; // Value injected by FXMLLoader
 
-    @FXML // fx:id="employeeIDTextField"
-    private TextField employeeIDTextField; // Value injected by FXMLLoader
+    @FXML // fx:id="memberIDLabel"
+    private Label memberIDLabel; // Value injected by FXMLLoader
 
     @FXML // fx:id="statusChoiceBox"
     private ChoiceBox<?> statusChoiceBox; // Value injected by FXMLLoader
@@ -62,6 +63,8 @@ public class AddEmployeeController {
     private Main main;
     private Scene sceneAdminWelcomeScreen;
     
+    private int newMemberID;
+    
     public void setMainScene(Main main) {
     	this.main = main;
     }
@@ -70,9 +73,16 @@ public class AddEmployeeController {
     	this.sceneAdminWelcomeScreen = sceneAdminWelcomeScreen;
     }
     
+    public void generateMemberID() {
+    	Random r = new Random();
+		newMemberID = 1000000 + r.nextInt(9000000);
+		
+		memberIDLabel.setText(String.format("%d", newMemberID));
+    }
+    
     @FXML
     void addButtonPressed(ActionEvent event) {
-    	if (employeeIDTextField.getText() != "" && firstNameTextField.getText() != "" && lastNameTextField.getText() != "" && SINTextField.getText() != "" && dateOfBirthTextField.getText() != "" && addressTextField.getText() != "" && employeeIDTextField.getText() != "" && (partTimeRadioButton.isSelected() || fullTimeRadioButton.isSelected()) && (instructorRadioButton.isSelected() || administratorRadioButton.isSelected()) ) {
+    	if (firstNameTextField.getText() != "" && lastNameTextField.getText() != "" && SINTextField.getText() != "" && dateOfBirthTextField.getText() != "" && addressTextField.getText() != "" && (partTimeRadioButton.isSelected() || fullTimeRadioButton.isSelected()) && (instructorRadioButton.isSelected() || administratorRadioButton.isSelected()) ) {
 	    	try {
 	            Class.forName("com.mysql.cj.jdbc.Driver");
 	        } catch (Exception e) {
@@ -96,7 +106,8 @@ public class AddEmployeeController {
 						status = "Full-Time";
 					
 					Statement stmt = conn.createStatement();
-					stmt.executeUpdate("INSERT INTO UniversityMember VALUES ("+ Integer.parseInt(employeeIDTextField.getText()) + ", '" + memberType + "', '" + firstNameTextField.getText() + "', '" + lastNameTextField.getText() + "', " + Integer.parseInt(SINTextField.getText()) + ", '" + dateOfBirthTextField.getText() + "', '" + addressTextField.getText() + "', '" + status + "')");
+
+					stmt.executeUpdate("INSERT INTO UniversityMember VALUES ("+ newMemberID + ", '" + memberType + "', '" + firstNameTextField.getText() + "', '" + lastNameTextField.getText() + "', " + Integer.parseInt(SINTextField.getText()) + ", '" + dateOfBirthTextField.getText() + "', '" + addressTextField.getText() + "', '" + status + "')");
 					
 				    messageLabel.setText("Successfully Added!");
 				    messageLabel.setVisible(true);
@@ -161,7 +172,6 @@ public class AddEmployeeController {
     	SINTextField.setText("");
     	dateOfBirthTextField.setText("");
     	addressTextField.setText("");
-    	employeeIDTextField.setText(""); 
     	administratorRadioButton.setSelected(false);
     	instructorRadioButton.setSelected(false);
     	fullTimeRadioButton.setSelected(false);
