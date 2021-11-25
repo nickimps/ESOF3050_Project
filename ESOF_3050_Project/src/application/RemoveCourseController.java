@@ -131,6 +131,21 @@ public class RemoveCourseController {
 						courseCode = splitArray[1];
 						String[] newSplitArray = splitArray[2].split(" : ");
 						courseSection = newSplitArray[0];
+						
+						//Change full-time to part-time status if applicable
+						ResultSet rs = stmt.executeQuery("SELECT memberID FROM Section WHERE courseName = '" + courseName + "' AND courseCode = '" + courseCode + "' AND courseSection = '" + courseSection + "'");
+						
+						rs.next();
+						String instructor = rs.getString(1); 
+						
+						rs = stmt.executeQuery("SELECT * FROM Section WHERE memberID = " + Integer.parseInt(instructor));
+						
+						int numOfRows = 0;
+						while(rs.next())
+							numOfRows++;
+						
+						if (numOfRows < 3)
+							stmt.executeUpdate("UPDATE UniversityMember SET statusType = 'Part-Time' WHERE memberID = " + Integer.parseInt(instructor));
 
 						stmt.execute("SET FOREIGN_KEY_CHECKS = 0");
 						stmt.executeUpdate("DELETE FROM Section WHERE courseName = '" + courseName + "' AND courseCode = '" + courseCode + "' AND courseSection = '" + courseSection + "'");

@@ -113,7 +113,7 @@ public class SearchCoursesController {
 				    	lbTitle.setFont(Font.font(null, FontPosture.ITALIC, 12));
 				    	vBox.getChildren().add(lbTitle);
 				    	
-				    	Label lbInstructor = new Label(String.format("Instructor: " + rs.getString(12) + " " + rs.getString(13)));
+				    	Label lbInstructor = new Label(String.format("Instructor: " + rs.getString(14) + " " + rs.getString(15)));
 				    	lbInstructor.setPrefWidth(380);
 				    	lbInstructor.setWrapText(true);
 				    	vBox.getChildren().add(lbInstructor);

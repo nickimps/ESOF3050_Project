@@ -10,10 +10,14 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 
 public class ViewCoursesController {
 
@@ -77,6 +81,7 @@ public class ViewCoursesController {
 			    vBox.getChildren().clear();
 			    vBox.setPadding(new Insets(8, 8, 8, 8));
 			    vBox.setSpacing(8.0);
+			    vBox.setPrefWidth(565);
 			    
 			    if (!viewGrades) {
 				    if (type.equals("student")) {
@@ -101,7 +106,7 @@ public class ViewCoursesController {
 				    else if (type.equals("instructor")) {
 				    	titleLabel.setText("Your Active Courses");
 				    	
-				    	rs = stmt.executeQuery("SELECT Section.courseName, Section.courseCode, Section.courseSection, subject, Section.time FROM Section "
+				    	rs = stmt.executeQuery("SELECT Section.courseName, Section.courseCode, Section.courseSection, subject, Section.time, capacity, maxCapacity FROM Section "
 								+ "INNER JOIN Course ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode "
 				    			+ "WHERE Section.memberID = " + Integer.parseInt(memberID)
 				    			+ " ORDER BY Section.courseName, Section.courseCode, Section.courseSection");
@@ -110,7 +115,7 @@ public class ViewCoursesController {
 						    vBox.getChildren().add(new Label(String.format("No Classes Found.")));
 					    } else {
 						    do {
-						    	Label lb = new Label(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(3) + " : " + rs.getString(4) + "\n\tLecture Time: " + rs.getString(5) + "\n"));
+						    	Label lb = new Label(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(3) + " : " + rs.getString(4) + "\n\tLecture Time: " + rs.getString(5) + "\n\tCapacity: " + rs.getString(6) + "/" + rs.getString(7)));
 						    	vBox.getChildren().add(lb);
 						    } while (rs.next());
 					    }
@@ -127,8 +132,24 @@ public class ViewCoursesController {
 						    vBox.getChildren().add(new Label(String.format("No Classes Found.")));
 					    } else {
 						    do {
-						    	Label lb = new Label(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(3) + " : " + rs.getString(4) + "\n\tLecture Time: " + rs.getString(5) + "\n\tInstructor: " + rs.getString(6) + " " + rs.getString(7) + "\n"));
+						    	Label lbName = new Label(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(3)));
+						    	lbName.setPrefWidth(380);
+						    	lbName.setWrapText(true);
+						    	lbName.setStyle("-fx-font-weight: bold");
+						    	vBox.getChildren().add(lbName);
+						    	
+						    	Label lbTitle = new Label(String.format(rs.getString(4)));
+						    	lbTitle.setPrefWidth(380);
+						    	lbTitle.setWrapText(true);
+						    	lbTitle.setFont(Font.font(null, FontPosture.ITALIC, 12));
+						    	vBox.getChildren().add(lbTitle);
+						    	
+						    	Label lb = new Label(String.format("\tLecture Time: " + rs.getString(5) + "\n\tInstructor: " + rs.getString(6) + " " + rs.getString(7) + "\n"));
 						    	vBox.getChildren().add(lb);
+						    	
+						    	Separator sp = new Separator();
+						    	sp.setOrientation(Orientation.HORIZONTAL);
+						    	vBox.getChildren().add(sp);
 						    } while (rs.next());
 					    }
 				    }

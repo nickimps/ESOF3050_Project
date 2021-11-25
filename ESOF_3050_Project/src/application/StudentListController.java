@@ -10,9 +10,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.VBox;
 
 public class StudentListController {
@@ -60,6 +62,7 @@ public class StudentListController {
 			    vBox.getChildren().clear();
 			    vBox.setPadding(new Insets(8, 8, 8, 8));
 			    vBox.setSpacing(8.0);
+			    vBox.setPrefWidth(565);
 			    
 			    //Get member type for return screen
 			    ResultSet getType = stmt.executeQuery("SELECT memberType FROM Login WHERE memberID = " + Integer.parseInt(memberID));
@@ -75,8 +78,16 @@ public class StudentListController {
 				    vBox.getChildren().add(new Label(String.format("No Employees Found.")));
 			    } else {
 				    do {
-				    	Label lb = new Label(String.format(rs.getString(4) + ", " + rs.getString(3) + "\n\t" + rs.getString(2) + "\n\tID: " + rs.getString(1) + "\n\tSIN: " + rs.getString(5) + "\n\tDate of Birth: " + rs.getString(6) + "\n\tAddress: " + rs.getString(7) + "\n\tStatus: " + rs.getString(8)));
+				    	Label lbName = new Label(String.format(rs.getString(4) + ", " + rs.getString(3)));
+				    	lbName.setStyle("-fx-font-weight: bold");
+				    	vBox.getChildren().add(lbName);
+				    	
+				    	Label lb = new Label(String.format("\t" + rs.getString(2) + "\n\tID: " + rs.getString(1) + "\n\tSIN: " + rs.getString(5) + "\n\tDate of Birth: " + rs.getString(6) + "\n\tAddress: " + rs.getString(7) + "\n\tStatus: " + rs.getString(8)));
 				    	vBox.getChildren().add(lb);
+				    	
+				    	Separator sp = new Separator();
+				    	sp.setOrientation(Orientation.HORIZONTAL);
+				    	vBox.getChildren().add(sp);
 				    } while (rs.next());
 			    }
 

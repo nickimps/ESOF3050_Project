@@ -67,13 +67,13 @@ public class RemoveEmployeeController {
 			    vBox.setPadding(new Insets(8, 8, 8, 8));
 			    vBox.setSpacing(8.0);		    
 			    
-			    ResultSet rs = stmt.executeQuery("SELECT * FROM UniversityMember WHERE memberType = 'instructor' OR memberType = 'administrator' ORDER BY memberType, lastName");
+			    ResultSet rs = stmt.executeQuery("SELECT * FROM UniversityMember WHERE memberType = 'instructor' OR memberType = 'administrator' ORDER BY lastName");
 		    	
 			    if (rs.next() == false) {
 				    vBox.getChildren().add(new Label(String.format("No Employees Found.")));
 			    } else {
 				    do {
-				    	CheckBox cb = new CheckBox(String.format(rs.getString(2) + " - " + rs.getString(4) + ", " + rs.getString(3) + " - " + rs.getString(1)));
+				    	CheckBox cb = new CheckBox(String.format(rs.getString(4) + ", " + rs.getString(3) + " - " + rs.getString(1) + " - " + rs.getString(2)));
 				    	cbs.add(cb);
 				    } while (rs.next());
 			    }

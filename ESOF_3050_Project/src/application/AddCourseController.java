@@ -49,6 +49,9 @@ public class AddCourseController {
     @FXML // fx:id="lectureTimeTextField"
     private TextField lectureTimeTextField; // Value injected by FXMLLoader
     
+    @FXML // fx:id="capacityTextField"
+    private TextField capacityTextField; // Value injected by FXMLLoader
+    
     @FXML // fx:id="messageLabel"
     private Label messageLabel; // Value injected by FXMLLoader
     
@@ -58,6 +61,7 @@ public class AddCourseController {
     
     private Main main;
     private Scene sceneAdminWelcomeScreen;
+    
     
     public void setMainScene(Main main) {
     	this.main = main;
@@ -71,7 +75,7 @@ public class AddCourseController {
     void addButtonPressed(ActionEvent event) {
     	
     	instructor = InstructorChoiceBox.getSelectionModel().getSelectedIndex();
-    	if (subjectTextField.getText() != "" && courseCodeTextField.getText() != "" && titleTextField.getText() != "" && sectionTextField.getText() != "" && descriptionTextField.getText() != "" && lectureTimeTextField.getText() != "" && instructor > -1 ) {
+    	if (subjectTextField.getText() != "" && courseCodeTextField.getText() != "" && titleTextField.getText() != "" && sectionTextField.getText() != "" && descriptionTextField.getText() != "" && lectureTimeTextField.getText() != "" && instructor > -1 && capacityTextField.getText() != "" && Integer.parseInt(capacityTextField.getText()) > -1) {
 	    	try {
 	            Class.forName("com.mysql.cj.jdbc.Driver");
 	        } catch (Exception e) {
@@ -84,8 +88,20 @@ public class AddCourseController {
 				try {
 					Statement stmt = conn.createStatement();
 					stmt.executeUpdate("INSERT INTO Course VALUES ('"+ subjectTextField.getText() + "', '" + courseCodeTextField.getText() + "', '" + titleTextField.getText() + "', '" + descriptionTextField.getText() + "')");
-					stmt.executeUpdate("INSERT INTO Section VALUES ('"+ subjectTextField.getText() + "', '" + courseCodeTextField.getText() + "', '" + sectionTextField.getText() + "', " + instructorsMemIDs.get(instructor) + ", '" + lectureTimeTextField.getText() + "')");
+					stmt.executeUpdate("INSERT INTO Section VALUES ('"+ subjectTextField.getText() + "', '" + courseCodeTextField.getText() + "', '" + sectionTextField.getText() + "', " + instructorsMemIDs.get(instructor) + ", '" + lectureTimeTextField.getText() + "', " + Integer.parseInt(capacityTextField.getText()) + ", " + Integer.parseInt(capacityTextField.getText()) + ")");
 					
+					
+					//Change part-time to full-time status if applicable
+					ResultSet rs = stmt.executeQuery("SELECT * FROM Section WHERE memberID = " + instructorsMemIDs.get(instructor));
+					
+					int numOfRows = 0;
+					while(rs.next())
+						numOfRows++;
+
+					if (numOfRows > 2)
+						stmt.executeUpdate("UPDATE UniversityMember SET statusType = 'Full-Time' WHERE memberID = " + instructorsMemIDs.get(instructor));
+					
+					//print success message
 				    messageLabel.setText("Successfully Added!");
 				    messageLabel.setVisible(true);
 				} catch (SQLException e){
@@ -181,6 +197,7 @@ public class AddCourseController {
     	sectionTextField.setText("");
     	InstructorChoiceBox.setValue(null);
     	descriptionTextField.setText("");
-    	lectureTimeTextField.setText("");    	
+    	lectureTimeTextField.setText("");
+    	capacityTextField.setText("");
     }
 }

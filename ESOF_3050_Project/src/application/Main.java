@@ -17,7 +17,7 @@ public class Main extends Application {
 	InstructorWelcomeScreenController instructorWelcomeScreenController;
 	AdminWelcomeScreenController adminWelcomeScreenController;
 	DropCoursesController dropCoursesController;
-	
+
 	// Primary Stage
     Stage stage;
     // Two scenes

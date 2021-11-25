@@ -31,7 +31,7 @@ CREATE TABLE Course(
 	courseName CHAR(40),
     courseCode CHAR(10),
     subject CHAR(50),
-    description CHAR(255),
+    description TEXT,
     PRIMARY KEY(courseName, courseCode)
 );
 
@@ -973,22 +973,25 @@ INSERT INTO Login VALUES (7772147, 'password', 'administrator');
 
 commit;
 
-SELECT * FROM Section;
 
-SELECT * FROM Course 
-INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode 
-INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID 
-WHERE NOT EXISTS 
-	(SELECT courseName, courseCode, courseSection, memberID 
-     FROM CourseList 
-     WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = 1231231)
-ORDER BY Course.courseName, Course.courseCode, courseSection;
+
 #INSERT INTO Section VALUES ('ESOF', '3050', 'FA', 0646314, '13:30:00', 25);
 #UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 #SELECT * FROM Section WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 /*
+SELECT * FROM UniversityMember WHERE memberType LIKE 'instructor';
+
+SELECT * FROM Section WHERE memberID = 7544327;
+
+Select memberID FROM Section WHERE courseName LIKE 'ESOF' AND courseCode LIKE '3050' AND courseSection LIKE 'FA';
+
 SELECT * FROM CourseGrades ORDER BY courseName, courseCode, courseSection;
 SELECT * FROM CourseList ORDER BY courseName, courseCode, courseSection;
+
+SELECT Section.courseName, Section.courseCode, Section.courseSection, subject, Section.time, capacity, maxCapacity FROM Section
+INNER JOIN Course ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode
+WHERE Section.memberID = 0646314
+ORDER BY Section.courseName, Section.courseCode, Section.courseSection;
 
 SELECT * FROM UniversityMember WHERE memberType != 'student';
 
@@ -1009,6 +1012,14 @@ INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID
 WHERE NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = 1231231)
 ORDER BY Course.courseName;
 
+SELECT * FROM Course
+INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode 
+INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID 
+WHERE NOT EXISTS 
+	(SELECT courseName, courseCode, courseSection, memberID 
+     FROM CourseList 
+     WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = 1231231)
+ORDER BY Course.courseName, Course.courseCode, courseSection;
 
 
 SELECT CourseList.courseName, CourseList.courseCode, CourseList.courseSection, subject, time, firstName, lastName FROM CourseList 

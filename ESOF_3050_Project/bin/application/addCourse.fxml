@@ -94,6 +94,16 @@
                   <TextField fx:id="lectureTimeTextField" onMouseClicked="#resetMessage" prefWidth="200.0" />
                </children>
             </HBox>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="100.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="150.0" text="Capacity" textAlignment="RIGHT">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="capacityTextField" onMouseClicked="#resetMessage" prefWidth="200.0" />
+               </children>
+            </HBox>
          </children>
       </VBox>
    </center>

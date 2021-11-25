@@ -75,6 +75,7 @@ public class RegisterForCoursesController {
     @FXML
     void backButtonPressed(ActionEvent event) {
     	main.setScreen(sceneStudentWelcomeScreen);
+    	messageLabel.setVisible(false);
     	resetFields();
     }
 
@@ -103,7 +104,18 @@ public class RegisterForCoursesController {
 						stmt.execute("SET FOREIGN_KEY_CHECKS = 0");
 					    stmt.executeUpdate("INSERT INTO CourseList VALUES ("+ Integer.parseInt(memberID) + ", '" + courseName + "', '" + courseCode + "', '" + courseSection + "')");
 					    stmt.executeUpdate("INSERT INTO CourseGrades VALUES ('"+ courseName + "', '" + courseCode + "', '" + courseSection + "', " + Integer.parseInt(memberID) + ", 0)");
+					    stmt.executeUpdate("UPDATE Section SET capacity = capacity - 1 WHERE courseName = '" + courseName + "' AND courseCode = '" + courseCode + "' AND courseSection = '" + courseSection + "'");
 					    stmt.execute("SET FOREIGN_KEY_CHECKS = 1");
+					    
+					    //Change part-time to full-time status if applicable
+					    ResultSet rs = stmt.executeQuery("SELECT * FROM CourseList WHERE memberID = " + Integer.parseInt(memberID));
+						
+						int numOfRows = 0;
+						while(rs.next())
+							numOfRows++;
+
+						if (numOfRows > 2)
+							stmt.executeUpdate("UPDATE UniversityMember SET statusType = 'Full-Time' WHERE memberID = " + Integer.parseInt(memberID));
 					}
 					
 				    resetFields();
@@ -127,7 +139,6 @@ public class RegisterForCoursesController {
     		messageLabel.setText("Error: No Courses to enroll.");
 		    messageLabel.setVisible(true);
     	}
-    	
     }
 
     @FXML
@@ -166,18 +177,17 @@ public class RegisterForCoursesController {
 			    vBox.getChildren().clear();
 			    cbs.clear();
 			    
-			    
-			    //12 13
-			    
 			    if (rs.next() == false) {
 				    vBox.getChildren().add(new Label(String.format("No Classes Found.")));
 			    } else {
 				    do {
-				    	CheckBox cb = new CheckBox(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(7) + "\n" + rs.getString(3) + "\nLecture Time: " + rs.getString(9) + "\nInstructor: " + rs.getString(12) + " " + rs.getString(13)));
+				    	CheckBox cb = new CheckBox(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(7) + "\n" + rs.getString(3) + "\nLecture Time: " + rs.getString(9) + "\nInstructor: " + rs.getString(14) + " " + rs.getString(15) + "\nCapacity: " + rs.getString(10) + "/" + rs.getString(11)));
 				    	
-				    	if (enrollList.contains(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(7)))) {
+				    	if (Integer.parseInt(rs.getString(10)) == 0)
+				    		cb.setDisable(true);
+				    	
+				    	if (enrollList.contains(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(7))))
 				    		cb.setSelected(true);
-				    	}
 				    	
 				    	cbs.add(cb);
 				    } while (rs.next());
@@ -218,8 +228,13 @@ public class RegisterForCoursesController {
     	else {
     		for(int i = 0; i < cbs.size(); i++) {
     			if (cbs.get(i).getText() == cb.getText()) {
-    				vBoxEnroll.getChildren().remove(i);
-    				enrollList.remove(i);
+    				String[] split = cb.getText().split("\n");
+	    			for (int j = 0; j < enrollList.size(); j++) {
+	    				if (enrollList.get(j).equals(split[0])) {
+	    					vBoxEnroll.getChildren().remove(j);
+	        				enrollList.remove(j);
+	    				}
+	    			}
     			}
     		}
     	}
@@ -233,6 +248,7 @@ public class RegisterForCoursesController {
     	vBox.getChildren().clear();
 	    vBox.setPadding(new Insets(8, 8, 8, 8));
 	    vBox.setSpacing(8.0);
+	    vBox.setPrefWidth(260);
 	    
 	    vBoxEnroll.getChildren().clear();
 	    vBoxEnroll.setPadding(new Insets(8, 8, 8, 8));

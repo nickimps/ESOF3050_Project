@@ -140,11 +140,23 @@ public class DropCoursesController {
 							courseCode = splitArray[1];
 							String[] newSplitArray = splitArray[2].split(" : ");
 							courseSection = newSplitArray[0];
+							
+							//Change full-time to part-time status if applicable
+							ResultSet rs = stmt.executeQuery("SELECT * FROM CourseList WHERE memberID = " + Integer.parseInt(memberID));
+							int numOfRows = 0;
+							
+							while(rs.next())
+								numOfRows++;
+							
+							if (numOfRows < 3)
+								stmt.executeUpdate("UPDATE UniversityMember SET statusType = 'Part-Time' WHERE memberID = " + Integer.parseInt(memberID));
 	
 							stmt.execute("SET FOREIGN_KEY_CHECKS = 0");
 							stmt.executeUpdate("DELETE FROM CourseList WHERE memberID = " + Integer.parseInt(memberID) + " AND courseName = '" + courseName + "' AND courseCode = '" + courseCode + "' AND courseSection = '" + courseSection + "'");
 							stmt.executeUpdate("DELETE FROM CourseGrades WHERE memberID = " + Integer.parseInt(memberID) + " AND courseName = '" + courseName + "' AND courseCode = '" + courseCode + "' AND courseSection = '" + courseSection + "'");
+							stmt.executeUpdate("UPDATE Section SET capacity = capacity + 1 WHERE courseName = '" + courseName + "' AND courseCode = '" + courseCode + "' AND courseSection = '" + courseSection + "'");
 							stmt.execute("SET FOREIGN_KEY_CHECKS = 1");
+
 						}
 					}
 					
