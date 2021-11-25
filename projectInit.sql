@@ -20,6 +20,10 @@ CREATE TABLE UniversityMember(
     PRIMARY KEY(memberID)
 );
 
+/*
+Course Table
+ - Change
+*/
 CREATE TABLE Course(
 	courseName CHAR(40),
     courseCode CHAR(10),
