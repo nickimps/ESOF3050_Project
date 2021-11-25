@@ -51,6 +51,7 @@ CREATE TABLE Section(
     memberID INTEGER,
     time TIME,
     capacity INTEGER,
+    maxCapacity INTEGER,
     PRIMARY KEY (courseName, courseCode, courseSection,  memberID),
     FOREIGN KEY (courseName, courseCode) REFERENCES Course(courseName, courseCode) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (memberID) REFERENCES UniversityMember(memberID) ON DELETE NO ACTION ON UPDATE CASCADE
@@ -198,29 +199,29 @@ INSERT INTO Course VALUES ('SOCI', '5111', 'Problem and Issues in Socialogy', 'A
 INSERT INTO Course VALUES ('COMP', '9800', 'Project Research/Writing', 'A full year course of directed research that may involve any combination of theory or application in an area of computer science, as agreed to by the student and the research project supervisor in a "learning contract", which states what is to be done in the research project, how and when it will be done, and how it will be evaluated. A significant portion of the work will involve the preparation of a written report along with a public presentation.');
 
 #Section
-INSERT INTO Section VALUES ('ESOF', '3050', 'FA', 0646314, '13:30:00', 25);
-INSERT INTO Section VALUES ('ESOF', '3050', 'FB', 0646314, '10:00:00', 25);
-INSERT INTO Section VALUES ('ESOF', '3655', 'FA', 7214777, '10:00:00', 25);
-INSERT INTO Section VALUES ('ESOF', '3655', 'FB', 7214777, '15:00:00', 25);
-INSERT INTO Section VALUES ('MATH', '3071', 'FA', 5678762, '08:30:00', 20);
-INSERT INTO Section VALUES ('MATH', '3071', 'FB', 2192100, '10:30:00', 20);
-INSERT INTO Section VALUES ('MATH', '3071', 'FC', 2419522, '12:30:00', 20);
-INSERT INTO Section VALUES ('MATH', '3071', 'FD', 4210012, '14:30:00', 15);
-INSERT INTO Section VALUES ('ENGL', '1012', 'FA', 7892152, '18:00:00', 15);
-INSERT INTO Section VALUES ('ENGL', '1012', 'FB', 7892152, '09:30:00', 20);
-INSERT INTO Section VALUES ('BUSI', '4071', 'FA', 7544327, '17:15:00', 10);
-INSERT INTO Section VALUES ('CHEM', '2211', 'FA', 3450968, '08:30:00', 50);
-INSERT INTO Section VALUES ('WOME', '1100', 'FA', 6319921, '09:00:00', 35);
-INSERT INTO Section VALUES ('MUSI', '4330', 'FA', 4210012, '14:30:00', 20);
-INSERT INTO Section VALUES ('SPAN', '1000', 'FA', 0021521, '20:00:00', 25);
-INSERT INTO Section VALUES ('NURS', '2055', 'FA', 7214777, '08:30:00', 60);
-INSERT INTO Section VALUES ('NURS', '2055', 'FB', 7214777, '12:30:00', 50);
-INSERT INTO Section VALUES ('NURS', '2055', 'FC', 5678762, '16:00:00', 50);
-INSERT INTO Section VALUES ('MEDI', '5045', 'FA', 2419522, '08:30:00', 50);
-INSERT INTO Section VALUES ('EDUC', '6411', 'FA', 2419215, '18:45:00', 20);
-INSERT INTO Section VALUES ('SOCI', '5111', 'FA', 7544327, '07:15:00', 25);
-INSERT INTO Section VALUES ('COMP', '9800', 'FA', 0646314, '12:30:00', 10);
-INSERT INTO Section VALUES ('COMP', '9800', 'FB', 2192100, '17:30:00', 10);
+INSERT INTO Section VALUES ('ESOF', '3050', 'FA', 0646314, '13:30:00', 25, 25);
+INSERT INTO Section VALUES ('ESOF', '3050', 'FB', 0646314, '10:00:00', 25, 25);
+INSERT INTO Section VALUES ('ESOF', '3655', 'FA', 7214777, '10:00:00', 25, 25);
+INSERT INTO Section VALUES ('ESOF', '3655', 'FB', 7214777, '15:00:00', 25, 25);
+INSERT INTO Section VALUES ('MATH', '3071', 'FA', 5678762, '08:30:00', 20, 20);
+INSERT INTO Section VALUES ('MATH', '3071', 'FB', 2192100, '10:30:00', 20, 20);
+INSERT INTO Section VALUES ('MATH', '3071', 'FC', 2419522, '12:30:00', 20, 20);
+INSERT INTO Section VALUES ('MATH', '3071', 'FD', 4210012, '14:30:00', 15, 15);
+INSERT INTO Section VALUES ('ENGL', '1012', 'FA', 7892152, '18:00:00', 15, 15);
+INSERT INTO Section VALUES ('ENGL', '1012', 'FB', 7892152, '09:30:00', 20, 20);
+INSERT INTO Section VALUES ('BUSI', '4071', 'FA', 7544327, '17:15:00', 10, 10);
+INSERT INTO Section VALUES ('CHEM', '2211', 'FA', 3450968, '08:30:00', 50, 50);
+INSERT INTO Section VALUES ('WOME', '1100', 'FA', 6319921, '09:00:00', 35, 35);
+INSERT INTO Section VALUES ('MUSI', '4330', 'FA', 4210012, '14:30:00', 20, 20);
+INSERT INTO Section VALUES ('SPAN', '1000', 'FA', 0021521, '20:00:00', 25, 25);
+INSERT INTO Section VALUES ('NURS', '2055', 'FA', 7214777, '08:30:00', 60, 60);
+INSERT INTO Section VALUES ('NURS', '2055', 'FB', 7214777, '12:30:00', 50, 50);
+INSERT INTO Section VALUES ('NURS', '2055', 'FC', 5678762, '16:00:00', 50, 50);
+INSERT INTO Section VALUES ('MEDI', '5045', 'FA', 2419522, '08:30:00', 50, 50);
+INSERT INTO Section VALUES ('EDUC', '6411', 'FA', 2419215, '18:45:00', 20, 20);
+INSERT INTO Section VALUES ('SOCI', '5111', 'FA', 7544327, '07:15:00', 25, 25);
+INSERT INTO Section VALUES ('COMP', '9800', 'FA', 0646314, '12:30:00', 10, 10);
+INSERT INTO Section VALUES ('COMP', '9800', 'FB', 2192100, '17:30:00', 10, 10);
 
 #CourseList 
 #Part Time Students
@@ -750,7 +751,9 @@ INSERT INTO Login VALUES (7772147, 'password', 'administrator');
 
 
 commit;
-
+#INSERT INTO Section VALUES ('ESOF', '3050', 'FA', 0646314, '13:30:00', 25);
+#UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
+#SELECT * FROM Section WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 /*
 SELECT * FROM CourseGrades ORDER BY courseName, courseCode, courseSection;
 SELECT * FROM CourseList ORDER BY courseName, courseCode, courseSection;
