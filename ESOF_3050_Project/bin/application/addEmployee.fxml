@@ -77,7 +77,7 @@
             </HBox>
             <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="100.0">
                <children>
-                  <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefWidth="150.0" text="Employee ID" textAlignment="RIGHT">
+                  <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefWidth="150.0" text="Employee ID:" textAlignment="RIGHT">
                      <padding>
                         <Insets right="5.0" />
                      </padding>

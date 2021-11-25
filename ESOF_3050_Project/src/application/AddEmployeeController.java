@@ -3,8 +3,10 @@ package application;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -74,8 +76,41 @@ public class AddEmployeeController {
     }
     
     public void generateMemberID() {
-    	Random r = new Random();
-		newMemberID = 1000000 + r.nextInt(9000000);
+		try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		
+		ArrayList<String> memIDs = new ArrayList<>();
+		
+		try {
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/UniversityRegistrationSystem?" + "user=root");
+			
+			try {
+				Statement stmt = conn.createStatement();
+
+				ResultSet rs = stmt.executeQuery("SELECT memberID FROM UniversityMember");
+				
+				while(rs.next())
+					memIDs.add(rs.getString(1));
+
+			} catch (SQLException e){
+			    e.printStackTrace();
+			}
+
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		while(true) {
+			Random r = new Random();
+			newMemberID = 1000000 + r.nextInt(9000000);
+			
+			if (!memIDs.contains(String.format("%d", newMemberID)))
+				break;
+		}
 		
 		memberIDLabel.setText(String.format("%d", newMemberID));
     }
