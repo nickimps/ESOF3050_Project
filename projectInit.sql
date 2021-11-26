@@ -199,18 +199,15 @@ INSERT INTO Course VALUES ('BUSI', '4071', 'Strategic Management II', 'Applies t
 INSERT INTO Course VALUES ('MUSI', '4330', 'String Ensemble IV', 'The topic of this ensemble will vary from year to year. Consult the Department for further details.');
 INSERT INTO Course VALUES ('COMP', '4411', 'Programming Languages', 'The topic of this ensemble will vary from year to year. Consult the Department for further details.');
 INSERT INTO Course VALUES ('ENST', '4011', 'Environmental Biochemistry', 'The topic of this ensemble will vary from year to year. Consult the Department for further details.');
-INSERT INTO Course VALUES ('PHIL', '4811', 'String Ensemble IV', 'The topic of this ensemble will vary from year to year. Consult the Department for further details.');
 INSERT INTO Course VALUES ('VISU', '4110', 'Senior Ceramics I', 'The topic of this ensemble will vary from year to year. Consult the Department for further details.');
 
 INSERT INTO Course VALUES ('SOCI', '5111', 'Problem and Issues in Socialogy', 'A critical examination of theoretical problems and issues in Sociology.');
 INSERT INTO Course VALUES ('MEDI', '5045', 'Social and Population Health I', 'Students develop their knowledge and understanding of the principles of primary health care and the Canadian health care system; public health; cultural/social/economic aspects of health and illness; history of disease; health promotion and disease prevention for individuals, communities, and populations; workplace health and safety; and research methods and critical appraisal, epidemiology, and statistics. Particular foci will include the determinants of health, health-related risk factors, interprofessional roles, and the impact of health policy on health.');
 INSERT INTO Course VALUES ('BUSI', '5052', 'Financial Reporting and Analysis', 'A critical examination of theoretical problems and issues in Sociology.');
-INSERT INTO Course VALUES ('HESC', '5013', 'Social and Ecological Determinan', 'A critical examination of theoretical problems and issues in Sociology.');
 
 INSERT INTO Course VALUES ('EDUC', '6411', 'Cognition and Learning', 'Provides an analysis of epistemological theories through a critical examination of foundational and current research and a reflection on historical and philosophical orientations as they relate to contemporary issues in cognition and learning.');
 INSERT INTO Course VALUES ('HESC', '6010', 'Emerging Issues in Health Science', 'Provides an analysis of epistemological theories through a critical examination of foundational and current research and a reflection on historical and philosophical orientations as they relate to contemporary issues in cognition and learning.');
 INSERT INTO Course VALUES ('PSYC', '6011', 'Dialectual Behviour Therapy', 'Provides an analysis of epistemological theories through a critical examination of foundational and current research and a reflection on historical and philosophical orientations as they relate to contemporary issues in cognition and learning.');
-INSERT INTO Course VALUES ('BIOT', '6210', 'Medical Biotechnology', 'Provides an analysis of epistemological theories through a critical examination of foundational and current research and a reflection on historical and philosophical orientations as they relate to contemporary issues in cognition and learning.');
 
 #Section
 INSERT INTO Section VALUES ('ENGL', '1012', 'FA', 7892152, '18:00:00', 15, 15);
@@ -224,31 +221,38 @@ INSERT INTO Section VALUES ('KINE', '1035', 'FA', 5678762, '07:00:00', 15, 15);
 INSERT INTO Section VALUES ('PHYS', '1070', 'FA', 4210012, '14:00:00', 40, 40);
 INSERT INTO Section VALUES ('PHYS', '1070', 'FB', 4210012, '19:00:00', 15, 15);
 
-INSERT INTO Section VALUES ('BIOL', '2055', 'FA', 7214777, '08:30:00', 60, 60);
+INSERT INTO Section VALUES ('BIOL', '2055', 'FA', 7214777, '10:30:00', 60, 60);
 INSERT INTO Section VALUES ('NURS', '2055', 'FA', 7214777, '08:30:00', 60, 60);
-INSERT INTO Section VALUES ('NURS', '2055', 'FB', 7214777, '12:30:00', 50, 50);
-INSERT INTO Section VALUES ('NURS', '2055', 'FC', 5678762, '16:00:00', 50, 50);
-
-
-
-
+INSERT INTO Section VALUES ('NURS', '2055', 'FB', 7214777, '13:30:00', 40, 40);
+INSERT INTO Section VALUES ('GERO', '2016', 'FA', 5678762, '08:30:00', 25, 25);
+INSERT INTO Section VALUES ('GEOL', '2210', 'FA', 0021521, '15:30:00', 35, 35);
+INSERT INTO Section VALUES ('POLI', '2311', 'FA', 3450968, '20:00:00', 100, 100);
+INSERT INTO Section VALUES ('CHEM', '2211', 'FA', 7821942, '14:30:00', 35, 35);
 
 INSERT INTO Section VALUES ('ESOF', '3050', 'FA', 0646314, '13:30:00', 45, 45);
 INSERT INTO Section VALUES ('ESOF', '3050', 'FB', 0646314, '10:00:00', 10, 10);
-INSERT INTO Section VALUES ('ESOF', '3655', 'FA', 7214777, '10:00:00', 45, 45);
-INSERT INTO Section VALUES ('ESOF', '3655', 'FB', 7214777, '15:00:00', 25, 25);
+INSERT INTO Section VALUES ('ESOF', '3655', 'FA', 7214777, '12:00:00', 45, 45);
+INSERT INTO Section VALUES ('EDUC', '3910', 'FA', 2419522, '16:00:00', 45, 45);
 INSERT INTO Section VALUES ('MATH', '3071', 'FA', 5678762, '08:30:00', 20, 20);
 INSERT INTO Section VALUES ('MATH', '3071', 'FB', 2192100, '10:30:00', 20, 20);
 INSERT INTO Section VALUES ('MATH', '3071', 'FC', 2419522, '12:30:00', 45, 45);
-INSERT INTO Section VALUES ('MATH', '3071', 'FD', 4210012, '14:30:00', 15, 15);
+INSERT INTO Section VALUES ('NRMT', '3071', 'FA', 3450968, '14:30:00', 25, 25);
+INSERT INTO Section VALUES ('ANTH', '3011', 'FA', 3450968, '20:30:00', 69, 69);
+
 INSERT INTO Section VALUES ('BUSI', '4071', 'FA', 7544327, '17:15:00', 10, 10);
-INSERT INTO Section VALUES ('CHEM', '2211', 'FA', 3450968, '08:30:00', 50, 50);
+INSERT INTO Section VALUES ('BUSI', '4071', 'FB', 7544327, '15:00:00', 15, 15);
 INSERT INTO Section VALUES ('MUSI', '4330', 'FA', 4210012, '14:30:00', 20, 20);
-INSERT INTO Section VALUES ('MEDI', '5045', 'FA', 2419522, '08:30:00', 50, 50);
-INSERT INTO Section VALUES ('EDUC', '6411', 'FA', 2419215, '18:45:00', 20, 20);
+INSERT INTO Section VALUES ('COMP', '4411', 'FA', 5678762, '08:30:00', 20, 20);
+INSERT INTO Section VALUES ('ENST', '4011', 'FA', 7821942, '12:30:00', 15, 15);
+INSERT INTO Section VALUES ('VISU', '4110', 'FA', 6319921, '10:30:00', 32, 32);
+
 INSERT INTO Section VALUES ('SOCI', '5111', 'FA', 7544327, '07:15:00', 25, 25);
-INSERT INTO Section VALUES ('COMP', '9800', 'FA', 0646314, '12:30:00', 10, 10);
-INSERT INTO Section VALUES ('COMP', '9800', 'FB', 2192100, '17:30:00', 39, 39);
+INSERT INTO Section VALUES ('MEDI', '5045', 'FA', 2419522, '08:30:00', 50, 50);
+INSERT INTO Section VALUES ('BUSI', '5052', 'FA', 2192100, '07:15:00', 25, 25);
+
+INSERT INTO Section VALUES ('EDUC', '6411', 'FA', 2419215, '18:45:00', 20, 20);
+INSERT INTO Section VALUES ('HESC', '6010', 'FA', 6319921, '12:45:00', 40, 40);
+INSERT INTO Section VALUES ('PSYC', '6011', 'FA', 2419522, '10:30:00', 15, 15);
 
 #CourseList 
 #Part Time Students
