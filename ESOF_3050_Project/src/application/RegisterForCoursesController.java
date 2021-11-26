@@ -274,7 +274,19 @@ public class RegisterForCoursesController {
 				    	
 				    	if (studentYear < courseYear)
 				    		cb.setDisable(true);
-				    	
+				    					    	
+				    	//Make sure the student cannot enroll in the same course but a different section
+				    	Statement checkStmt = conn.createStatement();
+						ResultSet checkRs = checkStmt.executeQuery("SELECT memberID, courseName, courseCode, courseSection from CourseList WHERE memberID = " + Integer.parseInt(memberID));
+						List<String> courses = new ArrayList<>();
+						
+						//Add each course the student is enrolled in to the list
+						while(checkRs.next())
+							courses.add(checkRs.getString(2) + "-" + checkRs.getString(3));
+						
+						//Check if that course exists in another section
+						if (courses.contains(String.format(rs.getString(1) + "-" + rs.getString(2))))
+							cb.setDisable(true);
 				    	
 				    	//If the course is in the enroll list, automatically select it
 				    	if (enrollList.contains(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(7))))

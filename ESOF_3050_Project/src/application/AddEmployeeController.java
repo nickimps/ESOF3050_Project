@@ -189,6 +189,7 @@ public class AddEmployeeController {
 
 					//Insert the employee into the database
 					stmt.executeUpdate("INSERT INTO UniversityMember VALUES ("+ newMemberID + ", '" + memberType + "', '" + firstNameTextField.getText() + "', '" + lastNameTextField.getText() + "', " + Integer.parseInt(SINTextField.getText()) + ", '" + dateOfBirthTextField.getText() + "', '" + addressTextField.getText() + "', '" + status + "', -1)");
+					stmt.executeUpdate("INSERT INTO Login VALUES (" + newMemberID + ", 'password', '" + memberType.toLowerCase() + "')");
 					
 					//Let user know
 				    messageLabel.setText("Successfully Added!");
