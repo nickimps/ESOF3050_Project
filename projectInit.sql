@@ -17,6 +17,7 @@ CREATE TABLE UniversityMember(
     dateOfBirth DATE,
     homeAddress CHAR(100),
     statusType CHAR(20),
+	    yearLevel INTEGER,
     PRIMARY KEY(memberID)
 );
 
