@@ -718,5 +718,4 @@ INSERT INTO Login VALUES (2199921, 'password', 'administrator');
 INSERT INTO Login VALUES (8582188, 'password', 'administrator');
 INSERT INTO Login VALUES (7772147, 'password', 'administrator');
 
-
 commit;

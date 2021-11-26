@@ -171,7 +171,7 @@ public class RemoveEmployeeController {
 				for (int i = 0; i < cbs.size(); i++) {
 					if (cbs.get(i).isSelected()) {
 						String[] splitArray = cbs.get(i).getText().split(" - ");
-						memberID = splitArray[2];
+						memberID = splitArray[1];
 
 						//DELETE the member from the database
 						stmt.execute("SET FOREIGN_KEY_CHECKS = 0");
