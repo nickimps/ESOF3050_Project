@@ -108,7 +108,7 @@ CREATE TABLE Login(
 
 #### Entries ####
 #Students
-INSERT INTO UniversityMember VALUES (1231231, 'Undergraduate', 'John', 'Smith', 123456789, '1990-10-22', '123 Main Street, Thunder Bay, ON, P7Y 4L9, Canada', 'Part-Time', 1);
+INSERT INTO UniversityMember VALUES (1231231, 'Undergraduate', 'John', 'Smith', 123456789, '1990-10-22', '123 Main Street, Thunder Bay, ON, P7Y 4L9, Canada', 'Part-Time', 2);
 INSERT INTO UniversityMember VALUES (4215976, 'Undergraduate', 'Justin', 'Gates', 212512322, '1986-02-02', '421 Dundas Ave, Thunder Bay, ON, P4C 1T8, Canada', 'Part-Time', 3);
 INSERT INTO UniversityMember VALUES (5188121, 'Undergraduate', 'Albert', 'Marteus', 782164524, '1992-12-08', '915 Bay Street, Thunder Bay, ON, P1K 7Z9, Canada', 'Part-Time', 2);
 INSERT INTO UniversityMember VALUES (9015219, 'Undergraduate', 'Marcus', 'Potts', 976735653, '1990-04-05', '1303 Walnut Drive, Thunder Bay, ON, P8J 2L1, Canada', 'Part-Time', 4);
@@ -230,50 +230,50 @@ INSERT INTO CourseList VALUES (1231231, 'SPAN', '1000', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'SPAN' AND courseCode = '1000' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (1231231, 'NURS', '2055', 'FC');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'NURS' AND courseCode = '2055' AND courseSection = 'FC';
+
 INSERT INTO CourseList VALUES (4215976, 'ENGL', '1012', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ENGL' AND courseCode = '1012' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (4215976, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
-INSERT INTO CourseList VALUES (5188121, 'SOCI', '5111', 'FA');
-UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'SOCI' AND courseCode = '5111' AND courseSection = 'FA';
-INSERT INTO CourseList VALUES (5188121, 'MATH', '3071', 'FC');
-UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'MATH' AND courseCode = '3071' AND courseSection = 'FC';
-INSERT INTO CourseList VALUES (9015219, 'MEDI', '5045', 'FA');
-UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'MEDI' AND courseCode = '5045' AND courseSection = 'FA';
+
+INSERT INTO CourseList VALUES (5188121, 'SPAN', '1000', 'FA');
+UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'SPAN' AND courseCode = '1000' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (9015219, 'NURS', '2055', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'NURS' AND courseCode = '2055' AND courseSection = 'FB';
+
 INSERT INTO CourseList VALUES (7537134, 'WOME', '1100', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'WOME' AND courseCode = '1100' AND courseSection = 'FA';
-INSERT INTO CourseList VALUES (7537134, 'EDUC', '6411', 'FA');
-UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'EDUC' AND courseCode = '6411' AND courseSection = 'FA';
-INSERT INTO CourseList VALUES (0125392, 'BUSI', '4071', 'FA');
-UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'BUSI' AND courseCode = '4071' AND courseSection = 'FA';
-INSERT INTO CourseList VALUES (0125392, 'EDUC', '6411', 'FA');
-UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'EDUC' AND courseCode = '6411' AND courseSection = 'FA';
+
+INSERT INTO CourseList VALUES (0125392, 'ENGL', '1012', 'FA');
+UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ENGL' AND courseCode = '1012' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (5329210, 'MUSI', '4330', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'MUSI' AND courseCode = '4330' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (5329210, 'SOCI', '5111', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'SOCI' AND courseCode = '5111' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (1205189, 'MATH', '3071', 'FC');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'MATH' AND courseCode = '3071' AND courseSection = 'FC';
-INSERT INTO CourseList VALUES (1205189, 'COMP', '9800', 'FA');
-UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FA';
-INSERT INTO CourseList VALUES (2125890, 'EDUC', '6411', 'FA');
-UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'EDUC' AND courseCode = '6411' AND courseSection = 'FA';
-INSERT INTO CourseList VALUES (2125890, 'BUSI', '4071', 'FA');
-UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'BUSI' AND courseCode = '4071' AND courseSection = 'FA';
+
+INSERT INTO CourseList VALUES (2125890, 'WOME', '1100', 'FA');
+UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'WOME' AND courseCode = '1100' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (5181205, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (5181205, 'SOCI', '5111', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'SOCI' AND courseCode = '5111' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (2195182, 'MATH', '3071', 'FC');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'MATH' AND courseCode = '3071' AND courseSection = 'FC';
 INSERT INTO CourseList VALUES (2195182, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (9518953, 'WOME', '1100', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'WOME' AND courseCode = '1100' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (9518953, 'MATH', '3071', 'FC');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'MATH' AND courseCode = '3071' AND courseSection = 'FC';
+
 INSERT INTO CourseList VALUES (7531923, 'SPAN', '1000', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'SPAN' AND courseCode = '1000' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (7531923, 'WOME', '1100', 'FA');
@@ -290,6 +290,7 @@ INSERT INTO CourseList VALUES (0124829, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (0124829, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (1583815, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (1583815, 'ESOF', '3655', 'FA');
@@ -300,6 +301,7 @@ INSERT INTO CourseList VALUES (1583815, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (1583815, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (8215721, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (8215721, 'ESOF', '3655', 'FA');
@@ -310,6 +312,7 @@ INSERT INTO CourseList VALUES (8215721, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (8215721, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (5292719, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (5292719, 'ESOF', '3655', 'FA');
@@ -320,6 +323,7 @@ INSERT INTO CourseList VALUES (5292719, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (5292719, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (1929148, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (1929148, 'ESOF', '3655', 'FA');
@@ -330,6 +334,7 @@ INSERT INTO CourseList VALUES (1929148, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (1929148, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (7214933, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (7214933, 'ESOF', '3655', 'FA');
@@ -340,6 +345,7 @@ INSERT INTO CourseList VALUES (7214933, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (7214933, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (6216862, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (6216862, 'ESOF', '3655', 'FA');
@@ -350,6 +356,7 @@ INSERT INTO CourseList VALUES (6216862, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (6216862, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (5320911, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (5320911, 'ESOF', '3655', 'FA');
@@ -360,6 +367,7 @@ INSERT INTO CourseList VALUES (5320911, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (5320911, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (3190185, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (3190185, 'ESOF', '3655', 'FA');
@@ -370,6 +378,7 @@ INSERT INTO CourseList VALUES (3190185, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (3190185, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (2109012, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (2109012, 'ESOF', '3655', 'FA');
@@ -380,6 +389,7 @@ INSERT INTO CourseList VALUES (2109012, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (2109012, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (4210305, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (4210305, 'ESOF', '3655', 'FA');
@@ -390,6 +400,7 @@ INSERT INTO CourseList VALUES (4210305, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (4210305, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (2190182, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (2190182, 'ESOF', '3655', 'FA');
@@ -400,6 +411,7 @@ INSERT INTO CourseList VALUES (2190182, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (2190182, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (5031219, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (5031219, 'ESOF', '3655', 'FA');
@@ -410,6 +422,7 @@ INSERT INTO CourseList VALUES (5031219, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (5031219, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (6102213, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (6102213, 'ESOF', '3655', 'FA');
@@ -420,6 +433,7 @@ INSERT INTO CourseList VALUES (6102213, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (6102213, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (1294194, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (1294194, 'ESOF', '3655', 'FA');
@@ -430,6 +444,7 @@ INSERT INTO CourseList VALUES (1294194, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (1294194, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (5901821, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (5901821, 'ESOF', '3655', 'FA');
@@ -440,6 +455,7 @@ INSERT INTO CourseList VALUES (5901821, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (5901821, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (0912942, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (0912942, 'ESOF', '3655', 'FA');
@@ -450,6 +466,7 @@ INSERT INTO CourseList VALUES (0912942, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (0912942, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (5429195, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (5429195, 'ESOF', '3655', 'FA');
@@ -460,6 +477,7 @@ INSERT INTO CourseList VALUES (5429195, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (5429195, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (6942091, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (6942091, 'ESOF', '3655', 'FA');
@@ -470,6 +488,7 @@ INSERT INTO CourseList VALUES (6942091, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (6942091, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (5313903, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (5313903, 'ESOF', '3655', 'FA');
@@ -480,6 +499,7 @@ INSERT INTO CourseList VALUES (5313903, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (5313903, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (2140915, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (2140915, 'ESOF', '3655', 'FA');
@@ -490,6 +510,7 @@ INSERT INTO CourseList VALUES (2140915, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (2140915, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (7214905, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (7214905, 'ESOF', '3655', 'FA');
@@ -500,6 +521,7 @@ INSERT INTO CourseList VALUES (7214905, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (7214905, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (2510933, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (2510933, 'ESOF', '3655', 'FA');
@@ -510,6 +532,7 @@ INSERT INTO CourseList VALUES (2510933, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (2510933, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (6231593, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (6231593, 'ESOF', '3655', 'FA');
@@ -520,6 +543,7 @@ INSERT INTO CourseList VALUES (6231593, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (6231593, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (2189218, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (2189218, 'ESOF', '3655', 'FA');
@@ -530,6 +554,7 @@ INSERT INTO CourseList VALUES (2189218, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (2189218, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (7419953, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (7419953, 'ESOF', '3655', 'FA');
@@ -540,6 +565,7 @@ INSERT INTO CourseList VALUES (7419953, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (7419953, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (0921355, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (0921355, 'ESOF', '3655', 'FA');
@@ -550,6 +576,7 @@ INSERT INTO CourseList VALUES (0921355, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (0921355, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (0125825, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (0125825, 'ESOF', '3655', 'FA');
@@ -560,6 +587,7 @@ INSERT INTO CourseList VALUES (0125825, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (0125825, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (8593295, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (8593295, 'ESOF', '3655', 'FA');
@@ -570,6 +598,7 @@ INSERT INTO CourseList VALUES (8593295, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (8593295, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (3219998, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (3219998, 'ESOF', '3655', 'FA');
@@ -580,6 +609,7 @@ INSERT INTO CourseList VALUES (3219998, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (3219998, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (5153912, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (5153912, 'ESOF', '3655', 'FA');
@@ -590,6 +620,7 @@ INSERT INTO CourseList VALUES (5153912, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (5153912, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (1005190, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (1005190, 'ESOF', '3655', 'FA');
@@ -600,6 +631,7 @@ INSERT INTO CourseList VALUES (1005190, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (1005190, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (8892149, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (8892149, 'ESOF', '3655', 'FA');
@@ -610,6 +642,7 @@ INSERT INTO CourseList VALUES (8892149, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (8892149, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (6661293, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (6661293, 'ESOF', '3655', 'FA');
@@ -620,6 +653,7 @@ INSERT INTO CourseList VALUES (6661293, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (6661293, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (1024920, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (1024920, 'ESOF', '3655', 'FA');
@@ -630,6 +664,7 @@ INSERT INTO CourseList VALUES (1024920, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (1024920, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (9218529, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (9218529, 'ESOF', '3655', 'FA');
@@ -640,6 +675,7 @@ INSERT INTO CourseList VALUES (9218529, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (9218529, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (6314892, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (6314892, 'ESOF', '3655', 'FA');
@@ -650,6 +686,7 @@ INSERT INTO CourseList VALUES (6314892, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (6314892, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (1521249, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (1521249, 'ESOF', '3655', 'FA');
@@ -660,6 +697,7 @@ INSERT INTO CourseList VALUES (1521249, 'COMP', '9800', 'FB');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'COMP' AND courseCode = '9800' AND courseSection = 'FB';
 INSERT INTO CourseList VALUES (1521249, 'CHEM', '2211', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'CHEM' AND courseCode = '2211' AND courseSection = 'FA';
+
 INSERT INTO CourseList VALUES (1214201, 'ESOF', '3050', 'FA');
 UPDATE Section SET capacity = capacity - 1 WHERE courseName = 'ESOF' AND courseCode = '3050' AND courseSection = 'FA';
 INSERT INTO CourseList VALUES (1214201, 'ESOF', '3655', 'FA');
