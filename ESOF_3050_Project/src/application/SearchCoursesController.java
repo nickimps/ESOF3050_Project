@@ -47,6 +47,9 @@ public class SearchCoursesController {
 
     @FXML // fx:id="sectionTextField"
     private TextField sectionTextField; // Value injected by FXMLLoader
+    
+    @FXML // fx:id="keywordTextField"
+    private TextField keywordTextField; // Value injected by FXMLLoader
 
     @FXML // fx:id="listScrollPane"
     private ScrollPane listScrollPane; // Value injected by FXMLLoader
@@ -111,23 +114,39 @@ public class SearchCoursesController {
 			    ResultSet rs = null;
 			    
 			    //Execute query depending on which text fields have content
-			    if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty())
+			    if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID ORDER BY Course.courseName");
-			    else if (!courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty())
+			    else if (!courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE Course.courseName LIKE '%"+ courseNameTextField.getText().toUpperCase() + "%' ORDER BY Course.courseCode");
-				else if (courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty())
+				else if (courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE Course.courseCode LIKE '%" + courseCodeTextField.getText() + "%' ORDER BY Course.courseName");
-				else if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty())
+				else if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE Section.courseSection LIKE '%" + sectionTextField.getText() + "%' ORDER BY Course.courseName");
-				else if (!courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty())
+				else if (!courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE Course.courseCode LIKE '%" + courseCodeTextField.getText() + "%' AND Course.courseName LIKE '%" + courseNameTextField.getText().toUpperCase() + "%' ORDER BY Course.courseCode");
-				else if (!courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty())
+				else if (!courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE Section.courseSection LIKE '%" + sectionTextField.getText() + "%' AND Course.courseName LIKE '%" + courseNameTextField.getText().toUpperCase() + "%' ORDER BY Course.courseCode");
-				else if (courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty())
+				else if (courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE Section.courseSection LIKE '%" + sectionTextField.getText() + "%' AND Course.courseCode LIKE '%" + courseCodeTextField.getText() + "%' ORDER BY Course.courseCode");
-				else if (!courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty())
+				else if (!courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE Section.courseSection LIKE '%" + sectionTextField.getText() + "%' AND Course.courseName LIKE '%" + courseNameTextField.getText().toUpperCase() + "%' AND Course.courseCode LIKE '%" + courseCodeTextField.getText() + "%' ORDER BY Course.courseName");
-
+				else if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty())
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' ORDER BY Course.courseName");
+			    else if (!courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty())
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' AND Course.courseName LIKE '%"+ courseNameTextField.getText().toUpperCase() + "%' ORDER BY Course.courseCode");
+				else if (courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty())
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' AND Course.courseCode LIKE '%" + courseCodeTextField.getText() + "%' ORDER BY Course.courseName");
+				else if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty())
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' AND Section.courseSection LIKE '%" + sectionTextField.getText() + "%' ORDER BY Course.courseName");
+				else if (!courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty())
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' AND Course.courseCode LIKE '%" + courseCodeTextField.getText() + "%' AND Course.courseName LIKE '%" + courseNameTextField.getText().toUpperCase() + "%' ORDER BY Course.courseCode");
+				else if (!courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty())
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' AND Section.courseSection LIKE '%" + sectionTextField.getText() + "%' AND Course.courseName LIKE '%" + courseNameTextField.getText().toUpperCase() + "%' ORDER BY Course.courseCode");
+				else if (courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty())
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' AND Section.courseSection LIKE '%" + sectionTextField.getText() + "%' AND Course.courseCode LIKE '%" + courseCodeTextField.getText() + "%' ORDER BY Course.courseCode");
+				else if (!courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty())
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' AND Section.courseSection LIKE '%" + sectionTextField.getText() + "%' AND Course.courseName LIKE '%" + courseNameTextField.getText().toUpperCase() + "%' AND Course.courseCode LIKE '%" + courseCodeTextField.getText() + "%' ORDER BY Course.courseName");
+			    
 			    //Create the vBox
 			    vBox.getChildren().clear();
 			    vBox.setPadding(new Insets(8, 8, 8, 8));

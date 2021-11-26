@@ -48,7 +48,7 @@ public class DropCoursesController {
     //VBox to be used to display information in the scroll pane
    	private VBox vBox = new VBox();
    	
-   	//Global checkboxes list
+   	//Global check boxes list
    	private List<CheckBox> cbs = new ArrayList<>();
     
    	//Global scenes

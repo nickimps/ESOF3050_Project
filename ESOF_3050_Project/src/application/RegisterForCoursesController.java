@@ -56,6 +56,9 @@ public class RegisterForCoursesController {
     @FXML // fx:id="sectionTextField"
     private TextField sectionTextField; // Value injected by FXMLLoader
     
+    @FXML // fx:id="keywordTextField"
+    private TextField keywordTextField; // Value injected by FXMLLoader
+    
     @FXML // fx:id="messageLabel"
     private Label messageLabel; // Value injected by FXMLLoader
     
@@ -162,7 +165,7 @@ public class RegisterForCoursesController {
 							stmt.executeUpdate("UPDATE UniversityMember SET statusType = 'Full-Time' WHERE memberID = " + Integer.parseInt(memberID));
 					}
 					
-					//Reset textfields
+					//Reset text fields
 				    resetFields();
 				    
 				    //Let the user know they are successful
@@ -213,28 +216,44 @@ public class RegisterForCoursesController {
 			    ResultSet rs = null;
 
 			    //Get search results based on what fields have text in them
-			    if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty())
+			    if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
-			    else if (!courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty())
+			    else if (!courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE Course.courseName = '"+ courseNameTextField.getText().toUpperCase() + "' AND NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
-				else if (courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty())
+				else if (courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE Course.courseCode = '"+ courseCodeTextField.getText() + "' AND NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
-				else if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty())
+				else if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE Section.courseSection = '" + sectionTextField.getText() + "' AND NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
-				else if (!courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty())
+				else if (!courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE Course.courseCode = '" + courseCodeTextField.getText() + "' AND Course.courseName = '" + courseNameTextField.getText().toUpperCase() + "' AND NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
-				else if (!courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty())
+				else if (!courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE Section.courseSection = '" + sectionTextField.getText() + "' AND Course.courseName = '" + courseNameTextField.getText().toUpperCase() + "' AND NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
-				else if (courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty())
+				else if (courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE Section.courseSection = '" + sectionTextField.getText() + "' AND Course.courseCode = '" + courseCodeTextField.getText() + "' AND NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
-				else if (!courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty())
+				else if (!courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && keywordTextField.getText().isEmpty())
 					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE Section.courseSection = '" + sectionTextField.getText() + "' AND Course.courseName = '" + courseNameTextField.getText().toUpperCase() + "' AND Course.courseCode = '" + courseCodeTextField.getText() + "' AND NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
+				else if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty()) //**
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' AND NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
+			    else if (!courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty())
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' AND Course.courseName = '"+ courseNameTextField.getText().toUpperCase() + "' AND NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
+				else if (courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty())
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' AND Course.courseCode = '"+ courseCodeTextField.getText() + "' AND NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
+				else if (courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty())
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' AND Section.courseSection = '" + sectionTextField.getText() + "' AND NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
+				else if (!courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty())
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' AND Course.courseCode = '" + courseCodeTextField.getText() + "' AND Course.courseName = '" + courseNameTextField.getText().toUpperCase() + "' AND NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
+				else if (!courseNameTextField.getText().isEmpty() && courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty())
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' AND Section.courseSection = '" + sectionTextField.getText() + "' AND Course.courseName = '" + courseNameTextField.getText().toUpperCase() + "' AND NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
+				else if (courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty())
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' AND Section.courseSection = '" + sectionTextField.getText() + "' AND Course.courseCode = '" + courseCodeTextField.getText() + "' AND NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
+				else if (!courseNameTextField.getText().isEmpty() && !courseCodeTextField.getText().isEmpty() && !sectionTextField.getText().isEmpty() && !keywordTextField.getText().isEmpty())
+					rs = stmt.executeQuery("SELECT * FROM Course INNER JOIN Section ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID WHERE subject = '%" + keywordTextField.getText() + "%' AND Section.courseSection = '" + sectionTextField.getText() + "' AND Course.courseName = '" + courseNameTextField.getText().toUpperCase() + "' AND Course.courseCode = '" + courseCodeTextField.getText() + "' AND NOT EXISTS (SELECT courseName, courseCode, courseSection, memberID FROM CourseList WHERE CourseList.courseName = Section.courseName AND CourseList.courseCode = Section.courseCode AND CourseList.courseSection = Section.courseSection AND CourseList.memberID = " + Integer.parseInt(memberID) + ") ORDER BY Course.courseName, Course.courseCode, courseSection");
 			    
-			    //Clear the current vBox and checkboxes list
+			    //Clear the current vBox and check boxes list
 			    vBox.getChildren().clear();
 			    cbs.clear();
 			    
-			    //Iterate through creating a checkbox item for each course and disable the course if there is no room left in it
+			    //Iterate through creating a check box item for each course and disable the course if there is no room left in it
 			    if (rs.next() == false) {
 				    vBox.getChildren().add(new Label(String.format("No Classes Found.")));
 			    } else {
@@ -244,6 +263,17 @@ public class RegisterForCoursesController {
 				    	//If no room, set disable
 				    	if (Integer.parseInt(rs.getString(10)) == 0)
 				    		cb.setDisable(true);
+				    	
+				    	//If student year level < course year level then don't allow selection of the course
+				    	ResultSet studQ = stmt.executeQuery("SELECT memberID, yearLevel FROM UniversityMember WHERE memberID = " + Integer.parseInt(memberID));
+				    	studQ.next();
+				    	
+				    	int studentYear = Integer.parseInt(studQ.getString(1));
+				    	int courseYear = Integer.parseInt(String.format("%s", rs.getString(2).charAt(0)));
+				    	
+				    	if (studentYear < courseYear)
+				    		cb.setDisable(true);
+				    	
 				    	
 				    	//If the course is in the enroll list, automatically select it
 				    	if (enrollList.contains(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(7))))
