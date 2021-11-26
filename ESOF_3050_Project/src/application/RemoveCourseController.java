@@ -1,3 +1,14 @@
+/*
+ * ESOF 3050 Project
+ * 
+ * Nicholas Imperius
+ * Sukhraj Deol
+ * Jimmy Tsang
+ * Kristopher Poulin
+ * 
+ * RemoveCourseController.java
+ */
+
 package application;
 
 import java.net.URL;
@@ -37,41 +48,60 @@ public class RemoveCourseController {
     //VBox to be used to display information in the scroll pane
    	private VBox vBox = new VBox();
    	
+   	//Global check box list
    	private List<CheckBox> cbs = new ArrayList<>();
 
+   	//Global scenes
     private Main main;
     private Scene sceneAdminWelcomeScreen;
     
+    /**
+     * Sets the main scene of the program
+     * 
+     * @param main The scene of the main
+     */
     public void setMainScene(Main main) {
     	this.main = main;
     }
     
+    /**
+     * Sets the scenes for the back button
+     * 
+     * @param sceneAdminWelcomeScreen
+     */
     public void setBackPressedScene(Scene sceneAdminWelcomeScreen) {
     	this.sceneAdminWelcomeScreen = sceneAdminWelcomeScreen;
     }
 
+    //Shows the list of courses that can be removed
     public void showList() {
+    	//Try-Catch
     	try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (Exception e) {
             e.printStackTrace();
         }
     	
+    	//Try-Catch
 		try {
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/UniversityRegistrationSystem?" + "user=root");
 			
+	    	//Try-Catch
 			try {
 				Statement stmt = conn.createStatement();
 			    
+				//Creates the vBox
 			    vBox.getChildren().clear();
 			    vBox.setPadding(new Insets(8, 8, 8, 8));
 			    vBox.setSpacing(8.0);		    
 			    
+			    //Queries all the sections and courses to list out
 			    ResultSet rs = stmt.executeQuery("SELECT Section.courseName, Section.courseCode, Section.courseSection, subject, Section.time, firstName, lastName FROM Section "
 			    		+ "INNER JOIN Course ON Course.courseName = Section.courseName AND Course.courseCode = Section.courseCode "
 			    		+ "INNER JOIN UniversityMember ON UniversityMember.memberID = Section.memberID "
 			    		+ "ORDER BY Section.courseName, Section.courseCode, Section.courseSection");
 		    	
+			    //Iterate through and create a label for each entry
 			    if (rs.next() == false) {
 				    vBox.getChildren().add(new Label(String.format("No Classes Found.")));
 			    } else {
@@ -81,6 +111,7 @@ public class RemoveCourseController {
 				    } while (rs.next());
 			    }
 			    
+			    //Add listeners to each check box to set the info message to not visible
 			    for (int i = 0; i < cbs.size(); i++) {
 			    	vBox.getChildren().add(cbs.get(i));
 			    	cbs.get(i).selectedProperty().addListener((ObservableValue<? extends Boolean> ov, Boolean old_val, Boolean new_val) -> {
@@ -88,17 +119,24 @@ public class RemoveCourseController {
 			    	});
 			    }
 
+			    //Add the vBox to the scroll pane
 			    listScrollPane.setContent(vBox);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 
+			//Close the connection
 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
     }
     
+    /**
+     * Brings the admin back to the welcome screen
+     * 
+     * @param event
+     */
     @FXML
     void backButtonPressed(ActionEvent event) {
     	messageLabel.setVisible(false);
@@ -107,57 +145,76 @@ public class RemoveCourseController {
     	cbs.clear();
     }
 
+    /**
+     * Delete from the database when the remove button is pressed
+     * 
+     * @param event
+     */
     @FXML
     void removeButtonPressed(ActionEvent event) {
+    	//Try-Catch
     	try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (Exception e) {
             e.printStackTrace();
         }
     	
+    	//Try-Catch
 		try {
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/UniversityRegistrationSystem?" + "user=root");
 			
+	    	//Try-Catch
 			try {
 				Statement stmt = conn.createStatement();
 				
+				//Initialize course variables
 				String courseName = "";
 				String courseCode = "";
 				String courseSection = "";
+				//Loops through each checkbox and checks if it is selected
 				for (int i = 0; i < cbs.size(); i++) {
 					if (cbs.get(i).isSelected()) {
+						//Get the name and code
 						String[] splitArray = cbs.get(i).getText().split("-");
 						courseName = splitArray[0];
 						courseCode = splitArray[1];
+						//Get the course section
 						String[] newSplitArray = splitArray[2].split(" : ");
 						courseSection = newSplitArray[0];
 						
 						//Change full-time to part-time status if applicable
 						ResultSet rs = stmt.executeQuery("SELECT memberID FROM Section WHERE courseName = '" + courseName + "' AND courseCode = '" + courseCode + "' AND courseSection = '" + courseSection + "'");
 						
+						//Get instructor name
 						rs.next();
 						String instructor = rs.getString(1); 
 						
+						//Get the number of courses for that instructor
 						rs = stmt.executeQuery("SELECT * FROM Section WHERE memberID = " + Integer.parseInt(instructor));
 						
 						int numOfRows = 0;
 						while(rs.next())
 							numOfRows++;
 						
+						//Change to part-time if they have less than 3 courses now
 						if (numOfRows < 3)
 							stmt.executeUpdate("UPDATE UniversityMember SET statusType = 'Part-Time' WHERE memberID = " + Integer.parseInt(instructor));
 
+						//DELETE the section from our database
 						stmt.execute("SET FOREIGN_KEY_CHECKS = 0");
 						stmt.executeUpdate("DELETE FROM Section WHERE courseName = '" + courseName + "' AND courseCode = '" + courseCode + "' AND courseSection = '" + courseSection + "'");
 						stmt.execute("SET FOREIGN_KEY_CHECKS = 1");
 					}
 				}
 				
+				//Clear the checkboxes
 				cbs.clear();
 			    
+				//Let user know
 				messageLabel.setText("Successfully Removed!");
 			    messageLabel.setVisible(true);
 				
+			    //Show the updated list of courses
 				showList();
 			    
 			} catch (SQLException e) {
@@ -166,6 +223,7 @@ public class RemoveCourseController {
 			    e.printStackTrace();
 			}
 
+			//Close the connection
 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

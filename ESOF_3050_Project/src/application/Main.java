@@ -1,3 +1,14 @@
+/*
+ * ESOF 3050 Project
+ * 
+ * Nicholas Imperius
+ * Sukhraj Deol
+ * Jimmy Tsang
+ * Kristopher Poulin
+ * 
+ * Main.java
+ */
+
 package application;
 
 import java.io.IOException;
@@ -10,6 +21,7 @@ import javafx.scene.layout.Pane;
 
 public class Main extends Application {
 	
+	//Global Variables, required to pass the memberID between functions
 	String memberID;
 	RegisterForCoursesController registerForCoursesController;
 	ViewCoursesController viewCoursesController;
@@ -20,7 +32,8 @@ public class Main extends Application {
 
 	// Primary Stage
     Stage stage;
-    // Two scenes
+    
+    //Scenes for each UI screen
     Scene sceneLogin;
     Scene sceneAddCourse;
     Scene sceneAddEmployee;
@@ -54,6 +67,9 @@ public class Main extends Application {
     private Pane paneInstructorWelcomeScreen;
     private Pane paneAdminWelcomeScreen;
 	
+    /**
+     * Starts the interface
+     */
 	@Override
 	public void start(Stage mainStage) throws Exception {
 		try {
@@ -154,9 +170,8 @@ public class Main extends Application {
 			Scene sceneAdminWelcomeScreen = new Scene(paneAdminWelcomeScreen);
 			
 			//Pass Reference to their controller classes
+			//	Allows us to send the what the next scene would be so that when a button is pressed we can easily swap to that scene
 			loginController.setMainScene(this, memberID);
-			
-			/* need to check type of user here */
 			loginController.setLoginPressScene(sceneStudentWelcomeScreen, sceneAdminWelcomeScreen, sceneInstructorWelcomeScreen);
 			
 			addCourseController.setMainScene(this);
@@ -192,6 +207,7 @@ public class Main extends Application {
 			removeCourseController.setMainScene(this);
 			removeCourseController.setBackPressedScene(sceneAdminWelcomeScreen);
 			
+			//Set the different controllers within the system
 			studentWelcomeScreenController.setMainScene(this);
 			studentWelcomeScreenController.setLogoutPressedScene(sceneLogin);
 			studentWelcomeScreenController.setDropCoursesPressedScene(sceneDropCourses);
@@ -231,6 +247,7 @@ public class Main extends Application {
 			adminWelcomeScreenController.setRemoveEmployeeController(removeEmployeeController);
 			adminWelcomeScreenController.loadInstructorsPre();
 			
+			//Finally, set the initial UI screen that the user sees
 			stage.setScene(sceneLogin);
 			stage.setTitle("Univeristy Registration System");
 			stage.show();
@@ -241,10 +258,20 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+	 * Sets the scene
+	 * 
+	 * @param sc Scene to be set to
+	 */
 	public void setScreen(Scene sc) {
 		stage.setScene(sc);
 	}
-	
+	/**
+	 * Function to set the memberID in the welcome screen controllers so that it can be passed along to the necessary
+	 * screen to be used in the queries
+	 * 
+	 * @param memberID The memberID of the user logging in 
+	 */
 	public void setMemberID(String memberID) {
 		registerForCoursesController.setMemberID(memberID);
 		studentWelcomeScreenController.setMemberID(memberID);
@@ -253,6 +280,11 @@ public class Main extends Application {
 		dropCoursesController.setMemberID(memberID);
 	}
 	
+	/**
+	 * Main Function
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
