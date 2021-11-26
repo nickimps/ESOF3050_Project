@@ -216,6 +216,7 @@ public class SearchCoursesController {
     	courseCodeTextField.setText("");
     	courseNameTextField.setText("");
     	sectionTextField.setText("");
+    	keywordTextField.setText("");
     }
 }
 

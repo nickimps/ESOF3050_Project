@@ -161,7 +161,7 @@ public class ViewCoursesController {
 						    vBox.getChildren().add(new Label(String.format("No Classes Found.")));
 					    } else {
 						    do {
-						    	Label lb = new Label(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(3) + " : " + rs.getString(4) + "\n\tLecture Time: " + rs.getString(5) + "\n\tCapacity: " + rs.getString(6) + "/" + rs.getString(7)));
+						    	Label lb = new Label(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(3) + " : " + rs.getString(4) + "\n\tLecture Time: " + rs.getString(5) + "\n\tSeats Remaining: " + rs.getString(6) + "/" + rs.getString(7)));
 						    	vBox.getChildren().add(lb);
 						    } while (rs.next());
 					    }

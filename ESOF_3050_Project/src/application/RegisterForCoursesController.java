@@ -213,6 +213,7 @@ public class RegisterForCoursesController {
     		//Try-Catch
 			try {
 				Statement stmt = conn.createStatement();
+				Statement stmtStud = conn.createStatement();
 			    ResultSet rs = null;
 
 			    //Get search results based on what fields have text in them
@@ -258,17 +259,17 @@ public class RegisterForCoursesController {
 				    vBox.getChildren().add(new Label(String.format("No Classes Found.")));
 			    } else {
 				    do {
-				    	CheckBox cb = new CheckBox(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(7) + "\n" + rs.getString(3) + "\nLecture Time: " + rs.getString(9) + "\nInstructor: " + rs.getString(14) + " " + rs.getString(15) + "\nCapacity: " + rs.getString(10) + "/" + rs.getString(11)));
+				    	CheckBox cb = new CheckBox(String.format(rs.getString(1) + "-" + rs.getString(2) + "-" + rs.getString(7) + "\n" + rs.getString(3) + "\nLecture Time: " + rs.getString(9) + "\nInstructor: " + rs.getString(14) + " " + rs.getString(15) + "\nSeats Remaining: " + rs.getString(10) + "/" + rs.getString(11)));
 				    	
 				    	//If no room, set disable
 				    	if (Integer.parseInt(rs.getString(10)) == 0)
 				    		cb.setDisable(true);
 				    	
 				    	//If student year level < course year level then don't allow selection of the course
-				    	ResultSet studQ = stmt.executeQuery("SELECT memberID, yearLevel FROM UniversityMember WHERE memberID = " + Integer.parseInt(memberID));
+				    	ResultSet studQ = stmtStud.executeQuery("SELECT memberID, yearLevel FROM UniversityMember WHERE memberID = " + Integer.parseInt(memberID));
 				    	studQ.next();
 				    	
-				    	int studentYear = Integer.parseInt(studQ.getString(1));
+				    	int studentYear = Integer.parseInt(studQ.getString(2));
 				    	int courseYear = Integer.parseInt(String.format("%s", rs.getString(2).charAt(0)));
 				    	
 				    	if (studentYear < courseYear)
@@ -365,6 +366,7 @@ public class RegisterForCoursesController {
     	courseCodeTextField.setText("");
     	courseNameTextField.setText("");
     	sectionTextField.setText("");
+    	keywordTextField.setText("");
     }
 }
 
