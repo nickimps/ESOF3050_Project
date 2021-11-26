@@ -140,16 +140,6 @@ INSERT INTO UniversityMember VALUES (5901821, 'Undergraduate', 'Bruce', 'Harper'
 INSERT INTO UniversityMember VALUES (0912942, 'Undergraduate', 'Jasmine Fritz', 'North', 083235525, '2002-02-23', '218 Syndicate Avenue, Thunder Bay, ON, P0T 9G2, Canada', 'Full-Time', 4);
 INSERT INTO UniversityMember VALUES (5429195, 'Undergraduate', 'Nicole', 'Diaz', 864095537, '1982-07-01', '6218 Riverdale Street, Thunder Bay, ON, P0T 1D6, Canada', 'Full-Time', 2);
 INSERT INTO UniversityMember VALUES (6942091, 'Undergraduate', 'Walker', 'Obrien', 983358142, '1983-02-24', '1123 Picard Ave, Thunder Bay, ON, P0T 1D1, Canada', 'Full-Time', 1);
-INSERT INTO UniversityMember VALUES (5313903, 'Undergraduate', 'Marco', 'Polo', 228660223, '1998-07-26', '619 Neebing Ave, Thunder Bay, ON, P3I 8I9, Canada', 'Full-Time', 3);
-INSERT INTO UniversityMember VALUES (2140915, 'Undergraduate', 'Nixon', 'Cross', 698227090, '1990-04-11', '314 Mary Street, Thunder Bay, ON, P5Y 5L2, Canada', 'Full-Time', 2);
-INSERT INTO UniversityMember VALUES (7214905, 'Undergraduate', 'Andrew', 'Williamson', 695863577, '1982-11-17', '4212 Arthur Street, Thunder Bay, ON, P8W 0P2, Canada', 'Full-Time', 1);
-INSERT INTO UniversityMember VALUES (2510933, 'Undergraduate', 'Tanya', 'Hill', 419536451, '2000-04-10', '512 Fanshaw Street, Thunder Bay, ON, P9R 5W2, Canada', 'Full-Time', 4);
-INSERT INTO UniversityMember VALUES (6231593, 'Undergraduate', 'Mary', 'Louise', 367274028, '2002-10-08', '2145 Chippewa Drive, Thunder Bay, ON, P1E 9R2, Canada', 'Full-Time', 2);
-INSERT INTO UniversityMember VALUES (2189218, 'Undergraduate', 'Gabriel', 'Iglesias', 456789123, '1989-01-05', '210 Coyote Street, Thunder Bay, ON, P1E 7I5, Canada', 'Full-Time', 3);
-INSERT INTO UniversityMember VALUES (7419953, 'Undergraduate', 'Grace', 'Perez', 437963457, '1992-06-09', '521 Clearwater Way, Thunder Bay, ON, P2R 4I2, Canada', 'Full-Time', 1);
-INSERT INTO UniversityMember VALUES (0921355, 'Undergraduate', 'Hunter', 'Chung', 769152728, '1996-10-31', '518 HW-61, Thunder Bay, ON, P7O 3T5, Canada', 'Full-Time', 3);
-INSERT INTO UniversityMember VALUES (0125825, 'Undergraduate', 'Tony', 'Zeng', 277918893, '1996-04-16', '330 Brock Street, Thunder Bay, ON, P5T 3R4, Canada', 'Full-Time', 4);
-INSERT INTO UniversityMember VALUES (8593295, 'Undergraduate', 'Ernest', 'Bond', 241595421, '1985-05-03', '599 Black Bay Road, Thunder Bay, ON, P9U 5U7, Canada', 'Full-Time', 2);
 INSERT INTO UniversityMember VALUES (3219998, 'Graduate', 'Aaron', 'Rogers', 906744957, '1994-02-23', '214 Ambrose Street, Thunder Bay, ON, P1Y 5K9, Canada', 'Full-Time', 6);
 INSERT INTO UniversityMember VALUES (5153912, 'Graduate', 'Brandon', 'Bembry', 794231517, '1993-10-21', '951 15th Sideroad, Thunder Bay, ON, P1Y 4L0, Canada', 'Full-Time', 6);
 INSERT INTO UniversityMember VALUES (1005190, 'Graduate', 'Pascal', 'Ingram', 945399607, '1998-11-16', '1521 High Street, Thunder Bay, ON, P1Y 1U7, Canada', 'Full-Time', 5);
@@ -157,9 +147,7 @@ INSERT INTO UniversityMember VALUES (8892149, 'Graduate', 'Kyle', 'Butler', 5865
 INSERT INTO UniversityMember VALUES (6661293, 'Graduate', 'Stephen', 'Thompson', 870679523, '1990-08-20', '777 Balmoral Street, Thunder Bay, ON, P4B 4L9, Canada', 'Full-Time', 6);
 INSERT INTO UniversityMember VALUES (1024920, 'Graduate', 'Klay', 'Curry', 562539179, '1987-08-26', '821 James Street, Thunder Bay, ON, P4B 8L1, Canada', 'Full-Time', 5);
 INSERT INTO UniversityMember VALUES (9218529, 'Graduate', 'Draymond', 'Brown', 728929658, '1990-02-22', '8519 Nick Street, Thunder Bay, ON, P7C 9U7, Canada', 'Full-Time', 6);
-INSERT INTO UniversityMember VALUES (6314892, 'Graduate', 'Kevin', 'Warner', 152747405, '2000-03-14', '592 Alberta Street, Thunder Bay, ON, P7C 2R4, Canada', 'Full-Time', 5);
-INSERT INTO UniversityMember VALUES (1521249, 'Graduate', 'Devin', 'Crowder', 426797769, '2000-09-30', '531 Wiley Street, Thunder Bay, ON, P7C 5O9, Canada', 'Full-Time', 5);
-INSERT INTO UniversityMember VALUES (1214201, 'Graduate', 'Logan', 'Bumstead', 795663544, '1999-10-07', '300 McKellar Street, Thunder Bay, ON, P6Y 9L9, Canada', 'Full-Time', 6);
+
 
 #Instructors
 INSERT INTO UniversityMember VALUES (0646314, 'Instructor', 'Ken', 'Ironside', 147258369, '1984-08-31', '6351 Windsor Street, Thunder Bay, ON, P2U 3X7, Canada', 'Part-Time', -1);
