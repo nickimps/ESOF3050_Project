@@ -22,8 +22,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
@@ -41,8 +43,17 @@ public class ModifyGradesController {
     @FXML // fx:id="middleScrollPane"
     private ScrollPane middleScrollPane; // Value injected by FXMLLoader
 
+    @FXML // fx:id="newGradeLabel"
+    private Label newGradeLabel; // Value injected by FXMLLoader
+
     @FXML // fx:id="newGradeTextField"
     private TextField newGradeTextField; // Value injected by FXMLLoader
+
+    @FXML // fx:id="separator"
+    private Separator separator; // Value injected by FXMLLoader
+
+    @FXML // fx:id="changeButton"
+    private Button changeButton; // Value injected by FXMLLoader
     
     @FXML // fx:id="messageLabel"
     private Label messageLabel; // Value injected by FXMLLoader
@@ -155,6 +166,11 @@ public class ModifyGradesController {
     private void handleCourseClickEvent(Label classLabel) {
     	//Hide info message
     	messageLabel.setVisible(false);
+    	newGradeLabel.setVisible(false);
+    	currentGradeLabel.setVisible(false);
+    	newGradeTextField.setVisible(false);
+    	separator.setVisible(false);
+    	changeButton.setVisible(false);
 
     	//Bold the label
     	classLabel.setStyle("-fx-font-weight: bold");
@@ -236,6 +252,11 @@ public class ModifyGradesController {
 	private void handleStudentClickEvent(Label studLabel, Label classLabel) {
 		//Hide the info label
 		messageLabel.setVisible(false);
+		newGradeLabel.setVisible(true);
+    	currentGradeLabel.setVisible(true);
+    	newGradeTextField.setVisible(true);
+    	separator.setVisible(true);
+    	changeButton.setVisible(true);
 		
 		//Bold the label
 		studLabel.setStyle("-fx-font-weight: bold");
@@ -369,6 +390,11 @@ public class ModifyGradesController {
     	messageLabel.setVisible(false);
     	newGradeTextField.setText("");
     	currentGradeLabel.setText("Current Grade: ");
+    	newGradeLabel.setVisible(false);
+    	currentGradeLabel.setVisible(false);
+    	newGradeTextField.setVisible(false);
+    	separator.setVisible(false);
+    	changeButton.setVisible(false);
     }
 }
 
